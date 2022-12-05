@@ -29,11 +29,13 @@
             </button>
             <div class="collapse navbar-collapse justify-content-start" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/createuser.jsp">Opret bruger</a>
+                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Byg en carport</a>
+                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Se mine ordrer</a>
                     <c:if test="${sessionScope.user == null }">
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Log ind</a>
                     </c:if>
                     <c:if test="${sessionScope.user != null }">
+                        <p>Bruger: ${sessionScope.user.username}</p>
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout">Log out</a>
                     </c:if>
                 </div>

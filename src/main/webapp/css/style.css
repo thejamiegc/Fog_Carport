@@ -11,5 +11,24 @@ th, td {
     padding:15px;
 }
 
+.indexphoto {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
+
+h2 {
+    font-family: "Arial Black";
+    font-size: 14px;
+
+}
+
+body {
+    width: 1200px;
+}
+
+
+
 
 

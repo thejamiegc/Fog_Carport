@@ -15,8 +15,10 @@
 
     <jsp:body>
 
-        <p>An error has occured. This is the best message we can come up
-            with right now: </p>
+        <h1>Beklager, vi kan ikke finde siden du søger. </h1>
+        <p>Siden du forsøger at tilgå kan desværre ikke findes. <br>
+            Siden kan være slettet eller flyttet</p>
+        <p>For at komme tilbage til forsiden, <a href="index.jsp">klik her.</a></p>
 
         <c:if test="${pageContext.errorData.statusCode == 404 }">
             <p><b>Error code:</b> ${pageContext.errorData.statusCode}</p>

@@ -5,25 +5,23 @@
 
 <t:pagetemplate>
     <jsp:attribute name="header">
-         Welcome to the frontpage
+         Velkommen!
     </jsp:attribute>
 
     <jsp:attribute name="footer">
-        Welcome to the frontpage
+        Velkommen!
     </jsp:attribute>
 
     <jsp:body>
 
-        <p>Startcode for 2nd semester </p>
-
-        <c:if test="${sessionScope.user != null}">
-            <p>You are logged in with the role of "${sessionScope.user.role}".</p>
-        </c:if>
-
+        <p>Dette er Fog's custom Carport-hjemmeside. GLHF!</p>
         <c:if test="${sessionScope.user == null}">
-            <p>You are not logged in yet. You can do it here: <a
+            <p>Du er ikke logget ind endnu. Det kan du gøre her: <a
                     href="login.jsp">Login</a></p>
         </c:if>
+        <div class="indexphoto">
+        <img src="images/carport.jpg" alt="carport" width="600px" height="400px">
+        </div>
 
     </jsp:body>
 
