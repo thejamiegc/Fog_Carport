@@ -5,25 +5,26 @@
 <%@page errorPage="error.jsp" isErrorPage="false" %>
 
 <t:pagetemplate>
-    <jsp:attribute name="header">
-             Login
-    </jsp:attribute>
-
     <jsp:attribute name="footer">
             Login
     </jsp:attribute>
 
     <jsp:body>
 
-        <h3>Du kan logge ind her:</h3>
+        <h1>Log ind</h1>
+        <p>Herunder kan du logge ind.</p>
 
-        <form action="login" method="post">
-            <label for="username">Brugernavn: </label>
-            <input type="text" id="username" name="username"/>
-            <label for="password">Adgangskode: </label>
-            <input type="password" id="password" name="password"/>
-            <input type="submit"  value="Log in"/>
-        </form>
+        <div class="form-outline mb-4">
+            <form action="login" style="width:100px" method="post">
+                <input type="text" id="username" placeholder="Email" name="username"/>
+                <br>
+                <br>
+                <input type="password" id="password" placeholder="Adgangskode" name="password"/>
+                <br>
+                <br>
+                <input type="submit" value="Log mig ind"/>
+            </form>
+        </div>
 
     </jsp:body>
 </t:pagetemplate>
