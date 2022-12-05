@@ -20,6 +20,7 @@
                 <div class="mb-3">
                     <label for="email">Indtast email: </label>
                     <input type="text" id="email" placeholder="Email" name="email"/>
+                    <div id="emailHelp" class="form-text">Vi deler ikke dine oplysninger.</div>
                     <br>
                 </div>
                 <div class="mb-3">

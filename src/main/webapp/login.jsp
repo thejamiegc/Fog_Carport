@@ -13,13 +13,12 @@
             <div class="col">
                 <h1>Log ind</h1>
                 <p>Herunder kan du logge ind.</p>
-                <form>
+                <form action="login" method="post">
                     <div class="mb-3">
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        <div id="emailHelp" class="form-text">Vi deler ikke dine oplysninger.</div>
+                        <input type="email" class="form-control" id="email">
                     </div>
                     <div class="mb-3">
-                        <input type="password" class="form-control" id="exampleInputPassword1">
+                        <input type="password" class="form-control" id="password">
                     </div>
                     <button type="submit" class="btn btn-primary">Log mig ind</button>
                 </form>
