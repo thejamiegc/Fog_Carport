@@ -5,25 +5,26 @@
 <%@page errorPage="error.jsp" isErrorPage="false" %>
 
 <t:pagetemplate>
-    <jsp:attribute name="footer">
-            Login
-    </jsp:attribute>
 
     <jsp:body>
 
-        <h1>Log ind</h1>
-        <p>Herunder kan du logge ind.</p>
-
-        <div class="form-outline mb-4">
-            <form action="login" style="width:100px" method="post">
-                <input type="text" id="username" placeholder="Email" name="username"/>
-                <br>
-                <br>
-                <input type="password" id="password" placeholder="Adgangskode" name="password"/>
-                <br>
-                <br>
-                <input type="submit" value="Log mig ind"/>
-            </form>
+        <div class="row">
+        <div class="col md-4"></div>
+            <div class="col">
+                <h1>Log ind</h1>
+                <p>Herunder kan du logge ind.</p>
+                <form>
+                    <div class="mb-3">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <div id="emailHelp" class="form-text">Vi deler ikke dine oplysninger.</div>
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Log mig ind</button>
+                </form>
+        </div>
+            <div class="col md-4"></div>
         </div>
 
     </jsp:body>

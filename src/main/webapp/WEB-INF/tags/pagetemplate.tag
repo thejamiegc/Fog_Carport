@@ -29,13 +29,19 @@
             </button>
             <div class="collapse navbar-collapse justify-content-start" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/createuser.jsp">Opret bruger</a>
                     <c:if test="${sessionScope.user == null }">
+                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/createuser.jsp">Opret bruger</a>
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Log ind</a>
                     </c:if>
                     <c:if test="${sessionScope.user != null }">
-                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout">Log out</a>
+                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout">Log ud</a>
                     </c:if>
+<%--                    <c:if test="${sessionScope.user.role == customer}">--%>
+<%--                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/WEB-INF/welcomeuser.jsp">Hjem</a>--%>
+<%--                    </c:if>--%>
+<%--                    <c:if test="${sessionScope.user.role == admin}">--%>
+<%--                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/WEB-INF/welcomeadmin.jsp">Hjem</a>--%>
+<%--                    </c:if>--%>
                 </div>
             </div>
             <div class="navbar-brand" >
@@ -49,7 +55,7 @@
     </form>
 </header>
 
-<div id="body" class="container mt-4" style="min-height: 400px;">
+<div class="container mt-4" style="min-height: 400px;">
     <h1><jsp:invoke fragment="header"/></h1>
     <jsp:doBody/>
 </div>
