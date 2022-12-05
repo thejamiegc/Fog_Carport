@@ -46,25 +46,30 @@ class UserMapper
         return user;
     }
 
-    static User createUser(String username, String password, String role, ConnectionPool connectionPool) throws DatabaseException
+    static void createUser(User user, ConnectionPool connectionPool) throws DatabaseException
     {
         Logger.getLogger("web").log(Level.INFO, "");
-        User user;
-        String sql = "insert into user (username, password, role) values (?,?,?)";
+        String sql = "insert into User (firstname, lastname, email, password, address, postalcode, phonenumber, role) values (?,?,?,?,?,?,?,?)";
         try (Connection connection = connectionPool.getConnection())
         {
             try (PreparedStatement ps = connection.prepareStatement(sql))
             {
-                ps.setString(1, username);
-                ps.setString(2, password);
-                ps.setString(3, role);
+                ps.setString(1, user.getFirstname());
+                ps.setString(2, user.getLastname());
+                ps.setString(3, user.getEmail());
+                ps.setString(4, user.getPassword());
+                ps.setString(5, user.getAddress());
+                ps.setInt(6, user.getPostalcode());
+                ps.setInt(7, user.getPhonenumber());
+                ps.setString(8,user.getRole());
+
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1)
                 {
-                    user = new User(username, password, role);
+
                 } else
                 {
-                    throw new DatabaseException("The user with username = " + username + " could not be inserted into the database");
+                    throw new DatabaseException("The user with email = " + user.getEmail() + " could not be inserted into the database");
                 }
             }
         }
@@ -72,7 +77,6 @@ class UserMapper
         {
             throw new DatabaseException(ex, "Could not insert username into database");
         }
-        return user;
     }
 
 
