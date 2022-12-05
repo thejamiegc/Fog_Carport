@@ -9,25 +9,31 @@ import java.util.logging.Logger;
 
 class UserMapper
 {
-    static User login(String username, String password, ConnectionPool connectionPool) throws DatabaseException
+    static User login(String email, String password, ConnectionPool connectionPool) throws DatabaseException
     {
         Logger.getLogger("web").log(Level.INFO, "");
 
         User user = null;
 
-        String sql = "SELECT * FROM user WHERE username = ? AND password = ?";
+        String sql = "SELECT * FROM User WHERE email = ? AND password = ?";
 
         try (Connection connection = connectionPool.getConnection())
         {
             try (PreparedStatement ps = connection.prepareStatement(sql))
             {
-                ps.setString(1, username);
+                ps.setString(1, email);
                 ps.setString(2, password);
                 ResultSet rs = ps.executeQuery();
                 if (rs.next())
                 {
+                    int userID = rs.getInt("userID");
+                    String firstname = rs.getString("firstname");
+                    String lastname = rs.getString("lastname");
+                    String address = rs.getString("address");
+                    int postalcode = rs.getInt("postalcode");
+                    int phonenumber = rs.getInt("phonenumber");
                     String role = rs.getString("role");
-                    user = new User(username, password, role);
+                    user = new User(userID,firstname,lastname,email,password,address,postalcode,phonenumber,role);
                 } else
                 {
                     throw new DatabaseException("Wrong username or password");
