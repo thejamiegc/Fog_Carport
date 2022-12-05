@@ -29,17 +29,17 @@
             </button>
             <div class="collapse navbar-collapse justify-content-start" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Opret bruger</a>
+                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Kunde bestillinger</a>
+                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Kunde ordrer</a>
+                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Materialeliste</a>
                     <c:if test="${sessionScope.user == null }">
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Log ind</a>
                     </c:if>
                     <c:if test="${sessionScope.user != null }">
+                        <p>Medarbejder: ${sessionScope.user.username}</p>
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout">Log out</a>
                     </c:if>
                 </div>
-            </div>
-            <div class="navbar-brand" >
-            <img src="../../images/findfog.png" alt="icon1"/>
             </div>
         </div>
     </nav>
