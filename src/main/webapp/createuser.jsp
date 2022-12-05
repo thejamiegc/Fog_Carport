@@ -18,32 +18,32 @@
         <div class="form-outline mb-4">
             <form action="createuser" style="width:100px" method="post">
                 <label for="email">Indtast email: </label>
-                <input type="text" id="email" placeholder="Email" name="username"/>
+                <input type="text" id="email" placeholder="Email" name="email"/>
                 <br>
                 <label for="password">Vælg adgangskode: </label>
-                <input type="text" id="password" placeholder="Adgangskode" name="username"/>
+                <input type="text" id="password" placeholder="Adgangskode" name="password"/>
                 <br>
                 <label for="password1">Gentag adgangskode: </label>
-                <input type="text" id="password1" placeholder="Adgangskode" name="username"/>
+                <input type="text" id="password1" placeholder="Adgangskode" name="password1"/>
                 <br>
                 <h2>Kontaktoplysninger</h2>
                 <label for="firstname">Fornavn* : </label>
-                <input type="text" id="firstname" placeholder="Fornavn" name="username"/>
+                <input type="text" id="firstname" placeholder="Fornavn" name="firstname"/>
                 <br>
                 <label for="lastname">Efternavn* : </label>
-                <input type="text" id="lastname" placeholder="Efternavn" name="username"/>
+                <input type="text" id="lastname" placeholder="Efternavn" name="lastname"/>
                 <br>
                 <label for="address">Adresse* : </label>
-                <input type="text" id="address" placeholder="Adresse" name="username"/>
+                <input type="text" id="address" placeholder="Adresse" name="address"/>
                 <br>
                 <label for="postnumber">Postnummer* : </label>
-                <input type="number" id="postnumber" placeholder="Postnummer" name="username"/>
+                <input type="number" id="postnumber" placeholder="Postnummer" name="postnumber"/>
                 <br>
                 <label for="city">By* : </label>
-                <input type="text" id="city" placeholder="By" name="username"/>
+                <input type="text" id="city" placeholder="By" name="city"/>
                 <br>
                 <label for="phonenumber">Telefon nummer* : </label>
-                <input type="number" id="phonenumber" placeholder="+45" name="username"/>
+                <input type="number" id="phonenumber" placeholder="+45" name="phonenumber"/>
                 <br>
                 <input type="submit" value="Opret bruger"/>
             </form>
