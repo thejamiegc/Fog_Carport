@@ -43,6 +43,9 @@
                         </ul>
                     </ul>
                 </div>
+                <a class="navbar-brand" href="../../index.jsp">
+                    <img src="${pageContext.request.contextPath}/images/icon.png"/>
+                </a>
             </div>
         </nav>
     <form class="searchbar">
