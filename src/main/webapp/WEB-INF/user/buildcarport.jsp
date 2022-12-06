@@ -23,11 +23,11 @@
         <h2>Vælg dine mål i meter her:</h2>
         <div class="form-outline mb-4">
             <form action="carportrequest" style="width:100px" method="post">
-                <label for="width">Carport bredde*: </label>
-                <input type="number" id="width" placeholder="Bredde i meter" name="width"/>
-                <br>
                 <label for="length">Carport længde*: </label>
                 <input type="number" id="length" placeholder="Længde i meter" name="length"/>
+                <br>
+                <label for="width">Carport bredde*: </label>
+                <input type="number" id="width" placeholder="Bredde i meter" name="width"/>
                 <br>
                 <label for="roof">Carport tag: </label>
                 <input class="form-control" id="roof" name="roof" type="text" placeholder="Fladt tag" aria-label="Disabled input example" disabled>
