@@ -38,7 +38,7 @@
                             <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Log ind</a>
                         </c:if>
                         <c:if test="${sessionScope.user != null }">
-                            <p>Bruger: ${sessionScope.user.username}</p>
+                            <p>Bruger: ${sessionScope.user.firstname}</p>
                             <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout">Log out</a>
                         </c:if>
                     </ul>

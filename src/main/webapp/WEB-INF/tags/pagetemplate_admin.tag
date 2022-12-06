@@ -39,10 +39,10 @@
                                     <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Log ind</a>
                                 </c:if>
                                 <c:if test="${sessionScope.user != null }">
-                                    <p>Medarbejder: ${sessionScope.user.username}</p>
+                                    <p>Medarbejder: ${sessionScope.user.firstname}</p>
                                     <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout">Log out</a>
                                 </c:if>
-                </ul>
+                    </ul>
             </div>
             <%--          <a class="navbar-brand" href="../../index.jsp">
                           <img src="${pageContext.request.contextPath}/images/icon.png"/>

@@ -28,7 +28,7 @@
                     <input type="checkbox" value="remember-me"> Husk mig
                 </label>
             </div>
-            <button class="w-100 btn btn-lg btn-primary" type="submit">Log mig ind</button>
+            <input class="w-100 btn btn-lg btn-primary" type="submit" value="Log mig ind"/>
         </form>
 
     </jsp:body>

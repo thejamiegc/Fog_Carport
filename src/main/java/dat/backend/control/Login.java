@@ -50,10 +50,10 @@ public class Login extends HttpServlet
             session.setAttribute("user", user); // adding user object to session scope
 
             if (user.getRole().equalsIgnoreCase("admin")) {
-                request.getRequestDispatcher("WEB-INF/welcomeadmin.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/pages/welcomeadmin.jsp").forward(request, response);
             }
             if (user.getRole().equalsIgnoreCase("user")) {
-                request.getRequestDispatcher("WEB-INF/welcomeuser.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/pages/welcomeuser.jsp").forward(request, response);
             }
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
