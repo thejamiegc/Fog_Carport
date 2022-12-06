@@ -62,7 +62,11 @@
                     <label for="phonenumber">Telefonnummer</label>
                 </div>
 
-                <button class="w-100 btn btn-lg btn-primary" type="submit">Opret bruger</button>
+                <input value="Opret bruger" class="w-100 btn btn-lg btn-primary" type="submit"/>
+                <br>
+                <br>
+                <br>
+                <br>
             </form>
 
 
