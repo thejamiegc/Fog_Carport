@@ -33,10 +33,14 @@ public class Login extends HttpServlet
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
     {
+        //danish characters allowed :D
+        response.setCharacterEncoding("UTF-8");
+        request.setCharacterEncoding("UTF-8");
+
         response.setContentType("text/html");
         HttpSession session = request.getSession();
         session.setAttribute("user", null); // invalidating user object in session scope
-        String email = request.getParameter("username");
+        String email = request.getParameter("email");
         String password = request.getParameter("password");
 
         try
@@ -44,7 +48,14 @@ public class Login extends HttpServlet
             User user = UserFacade.login(email, password, connectionPool);
             session = request.getSession();
             session.setAttribute("user", user); // adding user object to session scope
-            request.getRequestDispatcher("../WEB-INF/welcomeuser.jsp").forward(request, response);
+
+            if (user.getRole().equalsIgnoreCase("admin")) {
+                request.getRequestDispatcher("WEB-INF/welcomeadmin.jsp").forward(request, response);
+            }
+            if (user.getRole().equalsIgnoreCase("user")) {
+                request.getRequestDispatcher("WEB-INF/welcomeuser.jsp").forward(request, response);
+            }
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         }
         catch (DatabaseException e)
         {
@@ -52,5 +63,4 @@ public class Login extends HttpServlet
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
     }
-
 }

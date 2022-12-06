@@ -38,7 +38,7 @@ public class CreateUser extends HttpServlet {
                 request.getParameter("address"),
                 Integer.parseInt(request.getParameter("postalcode")),
                 Integer.parseInt(request.getParameter("phonenumber")),
-                "admin");
+                "user");
 
         try
         {
