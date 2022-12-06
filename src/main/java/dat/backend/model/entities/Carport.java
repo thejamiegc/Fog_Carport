@@ -1,17 +1,14 @@
 package dat.backend.model.entities;
 
 public class Carport {
-
     private int carportID;
     private int length;
     private int width;
     private String rooftype;
-    private boolean shed;
+    private int shed;
 
     //measurements are in cm and not meters
-
-
-    public Carport(int carportID, int length, int width, String rooftype, boolean shed) {
+    public Carport(int carportID, int length, int width, String rooftype, int shed) {
         this.carportID = carportID;
         this.length = length;
         this.width = width;
@@ -19,8 +16,6 @@ public class Carport {
         this.shed = shed;
     }
 
-
-    //getters
     public int getCarportID() {
         return carportID;
     }
@@ -37,17 +32,16 @@ public class Carport {
         return rooftype;
     }
 
-    public boolean isShed() {
+    public int getShed() {
         return shed;
-    }
-
-    //setters
-    public void setLength(int length) {
-        this.length = length;
     }
 
     public void setCarportID(int carportID) {
         this.carportID = carportID;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
     }
 
     public void setWidth(int width) {
@@ -58,7 +52,7 @@ public class Carport {
         this.rooftype = rooftype;
     }
 
-    public void setShed(boolean shed) {
+    public void setShed(int shed) {
         this.shed = shed;
     }
 
@@ -73,3 +67,6 @@ public class Carport {
                 '}';
     }
 }
+
+
+
