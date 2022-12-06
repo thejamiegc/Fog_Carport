@@ -11,22 +11,43 @@ th, td {
     padding:15px;
 }
 
-.indexphoto {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 40%;
+h1 {
+    font-size: 48px;
 }
 
 h2 {
-    font-family: "Arial Black";
     font-size: 14px;
-
 }
 
+.navbar-blue {
+    background: #004588;
+}
 
+.navbar-brand {
+    color: #6088b4;
+}
 
+.navbar-brand img {
+    height: 65px;
+    width: 80px;
+}
 
+.nav-link {
+    color: #ffffff;
+}
 
+.footer {
+    width: auto;
+    padding: 0 15px;
+}
 
+.searchbar {
+    position: relative;
+}
 
+.searchbar img {
+    top: auto;
+    left: auto;
+    width: auto;
+    height: auto;
+}
