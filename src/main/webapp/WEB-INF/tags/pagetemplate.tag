@@ -34,7 +34,7 @@
                     <ul class="navbar-nav me-auto mb-2 mb-sm-0">
                         <ul class="navbar-nav me-auto mb-2 mb-sm-0">
                             <c:if test="${sessionScope.user == null }">
-                                <li class="nav-item"><a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/createuser.jsp">Opret</a></li>
+                                <li class="nav-item"><a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/createuser.jsp">Opret bruger</a></li>
                                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/login.jsp">Log ind</a></li>
                             </c:if>
                             <c:if test="${sessionScope.user != null }">

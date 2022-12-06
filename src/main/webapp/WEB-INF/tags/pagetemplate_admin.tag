@@ -32,9 +32,9 @@
 
             <div class="collapse navbar-collapse" id="navbarsExample03">
                     <ul class="navbar-nav me-auto mb-2 mb-sm-0">
-                                <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Kunde bestillinger</a>
-                                <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Kunde ordrer</a>
-                                <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Materialeliste</a>
+                                <a class="nav-item nav-link" href="${pageContext.request.contextPath}WEB-INF/admin/allrequestsfromcustomers.jsp">Kunde bestillinger</a>
+                                <a class="nav-item nav-link" href="${pageContext.request.contextPath}WEB-INF/admin/allordersfromcustomers.jsp">Kunde ordrer</a>
+                                <a class="nav-item nav-link" href="${pageContext.request.contextPath}WEB-INF/admin/materiallist.jsp">Materialeliste</a>
                                 <c:if test="${sessionScope.user == null }">
                                     <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Log ind</a>
                                 </c:if>

@@ -32,8 +32,8 @@
 
             <div class="collapse navbar-collapse" id="navbarsExample03">
                     <ul class="navbar-nav me-auto mb-2 mb-sm-0">
-                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Byg en carport</a>
-                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Se mine ordrer</a>
+                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/WEB-INF/user/buildcarport.jsp">Byg en carport</a>
+                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/WEB-INF/user/myorders.jsp">Se mine ordrer</a>
                         <c:if test="${sessionScope.user == null }">
                             <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Log ind</a>
                         </c:if>
