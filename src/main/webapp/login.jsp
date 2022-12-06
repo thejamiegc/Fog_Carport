@@ -13,14 +13,14 @@
             <p>Herunder kan du logge ind.</p>
 
             <div class="form-floating">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">Email addresse</label>
+                <input type="email" class="form-control" id="email" placeholder="name@example.com" name="email">
+                <label for="email">Email addresse</label>
                 <div id="emailHelp" class="form-text">Vi deler ikke dine oplysninger.</div>
                 <br>
             </div>
             <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Adgangskode</label>
+                <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+                <label for="password">Adgangskode</label>
             </div>
 
             <div class="checkbox mb-3">
