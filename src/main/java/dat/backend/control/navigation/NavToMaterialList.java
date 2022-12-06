@@ -6,7 +6,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 
 @WebServlet(name = "navToMaterialList", value = "/navToMaterialList")
-public class navToMaterialList extends HttpServlet {
+public class NavToMaterialList extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("WEB-INF/admin/materiallist.jsp").forward(request, response);
