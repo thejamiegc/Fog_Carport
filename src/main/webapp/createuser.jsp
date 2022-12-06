@@ -9,7 +9,6 @@
     <jsp:body>
 
         <div class="row">
-        <div class="col md-4"></div>
         <div class="col">
         <h1>Opret bruger</h1>
         <p>For at kunne bestille en carport på egne mål, skal du oprette en bruger. Dette kan du gøre her. <br>
@@ -67,7 +66,6 @@
                     <input type="submit" value="Opret bruger"/>
                 </div>
             </form>
-            <div class="col md-4"></div>
         </div>
 
     </jsp:body>

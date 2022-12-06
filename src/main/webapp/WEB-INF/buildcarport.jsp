@@ -21,7 +21,7 @@
                 <input type="number" id="length" placeholder="Længde i meter" name="length"/>
                 <br>
                 <label for="roof">Carport tag: </label>
-                <input type="text" id="roof" placeholder="Fladt tag" name="roof"/>
+                <input class="form-control" id="roof" name="roof" type="text" placeholder="Fladt tag" aria-label="Disabled input example" disabled>
                 <br>
                 <label for="shed">Skur: </label>
                 <input type="text" id="shed" placeholder="Ja eller nej" name="shed"/>
