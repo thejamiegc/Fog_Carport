@@ -22,7 +22,7 @@
 
         <h2>Vælg dine mål i meter her:</h2>
         <div class="form-outline mb-4">
-            <form action="carportrequest" style="width:100px" method="post">
+            <form action="buildCarport" style="width:100px" method="post">
                 <label for="width">Carport bredde*: </label>
                 <input type="number" id="width" placeholder="Bredde i meter" name="width"/>
                 <br>

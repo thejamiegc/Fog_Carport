@@ -5,7 +5,7 @@ import dat.backend.model.exceptions.DatabaseException;
 
 public class CarportFacade {
 
-    public static void createCarport(Carport carport, ConnectionPool connectionPool) throws DatabaseException {
-        CarportMapper.createCarport(carport, connectionPool);
+    public static int createCarport(Carport carport, ConnectionPool connectionPool) throws DatabaseException {
+       return CarportMapper.createCarport(carport, connectionPool);
     }
 }

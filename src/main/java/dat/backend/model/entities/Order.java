@@ -33,6 +33,13 @@ public class Order {
         this.bom = bom;
     }
 
+    public Order(int customerID, int carportID, int statusID) {
+        this.customerID = customerID;
+        this.carportID = carportID;
+        this.statusID = statusID;
+    }
+
+
     public void setStatusID(int statusID) {
         this.statusID = statusID;
     }
