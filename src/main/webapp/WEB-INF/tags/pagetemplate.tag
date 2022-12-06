@@ -21,7 +21,7 @@
 <header>
         <nav class="navbar navbar-expand-sm navbar-blue" aria-label="Third navbar example">
             <div class="container-fluid">
-                <a class="navbar-brand" href="../../index.jsp">
+                <a class="navbar-brand" href="${pageContext.request.contextPath}/index.jsp">
                     <img src="${pageContext.request.contextPath}/images/FOGLogo.jpg"/>
                 </a>
                 <a class="navbar-brand" href="#"></a>
@@ -43,9 +43,9 @@
                         </ul>
                     </ul>
                 </div>
-                <a class="navbar-brand" href="../../index.jsp">
-                    <img src="${pageContext.request.contextPath}/images/icon.png"/>
-                </a>
+            <%--                <a class="navbar-brand" href="../../index.jsp">--%>
+<%--                    <img src="${pageContext.request.contextPath}/images/icon.png"/>--%>
+<%--                </a>--%>
             </div>
         </nav>
     <form class="searchbar">
