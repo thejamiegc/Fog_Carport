@@ -19,35 +19,32 @@
 </head>
 
 <header>
-    <nav class="navbar navbar-expand-sm navbar-blue" aria-label="Third navbar example">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#"><a class="navbar-brand" href="../../index.jsp">
-                <img src="${pageContext.request.contextPath}/images/FOGLogo.jpg"/>
-            </a></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03"
-                    aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <nav class="navbar navbar-expand-sm navbar-blue" aria-label="Third navbar example">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="../../index.jsp">
+                    <img src="${pageContext.request.contextPath}/images/FOGLogo.jpg"/>
+                </a>
+                <a class="navbar-brand" href="#"></a>
+                <button class="navbar-toggler toggler-example darken-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03"
+                        aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <div class="collapse navbar-collapse" id="navbarsExample03">
-                <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+                <div class="collapse navbar-collapse" id="navbarsExample03">
                     <ul class="navbar-nav me-auto mb-2 mb-sm-0">
-                        <c:if test="${sessionScope.user == null }">
-                            <li class="nav-item"><a class="nav-link active" aria-current="page"
-                                                    href="${pageContext.request.contextPath}/createuser.jsp">Opret</a>
-                            </li>
-                            <li class="nav-item"><a class="nav-link active" aria-current="page"
-                                                    href="${pageContext.request.contextPath}/login.jsp">Log ind</a></li>
-                        </c:if>
-                        <c:if test="${sessionScope.user != null }">
-                            <li class="nav-item"><a class="nav-link active" aria-current="page"
-                                                    href="${pageContext.request.contextPath}/logout">Log ud</a></li>
-                        </c:if>
+                        <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+                            <c:if test="${sessionScope.user == null }">
+                                <li class="nav-item"><a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/createuser.jsp">Opret</a></li>
+                                <li class="nav-item"><a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/login.jsp">Log ind</a></li>
+                            </c:if>
+                            <c:if test="${sessionScope.user != null }">
+                                <li class="nav-item"><a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/logout">Log ud</a></li>
+                            </c:if>
+                        </ul>
                     </ul>
-                </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
     <form class="searchbar">
         <input class="form-control" type="text" placeholder="Søg" aria-label="Search">
         <button class="btn" type="submit"><img src="${pageContext.request.contextPath}/images/loop.png"/></button>

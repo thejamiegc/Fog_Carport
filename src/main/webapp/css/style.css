@@ -51,3 +51,7 @@ h2 {
     width: auto;
     height: auto;
 }
+
+.navbar-toggler {
+    color: #ffffff;
+}
