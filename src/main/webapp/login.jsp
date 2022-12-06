@@ -8,7 +8,7 @@
 
     <jsp:body>
         <div class="form-signin">
-        <form>
+        <form action="login" method="post">
             <h1 class="h3 mb-3 fw-normal">Log ind</h1>
             <p>Herunder kan du logge ind.</p>
 
@@ -28,7 +28,7 @@
                     <input type="checkbox" value="remember-me"> Husk mig
                 </label>
             </div>
-            <button class="w-100 btn btn-lg btn-primary" type="submit">Log mig in</button>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Log mig ind</button>
         </form>
 
     </jsp:body>

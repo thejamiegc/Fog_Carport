@@ -8,7 +8,7 @@
 
     <jsp:body>
         <div class="form-createuser">
-            <form method="post">
+            <form action="createUser" method="post">
                 <h1 class="h3 mb-3 fw-normal">Opret bruger</h1>
                 <p>For at kunne bestille en carport på egne mål, skal du oprette en bruger. Dette kan du gøre her. <br>
                     Alle felter markeret med * skal udfyldes. <br> <br>
