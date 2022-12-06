@@ -9,10 +9,6 @@
              Error page
     </jsp:attribute>
 
-    <jsp:attribute name="footer">
-            Error page
-    </jsp:attribute>
-
     <jsp:body>
 
         <h1>Beklager, vi kan ikke finde siden du søger. </h1>

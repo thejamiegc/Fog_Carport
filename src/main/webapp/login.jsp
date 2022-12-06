@@ -7,24 +7,29 @@
 <t:pagetemplate>
 
     <jsp:body>
+        <div class="form-signin">
+        <form>
+            <h1 class="h3 mb-3 fw-normal">Log ind</h1>
+            <p>Herunder kan du logge ind.</p>
 
-        <div class="row">
-        <div class="col md-4"></div>
-            <div class="col">
-                <h1>Log ind</h1>
-                <p>Herunder kan du logge ind.</p>
-                <form action="login" method="post">
-                    <div class="mb-3">
-                        <input type="email" class="form-control" id="email">
-                    </div>
-                    <div class="mb-3">
-                        <input type="password" class="form-control" id="password">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Log mig ind</button>
-                </form>
-        </div>
-            <div class="col md-4"></div>
-        </div>
+            <div class="form-floating">
+                <input type="email" class="form-control" id="email" placeholder="name@example.com" name="email">
+                <label for="email">Email addresse</label>
+                <div id="emailHelp" class="form-text">Vi deler ikke dine oplysninger.</div>
+                <br>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+                <label for="password">Adgangskode</label>
+            </div>
+
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" value="remember-me"> Husk mig
+                </label>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Log mig in</button>
+        </form>
 
     </jsp:body>
 </t:pagetemplate>
