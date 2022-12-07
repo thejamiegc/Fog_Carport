@@ -27,12 +27,13 @@
             </div>
             <div class="mb-3">
                 <label for="shed" class="form-label">Skur:</label>
-                <input class="form-control" id="shed" name="shed" list="datalistOptions" id="exampleDataList"
-                       placeholder="Vælg her">
-                <datalist id="datalistOptions">
-                    <option value="Ja">
-                    <option value="Nej">
-                </datalist>
+                <input type="number" id="shed" name="shed" class="form-control" placeholder="1 for ja, 2 for nej">
+<%--                <input class="form-control" id="shed" name="shed" list="datalistOptions" id="exampleDataList"--%>
+<%--                       placeholder="Vælg her">--%>
+<%--                <datalist id="datalistOptions">--%>
+<%--                    <option value="1">--%>
+<%--                    <option value="2">--%>
+<%--                </datalist>--%>
             </div>
             <div class="mb-3">
                 <label for="shedwidth" class="form-label">Skur bredde:</label>

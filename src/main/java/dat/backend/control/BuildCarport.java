@@ -41,8 +41,9 @@ public class BuildCarport extends HttpServlet {
 
            int carportID = CarportFacade.createCarport(carport ,connectionPool);
             User user = (User)session.getAttribute("user");
-            order = new Order(user.getUserID(),carportID,0);
+            order = new Order(user.getUserID(),carportID,1);
             OrderFacade.createOrder(order,connectionPool);
+            request.getRequestDispatcher("/myorders").forward(request, response);
 
         } catch (DatabaseException e) {
 

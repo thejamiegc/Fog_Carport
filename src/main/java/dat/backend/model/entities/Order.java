@@ -10,9 +10,8 @@ public class Order {
     int carportID;
     double price;
     int statusID;
-    String bom;
 
-    public Order(int orderID, int employeeID, int customerID, Timestamp created, int carportID, double price, int statusID, String bom) {
+    public Order(int orderID, int employeeID, int customerID, Timestamp created, int carportID, double price, int statusID) {
         this.orderID = orderID;
         this.employeeID = employeeID;
         this.customerID = customerID;
@@ -20,17 +19,15 @@ public class Order {
         this.carportID = carportID;
         this.price = price;
         this.statusID = statusID;
-        this.bom = bom;
     }
 
-    public Order(int employeeID, int customerID, Timestamp created, int carportID, double price, int statusID, String bom) {
+    public Order(int employeeID, int customerID, Timestamp created, int carportID, double price, int statusID) {
         this.employeeID = employeeID;
         this.customerID = customerID;
         this.created = created;
         this.carportID = carportID;
         this.price = price;
         this.statusID = statusID;
-        this.bom = bom;
     }
 
     public Order(int customerID, int carportID, int statusID) {
@@ -72,10 +69,6 @@ public class Order {
         return statusID;
     }
 
-    public String getBom() {
-        return bom;
-    }
-
     @Override
     public String toString() {
         return "Order{" +
@@ -86,7 +79,6 @@ public class Order {
                 ", carportID=" + carportID +
                 ", price=" + price +
                 ", statusID=" + statusID +
-                ", bom='" + bom + '\'' +
                 '}';
     }
 }
