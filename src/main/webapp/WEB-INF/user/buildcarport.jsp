@@ -23,7 +23,7 @@
 
         <h2>Vælg dine mål i meter her:</h2>
         <div class="form-outline mb-4">
-            <form action="carportrequest" style="width:100px" method="post">
+            <form action="navToBuildCarport" style="width:100px" method="post">
                 <label for="width">Carport bredde*: </label>
                 <input type="number" id="width" placeholder="Bredde i meter" name="width"/>
                 <br>
@@ -36,7 +36,6 @@
                 <label for="shed">Skur: </label>
                 <input type="text" id="shed" placeholder="Ja eller nej" name="shed"/>
                 <br>
-                HVIS skur så:
                 <label for="shedwidth">Skur bredde*: </label>
                 <input type="number" id="shedwidth" placeholder="Skur bredde i meter" name="shedwidth"/>
                 <br>
@@ -45,6 +44,8 @@
                 <br>
                 <input type="submit" value="Bestil tilbud"/>
             </form>
+            <br>
+            <br>
         </div>
 
 
