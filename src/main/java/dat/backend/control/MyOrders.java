@@ -14,6 +14,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet(name = "MyOrders", value = "/myorders")
 public class MyOrders extends HttpServlet {
@@ -31,17 +32,19 @@ public class MyOrders extends HttpServlet {
 
         User user = (User)session.getAttribute("user");
         List<Carport> carportList;
+        Map<Integer, Carport> carportMap;
         List<Order> orderList;
 
         try {
             orderList = OrderFacade.readOrder(user.getUserID(), connectionPool);
             session.setAttribute("orderList",orderList);
-            carportList = CarportFacade.readCarport(orderList, connectionPool);
-            session.setAttribute("carportList", carportList);
+//            carportMap = CarportFacade.getCarportMap(connectionPool);
+//            session.setAttribute("carportMap", carportMap);
+            request.getRequestDispatcher("WEB-INF/user/myorders.jsp").forward(request, response);
 
         } catch (DatabaseException e) {
             e.printStackTrace();
         }
-        request.getRequestDispatcher("WEB-INF/user/myorders.jsp").forward(request, response);
+
     }
 }

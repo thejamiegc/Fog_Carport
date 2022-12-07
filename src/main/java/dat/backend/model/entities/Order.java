@@ -9,14 +9,16 @@ public class Order {
     int carportID;
     double price;
     int statusID;
+    Carport carport;
 
-    public Order(int orderID, int customerID, Timestamp created, int carportID, double price, int statusID) {
+    public Order(int orderID, int customerID, Timestamp created, int carportID, double price, int statusID, Carport carport) {
         this.orderID = orderID;
         this.customerID = customerID;
         this.created = created;
         this.carportID = carportID;
         this.price = price;
         this.statusID = statusID;
+        this.carport = carport;
     }
 
     public Order(int customerID, Timestamp created, int carportID, double price, int statusID) {
@@ -42,6 +44,9 @@ public class Order {
         return orderID;
     }
 
+    public Carport getCarport() {
+        return carport;
+    }
 
     public int getCustomerID() {
         return customerID;

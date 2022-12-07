@@ -5,6 +5,7 @@ import dat.backend.model.entities.Order;
 import dat.backend.model.exceptions.DatabaseException;
 
 import java.util.List;
+import java.util.Map;
 
 public class CarportFacade {
 
@@ -12,7 +13,7 @@ public class CarportFacade {
        return CarportMapper.createCarport(carport, connectionPool);
     }
 
-    public static List<Carport> readCarport(List<Order> orderList, ConnectionPool connectionPool) throws DatabaseException {
-        return CarportMapper.readCarport(orderList,connectionPool);
+    public static Map<Integer,Carport> getCarportMap(ConnectionPool connectionPool) throws DatabaseException {
+        return CarportMapper.getCarportMap(connectionPool);
     }
 }

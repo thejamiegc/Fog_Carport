@@ -1,5 +1,6 @@
 package dat.backend.model.persistence;
 
+import dat.backend.model.entities.Carport;
 import dat.backend.model.entities.Order;
 import dat.backend.model.exceptions.DatabaseException;
 
@@ -34,7 +35,8 @@ public class OrderMapper {
     public static List<Order> readOrder(int userID, ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
         List<Order> orderList = new ArrayList<>();
-        String sql = "SELECT * FROM carport.`Order` WHERE userID = ?";
+        //String sql = "SELECT * FROM carport.`Order` WHERE userID = ?";
+        String sql = "SELECT * FROM `Order` inner join Carport on `Order`.carportID = Carport.carportID WHERE userID = ?";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -47,8 +49,13 @@ public class OrderMapper {
                     int carportID = rs.getInt("carportID");
                     int price = rs.getInt("price");
                     int statusID = rs.getInt("statusID");
+                    int width = rs.getInt("width");
+                    int length = rs.getInt("length");
+                    String rooftype = rs.getString("rooftype");
+                    int shed = rs.getInt("shed");
 
-                    Order order = new Order(orderID, customerID, created, carportID, price, statusID);
+                    Carport carport = new Carport(carportID, length, width, rooftype, shed);
+                    Order order = new Order(orderID, customerID, created, carportID, price, statusID, carport);
                     orderList.add(order);
                 }
             }

@@ -1,7 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page errorPage="../../error.jsp" isErrorPage="false" %>
 
 <t:pagetemplate_user>
 
@@ -27,43 +26,25 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="orderList" items="${sessionScope.orderList},${sessionScope.carportList}">
+                <c:forEach var="orderItem" items="${sessionScope.orderList}">
                 <tr>
                     <th scope="row">1</th>
-                    <td>${sessionScope.orderList.get.orderID}</td>
+                    <td>${orderItem.orderID}</td>
                     <td>Enkelt</td>
-                    <td>${sessionScope.carportList.get.rooftype}</td>
-                    <td>${sessionScope.carportList.get.shed}</td>
-                    <td>${sessionScope.carportList.get.length} x ${sessionScope.carportList.get.width}</td>
-                    <td>${sessionScope.orderList.get.statusID}</td>
+                    <td>${orderItem.carport.rooftype}</td>>
+                    <td>${orderItem.carport.shed}</td>
+                    <td>${orderItem.carport.length} x ${orderItem.carport.width}</td>
+                    <td>${orderItem.statusID}</td>
                     <td style="font-weight: bold"><input class="btn btn-primary" type="button" value="Vis detajler"></td>
                 </tr>
                 </c:forEach>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>x</td>
-                    <td>x</td>
-                    <td>x</td>
-                    <td>x</td>
-                    <td>x</td>
-                    <td style="font-weight: bold"><input class="btn btn-primary" type="button" value="Lav ordre"></td>
-                    <td style="font-weight: bold"><input class="btn btn-primary" type="button" value="Vis detajler"></td>
-
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>x</td>
-                    <td>x</td>
-                    <td>x</td>
-                    <td>x</td>
-                    <td>x</td>
-                    <td style="font-weight: bold"><input class="btn btn-primary" type="button" value="Lav ordre"></td>
-                    <td style="font-weight: bold"><input class="btn btn-primary" type="button" value="Vis detajler"></td>
-
-                </tr>
-
                 </tbody>
             </table>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
         </div>
 
     </jsp:body>
