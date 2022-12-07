@@ -27,15 +27,15 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="orderList" items="${sessionScope.orderList}">
+                <c:forEach var="orderList" items="${sessionScope.orderList},${sessionScope.carportList}">
                 <tr>
                     <th scope="row">1</th>
                     <td>${sessionScope.orderList.get.orderID}</td>
                     <td>Enkelt</td>
-                    <td>${sessionScope.orderList.get.}</td>
-                    <td>${sessionScope.orderList.get.orderID}</td>
-                    <td>${sessionScope.orderList.get.orderID}</td>
-                    <td>${sessionScope.orderList.get.orderID}</td>
+                    <td>${sessionScope.carportList.get.rooftype}</td>
+                    <td>${sessionScope.carportList.get.shed}</td>
+                    <td>${sessionScope.carportList.get.length} x ${sessionScope.carportList.get.width}</td>
+                    <td>${sessionScope.orderList.get.statusID}</td>
                     <td style="font-weight: bold"><input class="btn btn-primary" type="button" value="Vis detajler"></td>
                 </tr>
                 </c:forEach>

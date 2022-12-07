@@ -22,7 +22,7 @@ public class MyOrders extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.sendRedirect("index.jsp");
+        this.doPost(request,response);
     }
 
     @Override
@@ -37,13 +37,11 @@ public class MyOrders extends HttpServlet {
             orderList = OrderFacade.readOrder(user.getUserID(), connectionPool);
             session.setAttribute("orderList",orderList);
             carportList = CarportFacade.readCarport(orderList, connectionPool);
-
-
-            request.getRequestDispatcher("WEB-INF/user/myorders.jsp").forward(request, response);
+            session.setAttribute("carportList", carportList);
 
         } catch (DatabaseException e) {
             e.printStackTrace();
         }
-
+        request.getRequestDispatcher("WEB-INF/user/myorders.jsp").forward(request, response);
     }
 }

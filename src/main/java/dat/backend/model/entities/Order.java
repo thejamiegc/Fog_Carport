@@ -4,16 +4,14 @@ import java.sql.Timestamp;
 
 public class Order {
     int orderID;
-    int employeeID;
     int customerID;
     Timestamp created;
     int carportID;
     double price;
     int statusID;
 
-    public Order(int orderID, int employeeID, int customerID, Timestamp created, int carportID, double price, int statusID) {
+    public Order(int orderID, int customerID, Timestamp created, int carportID, double price, int statusID) {
         this.orderID = orderID;
-        this.employeeID = employeeID;
         this.customerID = customerID;
         this.created = created;
         this.carportID = carportID;
@@ -21,8 +19,7 @@ public class Order {
         this.statusID = statusID;
     }
 
-    public Order(int employeeID, int customerID, Timestamp created, int carportID, double price, int statusID) {
-        this.employeeID = employeeID;
+    public Order(int customerID, Timestamp created, int carportID, double price, int statusID) {
         this.customerID = customerID;
         this.created = created;
         this.carportID = carportID;
@@ -45,9 +42,6 @@ public class Order {
         return orderID;
     }
 
-    public int getEmployeeID() {
-        return employeeID;
-    }
 
     public int getCustomerID() {
         return customerID;
@@ -73,7 +67,6 @@ public class Order {
     public String toString() {
         return "Order{" +
                 "orderID=" + orderID +
-                ", employeeID=" + employeeID +
                 ", customerID=" + customerID +
                 ", created=" + created +
                 ", carportID=" + carportID +
