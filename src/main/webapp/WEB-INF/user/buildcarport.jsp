@@ -20,13 +20,13 @@
             <option value="Chicago">
         </datalist>--%>
 
-        <h2>Vælg dine mål i meter her:</h2>
+        <h2>Vælg dine mål i cm her:</h2>
         <div class="form-outline mb-4">
             <form action="buildCarport" style="width:100px" method="post">
-                <label for="width">Carport bredde*: </label>
+                <label for="width">Carport bredde* : </label>
                 <input type="number" id="width" placeholder="Bredde i meter" name="width"/>
                 <br>
-                <label for="length">Carport længde*: </label>
+                <label for="length">Carport længde* : </label>
                 <input type="number" id="length" placeholder="Længde i meter" name="length"/>
                 <br>
                 <label for="roof">Carport tag: </label>
@@ -35,10 +35,10 @@
                 <label for="shed">Skur: </label>
                 <input type="text" id="shed" placeholder="Ja eller nej" name="shed"/>
                 <br>
-                <label for="shedwidth">Skur bredde*: </label>
+                <label for="shedwidth">Skur bredde* : </label>
                 <input type="number" id="shedwidth" placeholder="Skur bredde i meter" name="shedwidth"/>
                 <br>
-                <label for="shedlength">Skur længde*: </label>
+                <label for="shedlength">Skur længde* : </label>
                 <input type="number" id="shedlength" placeholder="Skur længde i meter" name="shedlength"/>
                 <br>
                 <input type="submit" value="Bestil tilbud"/>
