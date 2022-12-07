@@ -7,7 +7,7 @@
 
     <jsp:body>
 
-        <h1>Detaljeret beskrivelse over bestilling</h1>
+        <h1>Detaljeret beskrivelse over dine ordrer</h1>
 
         <div class="row">
             <div class="col">

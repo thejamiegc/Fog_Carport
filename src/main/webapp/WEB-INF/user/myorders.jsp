@@ -8,7 +8,7 @@
 
         <h1>Mine ordrer</h1>
         <p>Her kan du se alle dine ordrer. Du kan se status på dine ordrer eller klikke på
-        'se tegning' for at få et visuelt overblik.</p>
+            'se detaljer' for at få vist flere detaljer..</p>
 
 
         <div class="table-responsive">
@@ -35,7 +35,9 @@
                     <td>${orderItem.carport.shed}</td>
                     <td>${orderItem.carport.length} x ${orderItem.carport.width}</td>
                     <td>${orderItem.statusID}</td>
-                    <td style="font-weight: bold"><input class="btn btn-primary" type="button" value="Vis detajler"></td>
+                    <form action="showrequestdetailsuser" method="get">
+                    <td style="font-weight: bold"><input class="btn btn-primary" type="submit" value="Vis detajler"></td>
+                    </form>
                 </tr>
                 </c:forEach>
                 </tbody>

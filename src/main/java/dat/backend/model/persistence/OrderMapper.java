@@ -64,5 +64,37 @@ public class OrderMapper {
         }
         return orderList;
     }
+
+    public static List<Order> readOrderAsAdmin(ConnectionPool connectionPool) throws DatabaseException {
+        Logger.getLogger("web").log(Level.INFO, "");
+        List<Order> orderList = new ArrayList<>();
+
+        String sql = "SELECT * FROM `Order` inner join Carport on `Order`.carportID = Carport.carportID WHERE statusID = 1";
+
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    int orderID = rs.getInt("orderID");
+                    int customerID = rs.getInt("userID");
+                    Timestamp created = rs.getTimestamp("created");
+                    int carportID = rs.getInt("carportID");
+                    int price = rs.getInt("price");
+                    int statusID = rs.getInt("statusID");
+                    int width = rs.getInt("width");
+                    int length = rs.getInt("length");
+                    String rooftype = rs.getString("rooftype");
+                    int shed = rs.getInt("shed");
+
+                    Carport carport = new Carport(carportID, length, width, rooftype, shed);
+                    Order order = new Order(orderID, customerID, created, carportID, price, statusID, carport);
+                    orderList.add(order);
+                }
+            }
+        } catch (SQLException ex) {
+            throw new DatabaseException(ex, "Could not read data from database");
+        }
+        return orderList;
+    }
     }
 

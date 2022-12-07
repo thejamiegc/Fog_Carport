@@ -15,4 +15,8 @@ public class OrderFacade
     public static List<Order> readOrder(int userID, ConnectionPool connectionPool) throws DatabaseException {
         return OrderMapper.readOrder(userID,connectionPool);
     }
+
+    public static List<Order> readOrderAsAdmin(ConnectionPool connectionPool) throws DatabaseException {
+        return OrderMapper.readOrderAsAdmin(connectionPool);
+    }
 }
