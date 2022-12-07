@@ -8,46 +8,46 @@
     <jsp:body>
         <h1>Byg en carport</h1>
         <p>Udfyld nedenstående omhyggeligt, og tryk "bestil tilbud". <br>
-        Så vender vi hurtigst muligt tilbage med et tilbud til dig.</p>
-
-<%--        <label for="exampleDataList" class="form-label">Datalist example</label>
-        <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
-        <datalist id="datalistOptions">
-            <option value="San Francisco">
-            <option value="New York">
-            <option value="Seattle">
-            <option value="Los Angeles">
-            <option value="Chicago">
-        </datalist>--%>
+            Så vender vi hurtigst muligt tilbage med et tilbud til dig.</p>
 
         <h2>Vælg dine mål i cm her:</h2>
-        <div class="form-outline mb-4">
-            <form action="buildCarport" style="width:100px" method="post">
-                <label for="width">Carport bredde* : </label>
-                <input type="number" id="width" placeholder="Bredde i meter" name="width"/>
-                <br>
-                <label for="length">Carport længde* : </label>
-                <input type="number" id="length" placeholder="Længde i meter" name="length"/>
-                <br>
-                <label for="roof">Carport tag: </label>
-                <input class="form-control" id="roof" name="roof" type="text" placeholder="Fladt tag" aria-label="Disabled input example" disabled>
-                <br>
-                <label for="shed">Skur: </label>
-                <input type="text" id="shed" placeholder="Ja eller nej" name="shed"/>
-                <br>
-                <label for="shedwidth">Skur bredde* : </label>
-                <input type="number" id="shedwidth" placeholder="Skur bredde i meter" name="shedwidth"/>
-                <br>
-                <label for="shedlength">Skur længde* : </label>
-                <input type="number" id="shedlength" placeholder="Skur længde i meter" name="shedlength"/>
-                <br>
+        <form action="buildCarport" method="post">
+            <div class="mb-3">
+                <label for="width" class="form-label">Carport bredde:</label>
+                <input type="number" id="width" name="width" class="form-control" placeholder="bredde i cm">
+            </div>
+            <div class="mb-3">
+                <label for="length" class="form-label">Carport længde:</label>
+                <input type="number" id="length" name="length" class="form-control" placeholder="længde i cm">
+            </div>
+            <div class="mb-3">
+                <label>Carport tag:</label>
+                <input class="form-control" id="roof" name="roof" type="text" value="Fladt tag"
+                       aria-label="readonly input example" readonly>
+            </div>
+            <div class="mb-3">
+                <label for="shed" class="form-label">Skur:</label>
+                <input class="form-control" id="shed" name="shed" list="datalistOptions" id="exampleDataList"
+                       placeholder="Vælg her">
+                <datalist id="datalistOptions">
+                    <option value="Ja">
+                    <option value="Nej">
+                </datalist>
+            </div>
+            <div class="mb-3">
+                <label for="shedwidth" class="form-label">Skur bredde:</label>
+                <input type="number" id="shedwidth" name="shedwidth" class="form-control" placeholder="bredde i cm">
+            </div>
+            <div class="mb-3">
+                <label for="shedlength" class="form-label">Skur længde:</label>
+                <input type="number" id="shedlength" name="shedlength" class="form-control" placeholder="længde i cm">
+            </div>
+            <div class="mb-3">
                 <input type="submit" value="Bestil tilbud"/>
-            </form>
-            <br>
-            <br>
-        </div>
-
+            </div>
+        </form>
+        <br>
+        <br>
 
     </jsp:body>
-
 </t:pagetemplate_user>
