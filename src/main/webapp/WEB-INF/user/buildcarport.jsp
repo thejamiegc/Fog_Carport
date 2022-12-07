@@ -1,12 +1,11 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--<%@page errorPage="../../error.jsp" isErrorPage="false" %>--%>
+<%@page errorPage="../../error.jsp" isErrorPage="false" %>
 
 <t:pagetemplate_user>
 
     <jsp:body>
-
         <h1>Byg en carport</h1>
         <p>Udfyld nedenstående omhyggeligt, og tryk "bestil tilbud". <br>
         Så vender vi hurtigst muligt tilbage med et tilbud til dig.</p>
@@ -23,7 +22,7 @@
 
         <h2>Vælg dine mål i meter her:</h2>
         <div class="form-outline mb-4">
-            <form action="navToBuildCarport" style="width:100px" method="post">
+            <form action="buildCarport" style="width:100px" method="post">
                 <label for="width">Carport bredde*: </label>
                 <input type="number" id="width" placeholder="Bredde i meter" name="width"/>
                 <br>
