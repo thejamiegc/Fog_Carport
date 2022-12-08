@@ -34,7 +34,7 @@
                     <td>${orderItem.carport.rooftype}</td>>
                     <td>${orderItem.carport.shed}</td>
                     <td>${orderItem.carport.length} x ${orderItem.carport.width}</td>
-                    <td>${orderItem.statusID}</td>
+                    <td>${orderItem.statusname}</td>
                     <form action="showrequestdetailsuser" method="get">
                     <td style="font-weight: bold"><input class="btn btn-primary" type="submit" value="Vis detajler"></td>
                     </form>

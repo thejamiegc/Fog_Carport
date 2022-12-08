@@ -10,8 +10,9 @@ public class Order {
     double price;
     int statusID;
     Carport carport;
+    String statusname;
 
-    public Order(int orderID, int customerID, Timestamp created, int carportID, double price, int statusID, Carport carport) {
+    public Order(int orderID, int customerID, Timestamp created, int carportID, double price, int statusID, Carport carport, String statusname) {
         this.orderID = orderID;
         this.customerID = customerID;
         this.created = created;
@@ -19,6 +20,7 @@ public class Order {
         this.price = price;
         this.statusID = statusID;
         this.carport = carport;
+        this.statusname = statusname;
     }
 
     public Order(int customerID, Timestamp created, int carportID, double price, int statusID) {
@@ -66,6 +68,10 @@ public class Order {
 
     public int getStatusID() {
         return statusID;
+    }
+
+    public String getStatusname() {
+        return statusname;
     }
 
     @Override

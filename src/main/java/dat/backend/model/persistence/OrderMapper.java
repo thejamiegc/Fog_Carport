@@ -36,7 +36,7 @@ public class OrderMapper {
         Logger.getLogger("web").log(Level.INFO, "");
         List<Order> orderList = new ArrayList<>();
         //String sql = "SELECT * FROM carport.`Order` WHERE userID = ?";
-        String sql = "SELECT * FROM `Order` inner join Carport on `Order`.carportID = Carport.carportID WHERE userID = ?";
+        String sql = "SELECT * FROM `Order` inner join Status on `Order`.statusID = `Status`.statusID inner join Carport on `Order`.carportID = Carport.carportID WHERE `Order`.statusID = 1";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -53,9 +53,10 @@ public class OrderMapper {
                     int length = rs.getInt("length");
                     String rooftype = rs.getString("rooftype");
                     int shed = rs.getInt("shed");
+                    String statusname = rs.getString("statusname");
 
                     Carport carport = new Carport(carportID, length, width, rooftype, shed);
-                    Order order = new Order(orderID, customerID, created, carportID, price, statusID, carport);
+                    Order order = new Order(orderID, customerID, created, carportID, price, statusID, carport, statusname);
                     orderList.add(order);
                 }
             }
@@ -69,7 +70,7 @@ public class OrderMapper {
         Logger.getLogger("web").log(Level.INFO, "");
         List<Order> orderList = new ArrayList<>();
 
-        String sql = "SELECT * FROM `Order` inner join Carport on `Order`.carportID = Carport.carportID WHERE statusID = 1";
+        String sql = "SELECT * FROM `Order` inner join Status on `Order`.statusID = `Status`.statusID inner join Carport on `Order`.carportID = Carport.carportID WHERE `Order`.statusID = 1";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -85,9 +86,10 @@ public class OrderMapper {
                     int length = rs.getInt("length");
                     String rooftype = rs.getString("rooftype");
                     int shed = rs.getInt("shed");
+                    String statusname = rs.getString("statusname");
 
                     Carport carport = new Carport(carportID, length, width, rooftype, shed);
-                    Order order = new Order(orderID, customerID, created, carportID, price, statusID, carport);
+                    Order order = new Order(orderID, customerID, created, carportID, price, statusID, carport, statusname);
                     orderList.add(order);
                 }
             }
