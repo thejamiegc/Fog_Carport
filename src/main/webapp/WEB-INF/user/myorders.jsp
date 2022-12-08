@@ -12,6 +12,7 @@
 
 
         <div class="table-responsive">
+
             <table class="table table-hover">
                 <thead>
                 <tr>
@@ -31,7 +32,7 @@
                     <th scope="row">1</th>
                     <td>${orderItem.orderID}</td>
                     <td>Enkelt</td>
-                    <td>${orderItem.carport.rooftype}</td>>
+                    <td>${orderItem.carport.rooftype}</td>
                     <td>${orderItem.carport.shed}</td>
                     <td>${orderItem.carport.length} x ${orderItem.carport.width}</td>
                     <td>${orderItem.statusname}</td>
