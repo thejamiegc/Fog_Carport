@@ -1,9 +1,7 @@
 package dat.backend.control;
 
 import dat.backend.model.config.ApplicationStart;
-import dat.backend.model.entities.Carport;
 import dat.backend.model.entities.Order;
-import dat.backend.model.entities.User;
 import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.persistence.OrderFacade;
@@ -13,37 +11,33 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
-@WebServlet(name = "MyOrders", value = "/myorders")
-public class MyOrders extends HttpServlet {
-
+@WebServlet(name = "DeleteOrder", value = "/deleteorder")
+public class DeleteOrder extends HttpServlet {
     private static ConnectionPool connectionPool = ApplicationStart.getConnectionPool();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.doPost(request,response);
+      this.doPost(request,response);
+
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setCharacterEncoding("UTF-8");
+        request.setCharacterEncoding("UTF-8");
+
         HttpSession session = request.getSession();
 
-        User user = (User)session.getAttribute("user");
-        List<Carport> carportList;
-        Map<Integer, Carport> carportMap;
-        List<Order> orderList;
 
+        Order orderItem = (Order) request.getAttribute("orderItem");
         try {
-            orderList = OrderFacade.readOrdersAsCustomer(user.getUserID(), connectionPool);
-            session.setAttribute("orderList",orderList);
-//            carportMap = CarportFacade.getCarportMap(connectionPool);
-//            session.setAttribute("carportMap", carportMap);
-            request.getRequestDispatcher("WEB-INF/user/myorders.jsp").forward(request, response);
-
+            OrderFacade.deleteOrder(orderItem,connectionPool);
+            request.getRequestDispatcher("/navToCustomerOrders").forward(request,response);
         } catch (DatabaseException e) {
-            e.printStackTrace();
+            request.setAttribute("errormessage", e.getMessage());
+            request.getRequestDispatcher("error.jsp").forward(request, response);
         }
-
     }
+
 }
