@@ -5,7 +5,6 @@ import dat.backend.model.entities.Carport;
 import dat.backend.model.entities.Order;
 import dat.backend.model.entities.User;
 import dat.backend.model.exceptions.DatabaseException;
-import dat.backend.model.persistence.CarportFacade;
 import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.persistence.OrderFacade;
 
@@ -36,7 +35,7 @@ public class MyOrders extends HttpServlet {
         List<Order> orderList;
 
         try {
-            orderList = OrderFacade.readOrder(user.getUserID(), connectionPool);
+            orderList = OrderFacade.readOrdersAsCustomer(user.getUserID(), connectionPool);
             session.setAttribute("orderList",orderList);
 //            carportMap = CarportFacade.getCarportMap(connectionPool);
 //            session.setAttribute("carportMap", carportMap);

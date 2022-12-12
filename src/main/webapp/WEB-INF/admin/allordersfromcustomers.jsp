@@ -37,7 +37,7 @@
                         <td>${orderItem.carport.rooftype}</td>
                         <td>${orderItem.carport.shed}</td>
                         <td>${orderItem.carport.length} x ${orderItem.carport.width}</td>
-                        <td>${orderItem.statusID}</td>
+                        <td>${orderItem.statusname}</td>
                         <form action="createorder" method="get">
                             <td style="font-weight: bold"><input class="btn btn-primary" type="submit" value="Lav ordre"></td>
                         </form>
@@ -54,40 +54,6 @@
             <br>
             <br>
         </div>
-<%--            <div class="">--%>
-<%--                <table>--%>
-<%--                    <tr>--%>
-<%--                        <th style="font-weight: bold">Ordrer nummer</th>--%>
-<%--                        <th style="font-weight: bold">Fornavn + efternavn</th>--%>
-<%--                        <th style="font-weight: bold">Carporttype</th>--%>
-<%--                        <th style="font-weight: bold">Størrelse</th>--%>
-<%--                        <th>DROPDOWN</th>--%>
-<%--                        <th>KNAP ( for nu )</th>--%>
-<%--                        <th>KNAP ( for nu )</th>--%>
-<%--                        <th>KNAP ( for nu )</th>--%>
-<%--                    </tr>--%>
-<%--                    <td style="font-weight: bold">x</td>--%>
-<%--                    <td style="font-weight: bold">x</td>--%>
-<%--                    <td style="font-weight: bold">x</td>--%>
-<%--                    <td style="font-weight: bold">x</td>--%>
-<%--                    <td style="font-weight: bold">--%>
-<%--                        <div class="dropdown">--%>
-<%--                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">--%>
-<%--                                Dropdown link--%>
-<%--                            </a>--%>
-
-<%--                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">--%>
-<%--                                <li><a class="dropdown-item" href="#"></a></li>--%>
-<%--                                <li><a class="dropdown-item" href="#"></a></li>--%>
-<%--                                <li><a class="dropdown-item" href="#"></a></li>--%>
-<%--                            </ul>--%>
-<%--                        </div>--%>
-<%--                    </td>--%>
-<%--                    <td style="font-weight: bold"><button name="showdetails">Vis detaljer</button></td>--%>
-<%--                    <td style="font-weight: bold"><button name="deleteorder">Slet ordre</button></td>--%>
-<%--                    <td style="font-weight: bold"><button name="editorder">Rediger ordre</button></td>--%>
-<%--                </table>--%>
-<%--            </div>--%>
 
     </jsp:body>
 

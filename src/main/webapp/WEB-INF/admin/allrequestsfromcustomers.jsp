@@ -24,6 +24,7 @@
                     <th scope="col">Størrelse</th>
                     <th scope="col">Status</th>
                     <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -43,7 +44,15 @@
                         <form action="showrequestdetailsadmin" method="get">
                             <td style="font-weight: bold"><input class="btn btn-primary" type="submit" value="Vis detajler"></td>
                         </form>
-                    </tr>
+<%--                        <form action="deleterequest" id="delete" method="get">--%>
+<%--                            <td style="font-weight: bold"><input class="btn btn-primary" type="submit" value="Slet bestilling"></td>--%>
+<%--                        </form>--%>
+                        <form action="get">
+                            <button formaction="deleteorder" name="orderItem" value="${orderItem}">
+                                Slet bestilling
+                            </button>
+                        </form>
+                     </tr>
                 </c:forEach>
                 </tbody>
             </table>

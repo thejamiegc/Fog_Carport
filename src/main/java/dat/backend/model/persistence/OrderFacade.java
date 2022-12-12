@@ -12,11 +12,18 @@ public class OrderFacade
        return OrderMapper.createOrder(order,connectionPool);
     }
 
-    public static List<Order> readOrder(int userID, ConnectionPool connectionPool) throws DatabaseException {
-        return OrderMapper.readOrder(userID,connectionPool);
+    public static List<Order> readOrdersAsCustomer(int userID, ConnectionPool connectionPool) throws DatabaseException {
+        return OrderMapper.readOrdersAsCustomer(userID,connectionPool);
     }
 
-    public static List<Order> readOrderAsAdmin(ConnectionPool connectionPool) throws DatabaseException {
-        return OrderMapper.readOrderAsAdmin(connectionPool);
+    public static List<Order> readRequestAsAdmin(ConnectionPool connectionPool) throws DatabaseException {
+        return OrderMapper.readRequestAsAdmin(connectionPool);
+    }
+    public static List<Order> readOrdersAsAdmin(ConnectionPool connectionPool) throws DatabaseException {
+        return OrderMapper.readOrdersAsAdmin(connectionPool);
+    }
+
+    public static void deleteOrder(int orderID,ConnectionPool connectionPool)throws DatabaseException{
+        OrderMapper.deleteOrder(orderID,connectionPool);
     }
 }
