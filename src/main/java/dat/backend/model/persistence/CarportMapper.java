@@ -61,12 +61,12 @@ public class CarportMapper {
         return carportMap;
     }
 
-    private static void deleteCarport(int carportID, ConnectionPool connectionPool) throws DatabaseException {
+    public static void deleteCarport(int carportID, ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
         String sql = "delete from carport.Carport WHERE carportID = ?";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setDouble(1, carportID);
+                ps.setInt(1, carportID);
                 ps.executeUpdate();
             }
         } catch (SQLException ex) {

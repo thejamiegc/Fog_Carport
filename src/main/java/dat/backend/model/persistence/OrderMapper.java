@@ -131,14 +131,14 @@ public class OrderMapper {
         return orderList;
     }
 
-    public static void deleteOrder(int orderID, ConnectionPool connectionPool) throws DatabaseException {
-        CarportFacade.deleteCarport(orderID, connectionPool);
+    public static void deleteOrder(Order orderItem, ConnectionPool connectionPool) throws DatabaseException {
+        CarportFacade.deleteCarport(orderItem.getCarportID(), connectionPool);
 
         Logger.getLogger("web").log(Level.INFO, "");
-        String sql = "delete from carport.order WHERE orderID = ?";
+        String sql = "DELETE from `Order` WHERE orderID = ?";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setDouble(1, orderID);
+                ps.setInt(1, orderItem.getOrderID());
                 ps.executeUpdate();
             }
         } catch (SQLException ex) {

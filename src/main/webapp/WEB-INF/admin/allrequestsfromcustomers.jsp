@@ -47,10 +47,10 @@
 <%--                        <form action="deleterequest" id="delete" method="get">--%>
 <%--                            <td style="font-weight: bold"><input class="btn btn-primary" type="submit" value="Slet bestilling"></td>--%>
 <%--                        </form>--%>
-                        <form action="get">
-                            <button formaction="deleteorder" name="orderItem" value="${orderItem}">
+                        <form action="post">
+                            <td style="font-weight: bold"><button class="btn btn-primary"   type ="submit" formaction="deleterequest" name="orderItem" value="${orderItem}">
                                 Slet bestilling
-                            </button>
+                            </button></td>
                         </form>
                      </tr>
                 </c:forEach>

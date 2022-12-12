@@ -10,16 +10,14 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.util.List;
 
-@WebServlet(name = "DeleteOrder", value = "/deleteorder")
-public class DeleteOrder extends HttpServlet {
+@WebServlet(name = "DeleteRequest", value = "/deleterequest")
+public class DeleteRequest extends HttpServlet {
     private static ConnectionPool connectionPool = ApplicationStart.getConnectionPool();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      this.doPost(request,response);
-
+        this.doPost(request,response);
     }
 
     @Override
@@ -33,11 +31,11 @@ public class DeleteOrder extends HttpServlet {
         Order orderItem = (Order) request.getAttribute("orderItem");
         try {
             OrderFacade.deleteOrder(orderItem,connectionPool);
-            request.getRequestDispatcher("/navToCustomerOrders").forward(request,response);
+            request.getRequestDispatcher("/navToCustomerRequests").forward(request,response);
         } catch (DatabaseException e) {
             request.setAttribute("errormessage", e.getMessage());
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
     }
-
 }
+

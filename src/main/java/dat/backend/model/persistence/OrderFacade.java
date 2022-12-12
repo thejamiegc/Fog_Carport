@@ -23,7 +23,7 @@ public class OrderFacade
         return OrderMapper.readOrdersAsAdmin(connectionPool);
     }
 
-    public static void deleteOrder(int orderID,ConnectionPool connectionPool)throws DatabaseException{
-        OrderMapper.deleteOrder(orderID,connectionPool);
+    public static void deleteOrder(Order orderItem,ConnectionPool connectionPool)throws DatabaseException{
+        OrderMapper.deleteOrder(orderItem,connectionPool);
     }
 }
