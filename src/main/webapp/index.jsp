@@ -22,13 +22,13 @@
             <div class="col md-9">
                 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
-                        <div class="carousel-item active">
+                        <div class="carousel-material active">
                             <img src="images/image1.png" class="d-block w-100" alt="image1">
                         </div>
-                        <div class="carousel-item">
+                        <div class="carousel-material">
                             <img src="images/image2.png" class="d-block w-100" alt="image2">
                         </div>
-                        <div class="carousel-item">
+                        <div class="carousel-material">
                             <img src="images/image3.png" class="d-block w-100" alt="image3">
                         </div>
                     </div>

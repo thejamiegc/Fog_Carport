@@ -3,14 +3,16 @@ package dat.backend.model.entities;
 import java.sql.Timestamp;
 
 public class Order {
-    int orderID;
-    int customerID;
-    Timestamp created;
-    int carportID;
-    double price;
-    int statusID;
-    Carport carport;
-    String statusname;
+    private int orderID;
+    private int customerID;
+    private Timestamp created;
+    private int carportID;
+    private double price;
+    private int statusID;
+    private Carport carport;
+    private String statusname;
+    private int bomID;
+    private BillOfMaterials bom;
 
     public Order(int orderID, int customerID, Timestamp created, int carportID, double price, int statusID, Carport carport, String statusname) {
         this.orderID = orderID;
@@ -37,6 +39,16 @@ public class Order {
         this.statusID = statusID;
     }
 
+    public Order(int customerID, Timestamp created, int carportID, double price, int statusID, Carport carport, String statusname, BillOfMaterials bom) {
+        this.customerID = customerID;
+        this.created = created;
+        this.carportID = carportID;
+        this.price = price;
+        this.statusID = statusID;
+        this.carport = carport;
+        this.statusname = statusname;
+        this.bom = bom;
+    }
 
     public void setStatusID(int statusID) {
         this.statusID = statusID;
@@ -74,6 +86,10 @@ public class Order {
         return statusname;
     }
 
+    public BillOfMaterials getBom() {
+        return bom;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
@@ -83,6 +99,9 @@ public class Order {
                 ", carportID=" + carportID +
                 ", price=" + price +
                 ", statusID=" + statusID +
+                ", carport=" + carport +
+                ", statusname='" + statusname + '\'' +
+                ", bom=" + bom +
                 '}';
     }
 }

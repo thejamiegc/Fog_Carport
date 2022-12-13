@@ -11,7 +11,7 @@
 
         <div class="row">
             <div class="col">
-                <h2>Kunde oplysninger:</h2>
+                <h2>Kunde oplysninger:${sessionScope.user.firstname}${sessionScope.user.lastname}</h2>
                 <p>Navn: ${requestScope.user.firstname} + ${requestScope.user.lastname}</p>
                 <p>Telefon: +45 ${requestScope.user.phonenumber}</p>
                 <p>Email: ${requestScope.user.email}</p>

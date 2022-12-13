@@ -1,5 +1,7 @@
 package dat.backend.model.persistence;
 
+import dat.backend.model.entities.BillOfMaterials;
+import dat.backend.model.entities.Carport;
 import dat.backend.model.entities.Order;
 import dat.backend.model.exceptions.DatabaseException;
 
@@ -25,5 +27,9 @@ public class OrderFacade
 
     public static void deleteOrder(Order orderItem,ConnectionPool connectionPool)throws DatabaseException{
         OrderMapper.deleteOrder(orderItem,connectionPool);
+    }
+
+    public static BillOfMaterials createBom(Carport carport,Order order, ConnectionPool connectionPool) throws DatabaseException{
+        return OrderMapper.createBom(carport,order,connectionPool);
     }
 }

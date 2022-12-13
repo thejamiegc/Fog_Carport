@@ -32,15 +32,15 @@
 
             <div class="collapse navbar-collapse" id="navbarsExample03">
                     <ul class="navbar-nav me-auto mb-2 mb-sm-0">
-                                <a class="nav-item nav-link" href="${pageContext.request.contextPath}/navToCustomerRequests">Kunde bestillinger</a>
-                                <a class="nav-item nav-link" href="${pageContext.request.contextPath}/navToCustomerOrders">Kunde ordrer</a>
-                                <a class="nav-item nav-link" href="${pageContext.request.contextPath}/navToMaterialList">Materialeliste</a>
+                                <a class="nav-material nav-link" href="${pageContext.request.contextPath}/navToCustomerRequests">Kunde bestillinger</a>
+                                <a class="nav-material nav-link" href="${pageContext.request.contextPath}/navToCustomerOrders">Kunde ordrer</a>
+                                <a class="nav-material nav-link" href="${pageContext.request.contextPath}/navToMaterialList">Materialeliste</a>
                                 <c:if test="${sessionScope.user == null }">
-                                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Log ind</a>
+                                    <a class="nav-material nav-link" href="${pageContext.request.contextPath}/login.jsp">Log ind</a>
                                 </c:if>
                                 <c:if test="${sessionScope.user != null }">
                                     <p>Medarbejder: ${sessionScope.user.firstname}</p>
-                                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout">Log out</a>
+                                    <a class="nav-material nav-link" href="${pageContext.request.contextPath}/logout">Log out</a>
                                 </c:if>
                     </ul>
             </div>

@@ -23,6 +23,10 @@ public class Carport {
         this.shed = shed;
     }
 
+    public int getCarportSquareMeter(){
+        return (length * width) / 100;
+    }
+
     public int getCarportID() {
         return carportID;
     }
