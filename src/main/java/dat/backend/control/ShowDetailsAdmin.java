@@ -7,11 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "ShowRequestDetailsAdmin", value = "/showrequestdetailsadmin")
-public class ShowRequestDetailsAdmin extends HttpServlet {
+@WebServlet(name = "ShowDetailsAdmin", value = "/showdetailsadmin")
+public class ShowDetailsAdmin extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("WEB-INF/user/showrequestdetailsadmin.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/user/showdetailsadmin.jsp").forward(request, response);
     }
 
     @Override

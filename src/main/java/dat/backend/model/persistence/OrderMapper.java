@@ -183,27 +183,29 @@ public class OrderMapper {
         }
     }
 
-                                    //TODO:
-                                    // færdiggør denne metode!
-                                    // --> gem BOM i database.
-    public static BillOfMaterials createBom(Carport carport, Order order, ConnectionPool connectionPool)throws DatabaseException {
-        BillOfMaterials bom = new BillOfMaterials();
 
-        bom.addMaterialToList(Calculator.calculateBeams(carport));
-        bom.addMaterialToList(Calculator.calculatePoles(carport));
-        bom.addMaterialToList(Calculator.calculateRafters(carport));
-        for (Material mat:bom.getMaterialsList()) {
-
-            createMaterial(mat, connectionPool);
+    public static int createBom(int orderID, ConnectionPool connectionPool)throws DatabaseException {
+        Logger.getLogger("web").log(Level.INFO, "");
+        String sql = "INSERT INTO carport.Bom (orderID) VALUES (?)";
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+                ps.setInt(1, orderID);
+                ps.executeUpdate();
+                ResultSet rs = ps.getGeneratedKeys();
+                rs.next();
+                return rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            throw new DatabaseException(ex, "Could not insert bom into database");
         }
-        return bom;
     }
 
 
-    public static int createMaterial(Material material, ConnectionPool connectionPool) throws DatabaseException {
+
+    public static int createMaterial(Material material, int bomID, ConnectionPool connectionPool) throws DatabaseException {
 
         Logger.getLogger("web").log(Level.INFO, "");
-        String sql = "INSERT INTO carport.Material (description, length, quantity, unit, itemdescription, pricepermeter, totalprice, type) VALUES (?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO carport.Material (description, length, quantity, unit, itemdescription, pricepermeter, totalprice, type, bomID) VALUES (?,?,?,?,?,?,?,?,?)";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 ps.setString(1, material.getDescription());
@@ -213,7 +215,8 @@ public class OrderMapper {
                 ps.setString(5, material.getItemDescription());
                 ps.setDouble(6, material.getPricePerMeter());
                 ps.setDouble(7, material.getTotalPrice());
-                ps.setString(8, material.getType());
+                ps.setInt(8, material.getTypeID());
+                ps.setInt(9, bomID);
                 ps.executeUpdate();
                 ResultSet rs = ps.getGeneratedKeys();
                 rs.next();

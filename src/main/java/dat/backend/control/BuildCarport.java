@@ -6,10 +6,7 @@ import dat.backend.model.entities.Carport;
 import dat.backend.model.entities.Order;
 import dat.backend.model.entities.User;
 import dat.backend.model.exceptions.DatabaseException;
-import dat.backend.model.persistence.CarportFacade;
-import dat.backend.model.persistence.ConnectionPool;
-import dat.backend.model.persistence.OrderFacade;
-import dat.backend.model.persistence.OrderMapper;
+import dat.backend.model.persistence.*;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -46,8 +43,9 @@ public class BuildCarport extends HttpServlet {
             int carportID = CarportFacade.createCarport(carport ,connectionPool);
             User user = (User)session.getAttribute("user");
             order = new Order(user.getUserID(),carportID,1);
-            OrderFacade.createOrder(order,connectionPool);
-            BillOfMaterials bom = OrderFacade.createBom(carport,order,connectionPool);
+            int orderID = OrderFacade.createOrder(order,connectionPool);
+            int bomID = OrderFacade.createBom(orderID,connectionPool);
+            Calculator.calculateAll(carport,bomID,connectionPool);
             request.getRequestDispatcher("/myorders").forward(request, response);
 
         } catch (DatabaseException e) {

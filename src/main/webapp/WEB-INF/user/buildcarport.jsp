@@ -13,12 +13,12 @@
         <h2>Vælg dine mål i cm her:</h2>
         <form action="buildCarport" method="post">
             <div class="mb-3">
-                <label for="width" class="form-label">Carport bredde:</label>
-                <input type="number" id="width" name="width" class="form-control" placeholder="bredde i cm">
-            </div>
-            <div class="mb-3">
                 <label for="length" class="form-label">Carport længde:</label>
                 <input type="number" id="length" name="length" class="form-control" placeholder="længde i cm">
+            </div>
+            <div class="mb-3">
+                <label for="width" class="form-label">Carport bredde:</label>
+                <input type="number" id="width" name="width" class="form-control" placeholder="bredde i cm">
             </div>
             <div class="mb-3">
                 <label>Carport tag:</label>

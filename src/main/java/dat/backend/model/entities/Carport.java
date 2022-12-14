@@ -24,7 +24,7 @@ public class Carport {
     }
 
     public int getCarportSquareMeter(){
-        return (length * width) / 100;
+        return (length/100) * (width/100);
     }
 
     public int getCarportID() {

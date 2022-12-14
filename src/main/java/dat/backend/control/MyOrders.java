@@ -30,15 +30,12 @@ public class MyOrders extends HttpServlet {
         HttpSession session = request.getSession();
 
         User user = (User)session.getAttribute("user");
-        List<Carport> carportList;
-        Map<Integer, Carport> carportMap;
         List<Order> orderList;
 
         try {
             orderList = OrderFacade.readOrdersAsCustomer(user.getUserID(), connectionPool);
             session.setAttribute("orderList",orderList);
-//            carportMap = CarportFacade.getCarportMap(connectionPool);
-//            session.setAttribute("carportMap", carportMap);
+
             request.getRequestDispatcher("WEB-INF/user/myorders.jsp").forward(request, response);
 
         } catch (DatabaseException e) {

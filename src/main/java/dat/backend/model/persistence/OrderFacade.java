@@ -2,6 +2,7 @@ package dat.backend.model.persistence;
 
 import dat.backend.model.entities.BillOfMaterials;
 import dat.backend.model.entities.Carport;
+import dat.backend.model.entities.Material;
 import dat.backend.model.entities.Order;
 import dat.backend.model.exceptions.DatabaseException;
 
@@ -29,7 +30,11 @@ public class OrderFacade
         OrderMapper.deleteOrder(orderItem,connectionPool);
     }
 
-    public static BillOfMaterials createBom(Carport carport,Order order, ConnectionPool connectionPool) throws DatabaseException{
-        return OrderMapper.createBom(carport,order,connectionPool);
+    public static int createBom(int orderID, ConnectionPool connectionPool) throws DatabaseException{
+        return OrderMapper.createBom(orderID,connectionPool);
+    }
+
+    public static int createMaterial(Material material, int bomID, ConnectionPool connectionPool) throws DatabaseException {
+        return OrderMapper.createMaterial(material,bomID, connectionPool);
     }
 }
