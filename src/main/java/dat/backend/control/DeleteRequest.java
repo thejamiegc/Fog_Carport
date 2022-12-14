@@ -28,9 +28,9 @@ public class DeleteRequest extends HttpServlet {
         HttpSession session = request.getSession();
 
 
-        Order orderItem = (Order) request.getAttribute("orderItem");
+        int orderID = Integer.parseInt(request.getParameter("orderID"));
         try {
-            OrderFacade.deleteOrder(orderItem,connectionPool);
+            OrderFacade.deleteOrder(orderID,connectionPool);
             request.getRequestDispatcher("/navToCustomerRequests").forward(request,response);
         } catch (DatabaseException e) {
             request.setAttribute("errormessage", e.getMessage());

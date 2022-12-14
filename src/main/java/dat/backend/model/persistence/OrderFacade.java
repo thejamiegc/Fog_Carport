@@ -26,8 +26,8 @@ public class OrderFacade
         return OrderMapper.readOrdersAsAdmin(connectionPool);
     }
 
-    public static void deleteOrder(Order orderItem,ConnectionPool connectionPool)throws DatabaseException{
-        OrderMapper.deleteOrder(orderItem,connectionPool);
+    public static void deleteOrder(int orderID,ConnectionPool connectionPool)throws DatabaseException{
+        OrderMapper.deleteOrder(orderID,connectionPool);
     }
 
     public static int createBom(int orderID, ConnectionPool connectionPool) throws DatabaseException{
@@ -36,5 +36,9 @@ public class OrderFacade
 
     public static int createMaterial(Material material, int bomID, ConnectionPool connectionPool) throws DatabaseException {
         return OrderMapper.createMaterial(material,bomID, connectionPool);
+    }
+
+    public static Order readDataFromAnOrder(int orderID,ConnectionPool connectionPool) throws DatabaseException {
+        return OrderMapper.readDataFromAnOrder(orderID, connectionPool);
     }
 }

@@ -8,10 +8,11 @@ public class User
     private String firstname;
     private String lastname;
     private String email;
-    private String password;
     private String address;
     private int postalcode;
     private int phonenumber;
+    private String city;
+    private String password;
     private String role;
 
     public User(String email, String password, String role)
@@ -42,6 +43,20 @@ public class User
         this.postalcode = postalcode;
         this.phonenumber = phonenumber;
         this.role = role;
+    }
+
+    public User(String firstname, String lastname, String email, String address, int postalcode, int phonenumber, String city) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.address = address;
+        this.postalcode = postalcode;
+        this.phonenumber = phonenumber;
+        this.city = city;
+    }
+
+    public String getCity() {
+        return city;
     }
 
     public int getUserID() {

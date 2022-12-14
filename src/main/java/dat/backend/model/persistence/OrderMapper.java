@@ -1,9 +1,6 @@
 package dat.backend.model.persistence;
 
-import dat.backend.model.entities.BillOfMaterials;
-import dat.backend.model.entities.Carport;
-import dat.backend.model.entities.Material;
-import dat.backend.model.entities.Order;
+import dat.backend.model.entities.*;
 import dat.backend.model.exceptions.DatabaseException;
 
 import java.sql.*;
@@ -134,48 +131,82 @@ public class OrderMapper {
         return orderList;
     }
 
-    public static List<Order> readAllOrderData(ConnectionPool connectionPool) throws DatabaseException {
+    public static Order readDataFromAnOrder(int orderID, ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
-        List<Order> orderList = new ArrayList<>();
+        BillOfMaterials billOfMaterials = new BillOfMaterials();
+        Order order = null;
 
-        String sql = "SELECT * FROM `Order` inner join Status on `Order`.statusID = `Status`.statusID inner join Carport on `Order`.carportID = Carport.carportID WHERE `Order`.statusID != 1";
+        String sql = "SELECT * FROM `Order`\n" +
+                "    inner join Status on `Order`.statusID = `Status`.statusID\n" +
+                "    inner join Carport on `Order`.carportID = Carport.carportID\n" +
+                "    inner join Shed on Carport.shed = Shed.shed\n" +
+                "    inner join User on `Order`.userID = User.userID\n" +
+                "    inner join Postalcode on User.postalcode = Postalcode.postalcode\n" +
+                "    inner join Bom on `Order`.orderID = Bom.orderID\n" +
+                "    inner join Material on Bom.bomID = Material.bomID\n" +
+                "    inner join MaterialType on Material.type = MaterialType.typeID\n" +
+                "    WHERE Order.orderID VALUES (?)";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) {
-                    int orderID = rs.getInt("orderID");
-                    int customerID = rs.getInt("userID");
-                    Timestamp created = rs.getTimestamp("created");
-                    int carportID = rs.getInt("carportID");
-                    int price = rs.getInt("price");
-                    int statusID = rs.getInt("statusID");
-                    int width = rs.getInt("width");
-                    int length = rs.getInt("length");
-                    String rooftype = rs.getString("rooftype");
-                    int shed = rs.getInt("shed");
-                    String statusname = rs.getString("statusname");
+                    String firstname = rs.getString("firstname");
+                    String lastname = rs.getString("lastname");
+                    String email = rs.getString("email");
+                    String address = rs.getString("address");
+                    int postalcode = rs.getInt("User.postalcode");
+                    int phonenumber = rs.getInt("phonenumber");
+                    String city = rs.getString("city");
 
-                    Carport carport = new Carport(carportID, length, width, rooftype, shed);
-                    Order order = new Order(orderID, customerID, created, carportID, price, statusID, carport, statusname);
-                    orderList.add(order);
+                    int userID = rs.getInt("Order.userID");
+                    Timestamp created = rs.getTimestamp("created");
+                    int carportID = rs.getInt("Order.carportID");
+                    int price = rs.getInt("price");
+                    int statusID = rs.getInt("Order.statusID");
+                    String statusname = rs.getString("statusname");
+                    int bomID = rs.getInt("Bom.bomID");
+
+                    int width = rs.getInt("Carport.width");
+                    int carportLength = rs.getInt("Carport.length");
+                    String rooftype = rs.getString("rooftype");
+                    int shed = rs.getInt("Carport.shed");
+
+                    String description = rs.getString("description");
+                    int matLength = rs.getInt("Material.length");
+                    int quantity = rs.getInt("quantity");
+                    String unit = rs.getString("unit");
+                    String itemDescription = rs.getString("itemDescription");
+                    double pricepermeter = rs.getDouble("pricepermeter");
+                    String typeName = rs.getString("name");
+                    int typeID = rs.getInt("typeID");
+
+
+                    User user = new User(firstname,lastname, email, address, postalcode, phonenumber, city);
+                    Carport carport = new Carport(carportLength, width, rooftype, shed);
+                    billOfMaterials.addMaterialToList(new Material(description,matLength,quantity,unit,itemDescription,pricepermeter,typeName,typeID));
+                    order = new Order(orderID,userID,created,carportID,price,statusID,carport,statusname,bomID,billOfMaterials,user);
+
                 }
             }
         } catch (SQLException ex) {
             throw new DatabaseException(ex, "Could not read data from database");
         }
-        return orderList;
+        return order;
     }
 
 
-    public static void deleteOrder(Order orderItem, ConnectionPool connectionPool) throws DatabaseException {
-        CarportFacade.deleteCarport(orderItem.getCarportID(), connectionPool);
+    public static void deleteOrder(int orderID, ConnectionPool connectionPool) throws DatabaseException {
+        //CarportFacade.deleteCarport(orderItem.getCarportID(), connectionPool);
 
         Logger.getLogger("web").log(Level.INFO, "");
-        String sql = "DELETE from `Order` WHERE orderID = ?";
+        String sql = "DELETE from Bom WHERE orderID = ?; DELETE from Shed WHERE orderID = ?; DELETE from Carport WHERE orderID = ?; DELETE from `Order` WHERE orderID = ?";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setInt(1, orderItem.getOrderID());
+                ps.setInt(1, orderID);
+                ps.setInt(2, orderID);
+                ps.setInt(3, orderID);
+                ps.setInt(4, orderID);
                 ps.executeUpdate();
             }
         } catch (SQLException ex) {

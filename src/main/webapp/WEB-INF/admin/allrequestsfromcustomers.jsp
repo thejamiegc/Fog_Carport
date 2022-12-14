@@ -48,7 +48,7 @@
 <%--                            <td style="font-weight: bold"><input class="btn btn-primary" type="submit" value="Slet bestilling"></td>--%>
 <%--                        </form>--%>
                         <form action="post">
-                            <td style="font-weight: bold"><button class="btn btn-primary"   type ="submit" formaction="deleterequest" name="orderItem" value="${orderItem}">
+                            <td style="font-weight: bold"><button class="btn btn-primary"   type ="submit" formaction="deleterequest" name="orderID" value="${orderItem.orderID}">
                                 Slet bestilling
                             </button></td>
                         </form>

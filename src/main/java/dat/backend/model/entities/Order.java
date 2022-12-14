@@ -13,6 +13,7 @@ public class Order {
     private String statusname;
     private int bomID;
     private BillOfMaterials bom;
+    private User user;
 
     public Order(int orderID, int customerID, Timestamp created, int carportID, double price, int statusID, Carport carport, String statusname) {
         this.orderID = orderID;
@@ -48,6 +49,20 @@ public class Order {
         this.carport = carport;
         this.statusname = statusname;
         this.bom = bom;
+    }
+
+    public Order(int orderID, int customerID, Timestamp created, int carportID, double price, int statusID, Carport carport, String statusname, int bomID, BillOfMaterials bom, User user) {
+        this.orderID = orderID;
+        this.customerID = customerID;
+        this.created = created;
+        this.carportID = carportID;
+        this.price = price;
+        this.statusID = statusID;
+        this.carport = carport;
+        this.statusname = statusname;
+        this.bomID = bomID;
+        this.bom = bom;
+        this.user = user;
     }
 
     public void setStatusID(int statusID) {
@@ -88,6 +103,14 @@ public class Order {
 
     public BillOfMaterials getBom() {
         return bom;
+    }
+
+    public int getBomID() {
+        return bomID;
+    }
+
+    public User getUser() {
+        return user;
     }
 
     @Override
