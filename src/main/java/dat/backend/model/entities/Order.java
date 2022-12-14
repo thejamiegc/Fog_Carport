@@ -9,6 +9,7 @@ public class Order {
     private int carportID;
     private double price;
     private int statusID;
+
     private Carport carport;
     private String statusname;
     private int bomID;
@@ -29,6 +30,13 @@ public class Order {
     public Order(int customerID, Timestamp created, int carportID, double price, int statusID) {
         this.customerID = customerID;
         this.created = created;
+        this.carportID = carportID;
+        this.price = price;
+        this.statusID = statusID;
+    }
+
+    public Order(int customerID, int carportID, int price, int statusID) {
+        this.customerID = customerID;
         this.carportID = carportID;
         this.price = price;
         this.statusID = statusID;

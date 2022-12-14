@@ -5,9 +5,6 @@ import dat.backend.model.entities.Order;
 import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.persistence.OrderFacade;
-import dat.backend.model.persistence.OrderMapper;
-import org.graalvm.compiler.core.common.type.ArithmeticOpTable;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

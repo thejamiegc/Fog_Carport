@@ -35,7 +35,7 @@ public class OrderFacade
     }
 
     public static int createMaterial(Material material, int bomID, ConnectionPool connectionPool) throws DatabaseException {
-        return OrderMapper.createMaterial(material,bomID, connectionPool);
+        return OrderMapper.createMaterial(material, bomID, connectionPool);
     }
 
     public static Order readDataFromAnOrder(int orderID,ConnectionPool connectionPool) throws DatabaseException {

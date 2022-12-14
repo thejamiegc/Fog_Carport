@@ -1,29 +1,50 @@
 package dat.backend.model.entities;
 
 public class Material {
-    String description;
-    int length;
-    int quantity;
-    String unit;
-    String itemDescription;
-    double pricePerMeter;
-    double totalPrice;
-    String type;
-    int typeID;
+    private int materialID;
+    private String description;
+    private int length;
+    private String unit;
+    private double pricePerUnit;
+    private int type;
+    private double totalPrice;
 
+    private BillOfMaterials bom;
 
-    public Material(String description, int length, int quantity, String unit, String itemDescription, double pricePerMeter, String type, int typeID) {
+    public Material(int materialID, String description, int length, String unit, double pricePerUnit, int type) {
+        this.materialID = materialID;
         this.description = description;
         this.length = length;
-        this.quantity = quantity;
         this.unit = unit;
-        this.itemDescription = itemDescription;
-        this.pricePerMeter = pricePerMeter;
+        this.pricePerUnit = pricePerUnit;
         this.type = type;
-        this.typeID = typeID;
+    }
 
-        this.totalPrice = length * (pricePerMeter / 100) * quantity;
+    public Material(int materialID, String description, int length, String unit, double pricePerUnit, int type, BillOfMaterials bom) {
+        this.materialID = materialID;
+        this.description = description;
+        this.length = length;
+        this.unit = unit;
+        this.pricePerUnit = pricePerUnit;
+        this.type = type;
+        this.bom = bom;
+    }
 
+    public Material(String description, int length, String unit, double pricePerUnit, int type) {
+        this.description = description;
+        this.length = length;
+        this.unit = unit;
+        this.pricePerUnit = pricePerUnit;
+        this.type = type;
+    }
+
+    public double getTotalPrice() {
+        totalPrice = length * (pricePerUnit/100) * bom.getQuantity();
+        return totalPrice;
+    }
+
+    public int getMaterialID() {
+        return materialID;
     }
 
     public String getDescription() {
@@ -34,31 +55,15 @@ public class Material {
         return length;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-
     public String getUnit() {
         return unit;
     }
 
-    public String getItemDescription() {
-        return itemDescription;
+    public double getPricePerUnit() {
+        return pricePerUnit;
     }
 
-    public double getPricePerMeter() {
-        return pricePerMeter;
-    }
-
-    public double getTotalPrice() {
-        return totalPrice;
-    }
-
-    public String getType() {
+    public int getType() {
         return type;
-    }
-
-    public int getTypeID() {
-        return typeID;
     }
 }

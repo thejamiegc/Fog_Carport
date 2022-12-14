@@ -3,6 +3,7 @@ package dat.backend.model.persistence;
 import dat.backend.model.entities.BillOfMaterials;
 import dat.backend.model.entities.Carport;
 import dat.backend.model.entities.Material;
+import dat.backend.model.entities.Order;
 import dat.backend.model.exceptions.DatabaseException;
 
 public class Calculator {
@@ -18,12 +19,19 @@ public class Calculator {
             quantity = 6;
         } else if (squareMeter >= 36 && squareMeter <= 45) {
             quantity = 8;
-        } else {
+        } else if (squareMeter >= 46 && squareMeter <= 55) {
             quantity = 10;
+        } else {
+            quantity = 12;
         }
-        Material tmpMaterial = new Material("",300,quantity,"stk","",49.95,"Pole",2);
-        OrderFacade.createMaterial(tmpMaterial,bomID, connectionPool);
+
+        //ADD QUANTITY FROM BOM ???
+        //BillOfMaterials bom = new BillOfMaterials(bomID, order.getOrderID(), material.getMaterialID(), "", quantity, material.getTotalPrice());
+        Material tmpMaterial = new Material("", 300, "stk", 49.95, 1);
+        OrderFacade.createMaterial(tmpMaterial, bomID, connectionPool);
     }
+
+
     //DETTE ER SPÆR
     public static void calculateRafters(Carport carport, int bomID, ConnectionPool connectionPool) throws DatabaseException {
         int i = 0;
@@ -33,20 +41,20 @@ public class Calculator {
             quantity++;
             i += 55;
         }
-        Material tmpMaterial = new Material("",carport.getWidth(),quantity,"stk","",77.95, "Rafter",3);
-        OrderFacade.createMaterial(tmpMaterial,bomID, connectionPool);
+
+        Material tmpMaterial = new Material("", 300, "stk", 49.95, 1);
+        OrderFacade.createMaterial(tmpMaterial, bomID, connectionPool);
     }
 
     //DETTE ER REMME
     public static void calculateBeams(Carport carport, int bomID, ConnectionPool connectionPool) throws DatabaseException {
-        Material tmpMaterial = new Material("",carport.getLength(),2, "stk","",77.95,"Beam",1);
-        OrderFacade.createMaterial(tmpMaterial,bomID, connectionPool);
+        Material tmpMaterial = new Material("", 300, "stk", 49.95, 1);
+        OrderFacade.createMaterial(tmpMaterial, bomID, connectionPool);
     }
 
     public static void calculateAll(Carport carport, int bomID, ConnectionPool connectionPool) throws DatabaseException {
-        calculateBeams(carport, bomID, connectionPool);
         calculatePoles(carport, bomID, connectionPool);
         calculateRafters(carport, bomID, connectionPool);
+        calculateBeams(carport, bomID, connectionPool);
     }
-
 }

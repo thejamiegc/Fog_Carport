@@ -5,22 +5,25 @@ public class Carport {
     private int length;
     private int width;
     private String rooftype;
-    private int shed;
+    private int orderID;
 
     //measurements are in cm and not meters
-    public Carport(int carportID, int length, int width, String rooftype, int shed) {
+    public Carport(int carportID, int length, int width, String rooftype, int orderID) {
         this.carportID = carportID;
         this.length = length;
         this.width = width;
         this.rooftype = rooftype;
-        this.shed = shed;
+        this.orderID = orderID;
     }
 
-    public Carport(int length, int width, String rooftype, int shed) {
+    public Carport(int length, int width, String rooftype) {
         this.length = length;
         this.width = width;
         this.rooftype = rooftype;
-        this.shed = shed;
+    }
+
+    public int getOrderID() {
+        return orderID;
     }
 
     public int getCarportSquareMeter(){
@@ -43,10 +46,6 @@ public class Carport {
         return rooftype;
     }
 
-    public int getShed() {
-        return shed;
-    }
-
     public void setCarportID(int carportID) {
         this.carportID = carportID;
     }
@@ -63,20 +62,6 @@ public class Carport {
         this.rooftype = rooftype;
     }
 
-    public void setShed(int shed) {
-        this.shed = shed;
-    }
-
-    @Override
-    public String toString() {
-        return "Carport{" +
-                "carportID=" + carportID +
-                ", length=" + length +
-                ", width=" + width +
-                ", rooftype='" + rooftype + '\'' +
-                ", shed=" + shed +
-                '}';
-    }
 }
 
 
