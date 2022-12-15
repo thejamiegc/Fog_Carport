@@ -1,6 +1,7 @@
 package dat.backend.model.entities;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 public class Order {
     private int orderID;
@@ -12,10 +13,10 @@ public class Order {
 
     private Carport carport;
     private String statusname;
-    private int bomID;
-    private BillOfMaterials bom;
+    private List<BillOfMaterials> billOfMaterialsList;
     private User user;
 
+    // Used in OrderMapper to show orders (myorders and allrequestsfromcustomers jsp )
     public Order(int orderID, int customerID, Timestamp created, int carportID, double price, int statusID, Carport carport, String statusname) {
         this.orderID = orderID;
         this.customerID = customerID;
@@ -27,39 +28,16 @@ public class Order {
         this.statusname = statusname;
     }
 
-    public Order(int customerID, Timestamp created, int carportID, double price, int statusID) {
-        this.customerID = customerID;
-        this.created = created;
-        this.carportID = carportID;
-        this.price = price;
-        this.statusID = statusID;
-    }
 
-    public Order(int customerID, int carportID, int price, int statusID) {
-        this.customerID = customerID;
-        this.carportID = carportID;
-        this.price = price;
-        this.statusID = statusID;
-    }
-
-    public Order(int customerID, int carportID, int statusID) {
-        this.customerID = customerID;
-        this.carportID = carportID;
-        this.statusID = statusID;
-    }
-
-    public Order(int customerID, Timestamp created, int carportID, double price, int statusID, Carport carport, String statusname, BillOfMaterials bom) {
-        this.customerID = customerID;
-        this.created = created;
-        this.carportID = carportID;
-        this.price = price;
-        this.statusID = statusID;
+    // Used in BuildCarport servlet
+    public Order(User user, Carport carport, int statusID) {
+        this.user = user;
         this.carport = carport;
-        this.statusname = statusname;
-        this.bom = bom;
+        this.statusID = statusID;
     }
 
-    public Order(int orderID, int customerID, Timestamp created, int carportID, double price, int statusID, Carport carport, String statusname, int bomID, BillOfMaterials bom, User user) {
+
+    public Order(int orderID, int customerID, Timestamp created, int carportID, double price, int statusID, Carport carport, String statusname, List<BillOfMaterials> billOfMaterialsList, User user) {
         this.orderID = orderID;
         this.customerID = customerID;
         this.created = created;
@@ -68,8 +46,7 @@ public class Order {
         this.statusID = statusID;
         this.carport = carport;
         this.statusname = statusname;
-        this.bomID = bomID;
-        this.bom = bom;
+        this.billOfMaterialsList = billOfMaterialsList;
         this.user = user;
     }
 
@@ -109,16 +86,16 @@ public class Order {
         return statusname;
     }
 
-    public BillOfMaterials getBom() {
-        return bom;
-    }
-
-    public int getBomID() {
-        return bomID;
-    }
-
     public User getUser() {
         return user;
+    }
+
+    public List<BillOfMaterials> getBillOfMaterialsList() {
+        return billOfMaterialsList;
+    }
+
+    public void setOrderID(int orderID) {
+        this.orderID = orderID;
     }
 
     @Override
@@ -132,7 +109,7 @@ public class Order {
                 ", statusID=" + statusID +
                 ", carport=" + carport +
                 ", statusname='" + statusname + '\'' +
-                ", bom=" + bom +
                 '}';
     }
+
 }

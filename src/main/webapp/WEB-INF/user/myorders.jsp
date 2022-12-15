@@ -20,26 +20,27 @@
                     <th scope="col">Ordrer nummer</th>
                     <th scope="col">Carport type</th>
                     <th scope="col">Tagtype</th>
-                    <th scope="col">Skur</th>
                     <th scope="col">Størrelse</th>
                     <th scope="col">Status</th>
                     <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
+                <c:set var="count" value="1" scope="page" />
                 <c:forEach var="orderItem" items="${sessionScope.orderList}">
                 <tr>
-                    <th scope="row">1</th>
+                    <th scope="row">${count}</th>
                     <td>${orderItem.orderID}</td>
                     <td>Enkelt</td>
                     <td>${orderItem.carport.rooftype}</td>
-                    <td>${orderItem.carport.shed}</td>
                     <td>${orderItem.carport.length} x ${orderItem.carport.width}</td>
                     <td>${orderItem.statusname}</td>
-                    <form action="showrequestdetailsuser" method="get">
-                    <td style="font-weight: bold"><input class="btn btn-primary" type="submit" value="Vis detajler"></td>
-                    </form>
+                    <form action="get">
+                        <td style="font-weight: bold"><button class="btn btn-primary"   type ="submit" formaction="showorderdetailsuser" name="orderID" value="${orderItem.orderID}">
+                            Vis detaljer
+                        </button></td>
                 </tr>
+                    <c:set var="count" value="${count + 1}" scope="page" />
                 </c:forEach>
                 </tbody>
             </table>

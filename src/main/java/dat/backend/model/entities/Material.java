@@ -7,9 +7,8 @@ public class Material {
     private String unit;
     private double pricePerUnit;
     private int type;
-    private double totalPrice;
+    private String typename;
 
-    private BillOfMaterials bom;
 
     public Material(int materialID, String description, int length, String unit, double pricePerUnit, int type) {
         this.materialID = materialID;
@@ -20,15 +19,6 @@ public class Material {
         this.type = type;
     }
 
-    public Material(int materialID, String description, int length, String unit, double pricePerUnit, int type, BillOfMaterials bom) {
-        this.materialID = materialID;
-        this.description = description;
-        this.length = length;
-        this.unit = unit;
-        this.pricePerUnit = pricePerUnit;
-        this.type = type;
-        this.bom = bom;
-    }
 
     public Material(String description, int length, String unit, double pricePerUnit, int type) {
         this.description = description;
@@ -38,9 +28,14 @@ public class Material {
         this.type = type;
     }
 
-    public double getTotalPrice() {
-        totalPrice = length * (pricePerUnit/100) * bom.getQuantity();
-        return totalPrice;
+    public Material(int materialID, String description, int length, String unit, double pricePerUnit, int type, String typename) {
+        this.materialID = materialID;
+        this.description = description;
+        this.length = length;
+        this.unit = unit;
+        this.pricePerUnit = pricePerUnit;
+        this.type = type;
+        this.typename = typename;
     }
 
     public int getMaterialID() {

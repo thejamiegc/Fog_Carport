@@ -7,6 +7,7 @@ import dat.backend.model.entities.Order;
 import dat.backend.model.exceptions.DatabaseException;
 
 import java.util.List;
+import java.util.Map;
 
 public class OrderFacade
 {
@@ -30,8 +31,8 @@ public class OrderFacade
         OrderMapper.deleteOrder(orderID,connectionPool);
     }
 
-    public static int createBom(int orderID, ConnectionPool connectionPool) throws DatabaseException{
-        return OrderMapper.createBom(orderID,connectionPool);
+    public static int createBom(BillOfMaterials billOfMaterials, ConnectionPool connectionPool) throws DatabaseException{
+        return OrderMapper.createBom(billOfMaterials,connectionPool);
     }
 
     public static int createMaterial(Material material, int bomID, ConnectionPool connectionPool) throws DatabaseException {
@@ -40,5 +41,9 @@ public class OrderFacade
 
     public static Order readDataFromAnOrder(int orderID,ConnectionPool connectionPool) throws DatabaseException {
         return OrderMapper.readDataFromAnOrder(orderID, connectionPool);
+    }
+
+    public static Map<Integer,Material> readMaterials(ConnectionPool connectionPool) throws DatabaseException {
+        return OrderMapper.readMaterials(connectionPool);
     }
 }

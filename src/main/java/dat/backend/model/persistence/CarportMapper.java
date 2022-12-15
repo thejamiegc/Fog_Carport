@@ -16,13 +16,12 @@ public class CarportMapper {
 
     static int createCarport(Carport carport, ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
-        String sql = "INSERT INTO Carport (length, width, rooftype, shed) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO Carport (length, width, rooftype) VALUES (?,?,?)";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 ps.setInt(1, carport.getLength());
                 ps.setInt(2, carport.getWidth());
-                ps.setString(3, "Fladt Tag");
-                ps.setInt(4, 2);
+                ps.setString(3, "Fladt tag");
                 ps.executeUpdate();
                 ResultSet rs = ps.getGeneratedKeys();
                 rs.next();
@@ -73,4 +72,18 @@ public class CarportMapper {
             throw new DatabaseException(ex, "Could not delete order from database");
         }
     }
+
+    public static void updateOrderID(int orderID, int carportID, ConnectionPool connectionPool) throws DatabaseException {
+        Logger.getLogger("web").log(Level.INFO, "");
+        String sql = "UPDATE carport.Carport SET orderID = ? WHERE carportID = ?";
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, orderID);
+                ps.setInt(2, carportID);
+                ps.executeUpdate();
+            }
+        } catch (SQLException ex) {
+            throw new DatabaseException(ex, "Could not update order from database");
+        }
     }
+}

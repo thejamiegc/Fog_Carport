@@ -33,12 +33,14 @@ public class BuildCarport extends HttpServlet {
                 request.getParameter("roof"));
 
         try {
-            int carportID = CarportFacade.createCarport(carport ,connectionPool);
+            int carportID = CarportFacade.createCarport(carport, connectionPool);
+            carport.setCarportID(carportID);
             User user = (User)session.getAttribute("user");
-            order = new Order(user.getUserID(),carportID,1);
-            int orderID = OrderFacade.createOrder(order,connectionPool);
-            int bomID = OrderFacade.createBom(orderID,connectionPool);
-            Calculator.calculateAll(carport, bomID, connectionPool);
+            order = new Order(user,carport,1);
+            int orderID = OrderFacade.createOrder(order, connectionPool);
+            order.setOrderID(orderID);
+            CarportFacade.updateOrderID(orderID, carportID, connectionPool);
+            Calculator.calculateAll(order, connectionPool);
             request.getRequestDispatcher("/myorders").forward(request, response);
 
         } catch (DatabaseException e) {

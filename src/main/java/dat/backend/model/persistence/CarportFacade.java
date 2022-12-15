@@ -19,4 +19,8 @@ public class CarportFacade {
     public static void deleteCarport(int carportID,ConnectionPool connectionPool)throws DatabaseException{
         CarportMapper.deleteCarport(carportID,connectionPool);
     }
+
+    public static void updateOrderID(int orderID, int carportID, ConnectionPool connectionPool) throws DatabaseException {
+        CarportMapper.updateOrderID(orderID, carportID, connectionPool);
+    }
 }
