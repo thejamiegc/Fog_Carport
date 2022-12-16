@@ -129,7 +129,7 @@ public class OrderMapper {
 
     public static Order readDataFromAnOrder(int orderID, ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
-        List<BillOfMaterials> billOfMaterialsList = new ArrayList<>();
+        Map<Integer,BillOfMaterials> billOfMaterialsList = new HashMap<>();
         Order order = null;
 
         String sql = "SELECT * FROM `Order`" +
@@ -194,7 +194,7 @@ public class OrderMapper {
                     User user = new User(firstname, lastname, email, address, postalcode, phonenumber, city);
                     Carport carport = new Carport(carportID, carportLength, carportWidth, rooftype, orderID);
                     Material material = new Material(materialID, matdescription, matLength, unit, priceperunit, type, typename);
-                    billOfMaterialsList.add(new BillOfMaterials(bomID, orderID, materialID, bomDescription, quantity, price, material));
+                    billOfMaterialsList.put(materialID,new BillOfMaterials(bomID, orderID, materialID, bomDescription, quantity, price, material));
                     order = new Order(orderID, userID, created, carportID, orderPrice, statusID, carport, statusname, billOfMaterialsList, user);
                 }
             }

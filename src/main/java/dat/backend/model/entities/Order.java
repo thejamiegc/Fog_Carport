@@ -2,6 +2,7 @@ package dat.backend.model.entities;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Map;
 
 public class Order {
     private int orderID;
@@ -13,7 +14,7 @@ public class Order {
 
     private Carport carport;
     private String statusname;
-    private List<BillOfMaterials> billOfMaterialsList;
+    private Map<Integer,BillOfMaterials> billOfMaterialsList;
     private User user;
 
     // Used in OrderMapper to show orders (myorders and allrequestsfromcustomers jsp )
@@ -37,7 +38,7 @@ public class Order {
     }
 
 
-    public Order(int orderID, int customerID, Timestamp created, int carportID, double price, int statusID, Carport carport, String statusname, List<BillOfMaterials> billOfMaterialsList, User user) {
+    public Order(int orderID, int customerID, Timestamp created, int carportID, double price, int statusID, Carport carport, String statusname, Map<Integer,BillOfMaterials> billOfMaterialsList, User user) {
         this.orderID = orderID;
         this.customerID = customerID;
         this.created = created;
@@ -90,7 +91,7 @@ public class Order {
         return user;
     }
 
-    public List<BillOfMaterials> getBillOfMaterialsList() {
+    public Map<Integer,BillOfMaterials> getBillOfMaterialsList() {
         return billOfMaterialsList;
     }
 
