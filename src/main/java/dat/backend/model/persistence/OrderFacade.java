@@ -6,6 +6,7 @@ import dat.backend.model.entities.Material;
 import dat.backend.model.entities.Order;
 import dat.backend.model.exceptions.DatabaseException;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -45,5 +46,9 @@ public class OrderFacade
 
     public static Map<Integer,Material> readMaterials(ConnectionPool connectionPool) throws DatabaseException {
         return OrderMapper.readMaterials(connectionPool);
+    }
+
+    public static void updateStatus(Order order, ConnectionPool connectionPool) throws SQLException {
+        OrderMapper.updateStatus(order,connectionPool);
     }
 }

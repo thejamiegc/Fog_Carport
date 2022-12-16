@@ -29,6 +29,7 @@ public class NavToCustomerRequests extends HttpServlet {
         List<Order> orderList;
 
         try {
+            // ONLY orders with status below or equal to 2
             orderList = OrderFacade.readRequestAsAdmin(connectionPool);
             session.setAttribute("orderList",orderList);
             request.getRequestDispatcher("WEB-INF/admin/allrequestsfromcustomers.jsp").forward(request, response);

@@ -21,7 +21,6 @@
                     <th scope="col">Kunde ID</th>
                     <th scope="col">Dato</th>
                     <th scope="col">Tagtype</th>
-                    <th scope="col">Skur</th>
                     <th scope="col">Størrelse</th>
                     <th scope="col">Status</th>
                     <th scope="col"></th>
@@ -35,14 +34,12 @@
                         <td>${orderItem.customerID}</td>
                         <td>${orderItem.created}</td>
                         <td>${orderItem.carport.rooftype}</td>
-                        <td>${orderItem.carport.shed}</td>
                         <td>${orderItem.carport.length} x ${orderItem.carport.width}</td>
                         <td>${orderItem.statusname}</td>
-                        <form action="createorder" method="get">
-                            <td style="font-weight: bold"><input class="btn btn-primary" type="submit" value="Lav ordre"></td>
-                        </form>
-                        <form action="showrequestdetailsadmin" method="get">
-                            <td style="font-weight: bold"><input class="btn btn-primary" type="submit" value="Vis detajler"></td>
+                        <form action="post">
+                            <td style="font-weight: bold"><button class="btn btn-primary"   type ="submit" formaction="showdetailsadmin" name="orderID" value="${orderItem.orderID}">
+                                Vis detaljer
+                            </button></td>
                         </form>
                     </tr>
                 </c:forEach>

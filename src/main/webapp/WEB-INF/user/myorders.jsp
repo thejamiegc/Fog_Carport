@@ -23,6 +23,7 @@
                     <th scope="col">Størrelse</th>
                     <th scope="col">Status</th>
                     <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -39,6 +40,12 @@
                         <td style="font-weight: bold"><button class="btn btn-primary"   type ="submit" formaction="showorderdetailsuser" name="orderID" value="${orderItem.orderID}">
                             Vis detaljer
                         </button></td>
+                    </form>
+                    <form action="post">
+                        <td style="font-weight: bold"><button class="btn btn-primary"   type ="submit" formaction="acceptoffer" name="orderID" value="${orderItem.orderID}">
+                            Accepter tilbud
+                        </button></td>
+                    </form>
                 </tr>
                     <c:set var="count" value="${count + 1}" scope="page" />
                 </c:forEach>

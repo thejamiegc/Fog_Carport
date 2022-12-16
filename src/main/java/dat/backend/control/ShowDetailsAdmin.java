@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 @WebServlet(name = "ShowDetailsAdmin", value = "/showdetailsadmin")
@@ -21,7 +22,7 @@ public class ShowDetailsAdmin extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("WEB-INF/user/showdetailsadmin.jsp").forward(request, response);
+        this.doPost(request,response);
     }
 
     @Override
@@ -31,11 +32,16 @@ public class ShowDetailsAdmin extends HttpServlet {
 
         try {
             Order order = OrderFacade.readDataFromAnOrder(orderID, connectionPool);
+            if (order.getStatusID() == 1){
+                order.setStatusID(2);
+                OrderFacade.updateStatus(order, connectionPool);
+            }
             session.setAttribute("order",order);
             request.getRequestDispatcher("WEB-INF/admin/showdetailsadmin.jsp").forward(request, response);
 
-        } catch (DatabaseException e) {
-            e.printStackTrace();
+        } catch (DatabaseException | SQLException e) {
+            request.setAttribute("errormessage", e.getMessage());
+            request.getRequestDispatcher("error.jsp").forward(request, response);
         }
     }
 }

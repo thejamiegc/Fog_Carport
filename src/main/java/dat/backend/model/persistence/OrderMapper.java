@@ -67,27 +67,25 @@ public class OrderMapper {
     public static List<Order> readRequestAsAdmin(ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
         List<Order> orderList = new ArrayList<>();
-
-        String sql = "SELECT * FROM `Order` inner join Status on `Order`.statusID = `Status`.statusID inner join Carport on `Order`.carportID = Carport.carportID WHERE `Order`.statusID = 1";
+        String sql = "SELECT * FROM `Order` inner join Status on `Order`.statusID = `Status`.statusID inner join Carport on `Order`.orderID = Carport.orderID WHERE `Order`.statusID <= 2";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) {
-                    int orderID = rs.getInt("orderID");
+                    int orderID = rs.getInt("Order.orderID");
                     int customerID = rs.getInt("userID");
                     Timestamp created = rs.getTimestamp("created");
-                    int carportID = rs.getInt("carportID");
+                    int carportID = rs.getInt("Order.carportID");
                     int price = rs.getInt("price");
-                    int statusID = rs.getInt("statusID");
+                    int statusID = rs.getInt("Order.statusID");
                     int width = rs.getInt("width");
                     int length = rs.getInt("length");
                     String rooftype = rs.getString("rooftype");
-                    int shed = rs.getInt("shed");
                     String statusname = rs.getString("statusname");
 
-                    Carport carport = new Carport(carportID, length, width, rooftype, shed);
-                    Order order = new Order(orderID, customerID, created, carportID, price, statusID, carport, statusname);
+                    Carport carport = new Carport(carportID, length, width, rooftype,orderID);
+                    Order order = new Order(orderID, customerID, created, carportID, price,statusID, carport, statusname);
                     orderList.add(order);
                 }
             }
@@ -101,26 +99,25 @@ public class OrderMapper {
         Logger.getLogger("web").log(Level.INFO, "");
         List<Order> orderList = new ArrayList<>();
 
-        String sql = "SELECT * FROM `Order` inner join Status on `Order`.statusID = `Status`.statusID inner join Carport on `Order`.carportID = Carport.carportID WHERE `Order`.statusID != 1";
+        String sql = "SELECT * FROM `Order` inner join Status on `Order`.statusID = `Status`.statusID inner join Carport on `Order`.carportID = Carport.carportID WHERE `Order`.statusID >= 3";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) {
-                    int orderID = rs.getInt("orderID");
+                    int orderID = rs.getInt("Order.orderID");
                     int customerID = rs.getInt("userID");
                     Timestamp created = rs.getTimestamp("created");
-                    int carportID = rs.getInt("carportID");
+                    int carportID = rs.getInt("Order.carportID");
                     int price = rs.getInt("price");
-                    int statusID = rs.getInt("statusID");
+                    int statusID = rs.getInt("Order.statusID");
                     int width = rs.getInt("width");
                     int length = rs.getInt("length");
                     String rooftype = rs.getString("rooftype");
-                    int shed = rs.getInt("shed");
                     String statusname = rs.getString("statusname");
 
-                    Carport carport = new Carport(carportID, length, width, rooftype, shed);
-                    Order order = new Order(orderID, customerID, created, carportID, price, statusID, carport, statusname);
+                    Carport carport = new Carport(carportID, length, width, rooftype,orderID);
+                    Order order = new Order(orderID, customerID, created, carportID, price,statusID, carport, statusname);
                     orderList.add(order);
                 }
             }
@@ -196,9 +193,9 @@ public class OrderMapper {
 
                     User user = new User(firstname, lastname, email, address, postalcode, phonenumber, city);
                     Carport carport = new Carport(carportID, carportLength, carportWidth, rooftype, orderID);
-                    Material material = new Material(materialID,matdescription,matLength,unit,priceperunit,type,typename);
-                    billOfMaterialsList.add(new BillOfMaterials(bomID, orderID,materialID,bomDescription,quantity,price,material));
-                    order = new Order(orderID, userID, created, carportID, orderPrice, statusID, carport, statusname,billOfMaterialsList, user);
+                    Material material = new Material(materialID, matdescription, matLength, unit, priceperunit, type, typename);
+                    billOfMaterialsList.add(new BillOfMaterials(bomID, orderID, materialID, bomDescription, quantity, price, material));
+                    order = new Order(orderID, userID, created, carportID, orderPrice, statusID, carport, statusname, billOfMaterialsList, user);
                 }
             }
         } catch (SQLException ex) {
@@ -245,9 +242,9 @@ public class OrderMapper {
         }
     }
 
-    public static Map<Integer,Material> readMaterials(ConnectionPool connectionPool) throws DatabaseException {
+    public static Map<Integer, Material> readMaterials(ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
-        Map<Integer,Material> materialList = new HashMap<>();
+        Map<Integer, Material> materialList = new HashMap<>();
 
         String sql = "SELECT * FROM Material";
 
@@ -262,7 +259,7 @@ public class OrderMapper {
                     double priceperunit = rs.getDouble("priceperunit");
                     int type = rs.getInt("type");
 
-                    materialList.put(materialID,new Material(materialID,description,length,unit,priceperunit,type));
+                    materialList.put(materialID, new Material(materialID, description, length, unit, priceperunit, type));
                 }
             }
         } catch (SQLException ex) {
@@ -290,5 +287,20 @@ public class OrderMapper {
             throw new DatabaseException(ex, "Could not insert material into database");
         }
     }
+
+    public static void updateStatus(Order order, ConnectionPool connectionPool) throws SQLException {
+        Logger.getLogger("web").log(Level.INFO, "");
+        String sql = "UPDATE carport.Order SET `Order`.statusID = ? WHERE orderID = ?";
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+                ps.setInt(1, order.getStatusID());
+                ps.setInt(2, order.getOrderID());
+                ps.executeUpdate();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+    }
+
 }
 
