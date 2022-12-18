@@ -48,10 +48,11 @@
                       </a>--%>
         </div>
     </nav>
-    <form class="searchbar">
-        <input class="form-control" type="text" placeholder="Søg" aria-label="Search">
-        <button class="btn" type="submit"><img src="${pageContext.request.contextPath}/images/loop.png"/></button>
-    </form>
+    <!-- search bar -->
+    <div class="form-group has-search">
+        <span class="fa fa-search form-control-feedback"></span>
+        <input type="text" class="form-control" placeholder="Søg">
+    </div>
 </header>
 
 <div class="container mt-4" style="min-height: 400px;">
