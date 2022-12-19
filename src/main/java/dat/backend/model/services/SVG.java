@@ -16,10 +16,13 @@ public class SVG {
             "<rect x=\"%d\" y=\"%d\" height=\"%f\" width=\"%f\" style=\"stroke:#000000; fill-opacity: 0\" />";
 
     private final static String LINETEMPLATE =
-            "<line x1=\"%d\" y1=\"%d\" x2=\"%d\" y2=\"%d\" style=\"stroke:#000000; stroke-width:2\" />";
+            "<line x1=\"%d\" y1=\"%d\" x2=\"%d\" y2=\"%d\" style=\"stroke:#000000; stroke-width:2; marker-start: url(#beginArrow); marker-end: url(#endArrow);\" />";
 
     private final static String DASHEDLINETEMPLATE =
             "<line x1=\"%d\" y1=\"%d\" x2=\"%d\" y2=\"%d\" style=\"stroke:#000000; stroke-width:2\" stroke-dasharray=\"4\"/>";
+    private final static String TEXTTEMPLATE =
+            "<text x=\"%d\" y=\"%d\" fill=\"black\" transform=\"translate(30,100) rotate(-90)\">PLACEHOLDER</text>";
+
 
     private final static String ARROWHEADSTEMPLATE = "<defs>\n" +
             "        <marker id=\"beginArrow\" markerWidth=\"12\" markerHeight=\"12\" refX=\"0\" refY=\"6\" orient=\"auto\">\n" +
@@ -44,13 +47,13 @@ public class SVG {
         svgString.append(String.format(RECTTEMPLATE, x, y, height, width));
     }
 
-    public void addLine(int x1, int y1, int x2, int y2) {
+    public void addLine(int x1, int y1, int x2, int y2,int textX,int textY,int text) {
         svgString.append(String.format(LINETEMPLATE, x1, y1, x2, y2));
-        svgString.append(String.format(ARROWHEADSTEMPLATE));
+        svgString.append(String.format(TEXTTEMPLATE,textX,textY,text));
     }
 
     public void addDashedLine(int x1, int y1, int x2, int y2) {
-        svgString.append(String.format(DASHEDLINETEMPLATE, x1, y2, x2, y2));
+        svgString.append(String.format(DASHEDLINETEMPLATE, x1, y1, x2, y2));
     }
 
     public void addInnerSvg(SVG innerSVGDrawing) {

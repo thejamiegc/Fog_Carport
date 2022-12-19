@@ -23,13 +23,13 @@ public class CarportSVG {
 
     public static SVG makeSVGLines(Order order, SVG svg) {
         //left outer (length of rafter)
-        svg.addLine(1, 0, 1, 600);
+        svg.addLine(1, 0, 1, endCarportY,1,endCarportY/2,order.getCarport().getWidth());
 
         //left inner (length between poles)
-        svg.addLine(30, 0 + 40, 30, 600 - 40);
+        svg.addLine(30, 0 + 40, 30, endCarportY - 40,30,endCarportY/2,order.getCarport().getWidth()-75);
 
         //bottom
-        svg.addLine(startCarportX, 650, order.getCarport().getLength() + startCarportX, 650);
+        svg.addLine(startCarportX, 650, order.getCarport().getLength() + startCarportX, 650,(order.getCarport().getLength()+startCarportX)/2,650,order.getCarport().getLength());
 
         //dashed lines /cross
         svg.addDashedLine(80, 50, 520,  565);
