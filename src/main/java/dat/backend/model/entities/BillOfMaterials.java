@@ -71,4 +71,14 @@ public class BillOfMaterials {
     public Material getMaterial() {
         return material;
     }
+
+    @Override
+    public String toString() {
+        return  "Materiale: " + material.getDescription() + "\n" +
+                "Længde: " + material.getLength() + "\n" +
+                "Antal: " + quantity + "\n" +
+                "Enhed: " + material.getUnit() + "\n" +
+                "Anvendelse: " + description + "\n" +
+                "Pris: " + price;
+    }
 }

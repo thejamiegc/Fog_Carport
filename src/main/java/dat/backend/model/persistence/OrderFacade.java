@@ -51,4 +51,9 @@ public class OrderFacade
     public static void updateStatus(Order order, ConnectionPool connectionPool) throws SQLException {
         OrderMapper.updateStatus(order,connectionPool);
     }
+
+    public static void updateOrderPrice(Order order, ConnectionPool connectionPool) throws SQLException {
+        OrderMapper.updateOrderPrice(order, connectionPool);
+    }
+
 }

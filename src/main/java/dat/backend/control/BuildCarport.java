@@ -9,6 +9,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet(name = "BuildCarport", value = "/buildCarport")
 public class BuildCarport extends HttpServlet {
@@ -43,8 +44,9 @@ public class BuildCarport extends HttpServlet {
             Calculator.calculateAll(order, connectionPool);
             request.getRequestDispatcher("/myorders").forward(request, response);
 
-        } catch (DatabaseException e) {
-            e.printStackTrace();
+        } catch (DatabaseException | SQLException e) {
+            request.setAttribute("errormessage", e.getMessage());
+            request.getRequestDispatcher("error.jsp").forward(request, response);
         }
     }
 }

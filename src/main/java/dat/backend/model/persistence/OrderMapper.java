@@ -32,6 +32,21 @@ public class OrderMapper {
         }
     }
 
+    public static void updateOrderPrice(Order order, ConnectionPool connectionPool) throws SQLException {
+        Logger.getLogger("web").log(Level.INFO, "");
+        String sql = "UPDATE carport.Order SET price = ? WHERE orderID = ?";
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+                ps.setDouble(1, order.getPrice());
+                ps.setInt(2, order.getOrderID());
+                ps.executeUpdate();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+    }
+
+
     public static List<Order> readOrdersAsCustomer(int userID, ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
         List<Order> orderList = new ArrayList<>();

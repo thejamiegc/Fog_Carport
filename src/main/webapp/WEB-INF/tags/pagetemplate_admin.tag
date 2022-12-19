@@ -21,7 +21,7 @@
 <header>
     <nav class="navbar navbar-expand-sm navbar-blue" aria-label="Third navbar example">
         <div class="container-fluid">
-            <a class="navbar-brand" href="../../index.jsp">
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/admin/welcomeadmin.js">
                 <img src="${pageContext.request.contextPath}/images/FOGLogo.jpg"/>
             </a>
             <a class="navbar-brand" href="#"></a>

@@ -79,6 +79,10 @@ public class Order {
         return price;
     }
 
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     public int getStatusID() {
         return statusID;
     }

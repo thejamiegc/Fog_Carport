@@ -8,7 +8,7 @@
     <jsp:body>
 
         <h1>Kunde ordrer</h1>
-        <p>Her kan du se alle ordrer fra kunder. Du kan klikke 'vis detaljer' for at se detaljeret beskrivelse over kundens ordrer ( tegning, stykliste, kundeinfo samt pris ). <br>
+        <p>Her kan du se alle ordrer fra kunder. Du kan klikke 'vis detaljer' for at se detaljeret beskrivelse over kundens ordrer. <br>
         Du kan redigere eller slette en ordre samt sætte en status på ordren.</p>
 
 

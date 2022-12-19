@@ -5,7 +5,6 @@ import dat.backend.model.entities.Order;
 import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.persistence.OrderFacade;
-import dat.backend.model.persistence.OrderMapper;
 import dat.backend.model.services.CarportSVG;
 import dat.backend.model.services.SVG;
 
@@ -30,14 +29,16 @@ public class ShowOrderDetailsUser extends HttpServlet {
         try {
             order = OrderFacade.readDataFromAnOrder(orderID,connectionPool);
             session.setAttribute("order",order);
-            SVG carportDraw = CarportSVG.createNewSVG(0, 0, 100, 60, "0 0 855 690");
-            carportDraw = CarportSVG.addRafters(order, carportDraw);
-            carportDraw = CarportSVG.addBeams(order,carportDraw);
-            carportDraw = CarportSVG.addPoles(order,carportDraw);
-            session.setAttribute("carportDraw",carportDraw);
+            SVG carportDrawTop = CarportSVG.createNewSVG(0, 0, 100, 60, "0 0 855 690");
+            carportDrawTop = CarportSVG.makeSVGTop(order, carportDrawTop);
+            session.setAttribute("carportDrawTop",carportDrawTop);
+
+            SVG carportDrawSide = CarportSVG.createNewSVG(0, 0, 100, 60, "0 0 855 690");
+            carportDrawSide = CarportSVG.makeSVGSide(order, carportDrawSide);
+            session.setAttribute("carportDrawSide", carportDrawSide);
+
+
             request.getRequestDispatcher("WEB-INF/user/showorderdetailsuser.jsp").forward(request, response);
-
-
         } catch (DatabaseException e) {
             request.setAttribute("errormessage", e.getMessage());
             request.getRequestDispatcher("error.jsp").forward(request, response);

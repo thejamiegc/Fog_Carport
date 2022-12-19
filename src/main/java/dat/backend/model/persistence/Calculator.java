@@ -6,6 +6,7 @@ import dat.backend.model.entities.Material;
 import dat.backend.model.entities.Order;
 import dat.backend.model.exceptions.DatabaseException;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -13,7 +14,7 @@ public class Calculator {
 
 
     //DETTE ER STOLPER
-    public static void calculatePoles(Order order, Map<Integer,Material> materialList, ConnectionPool connectionPool) throws DatabaseException {
+    public static double calculatePoles(Order order, Map<Integer,Material> materialList, ConnectionPool connectionPool) throws DatabaseException {
         Material tmpmaterial = materialList.get(11);
         int quantity = 0;
         int squareMeter = order.getCarport().getCarportSquareMeter();
@@ -32,11 +33,12 @@ public class Calculator {
         double price = quantity * tmpmaterial.getPricePerUnit();
         BillOfMaterials billOfMaterials = new BillOfMaterials(order.getOrderID(), tmpmaterial.getMaterialID(), "Stolper nedgraves 90 cm i jord",quantity,price,tmpmaterial);
         OrderFacade.createBom(billOfMaterials,connectionPool);
+        return price;
     }
 
 
     //DETTE ER SPÆR
-    public static void calculateRafters(Order order, Map<Integer,Material> materialList, ConnectionPool connectionPool) throws DatabaseException {
+    public static double calculateRafters(Order order, Map<Integer,Material> materialList, ConnectionPool connectionPool) throws DatabaseException {
         Material tmpmaterial = materialList.get(10);
         int i = 0;
         int quantity = 1;
@@ -48,21 +50,28 @@ public class Calculator {
         double price = quantity * tmpmaterial.getPricePerUnit();
         BillOfMaterials billOfMaterials = new BillOfMaterials(order.getOrderID(), tmpmaterial.getMaterialID(), "Spær monteres på rem",quantity,price,tmpmaterial);
         OrderFacade.createBom(billOfMaterials,connectionPool);
+        return price;
     }
 
     //DETTE ER REMME
-    public static void calculateBeams(Order order, Map<Integer,Material> materialList, ConnectionPool connectionPool) throws DatabaseException {
+    public static double calculateBeams(Order order, Map<Integer,Material> materialList, ConnectionPool connectionPool) throws DatabaseException {
         Material tmpmaterial = materialList.get(8);
         int quantity = 2;
         double price = quantity * tmpmaterial.getPricePerUnit();
         BillOfMaterials billOfMaterials = new BillOfMaterials(order.getOrderID(), tmpmaterial.getMaterialID(), "Remme i siderne, sadles ned i stolper",quantity,price,tmpmaterial);
         OrderFacade.createBom(billOfMaterials,connectionPool);
+        return price;
     }
 
-    public static void calculateAll(Order order, ConnectionPool connectionPool) throws DatabaseException {
+    public static void calculateAll(Order order, ConnectionPool connectionPool) throws SQLException, DatabaseException {
+        double totalprice = 0;
+
         Map<Integer,Material> materialList = OrderFacade.readMaterials(connectionPool);
-        calculatePoles(order, materialList, connectionPool);
-        calculateRafters(order, materialList, connectionPool);
-        calculateBeams(order, materialList, connectionPool);
+        totalprice += calculatePoles(order, materialList, connectionPool);
+        totalprice += calculateRafters(order, materialList, connectionPool);
+        totalprice += calculateBeams(order, materialList, connectionPool);
+
+        order.setPrice(totalprice);
+        OrderFacade.updateOrderPrice(order, connectionPool);
     }
 }

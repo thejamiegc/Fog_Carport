@@ -34,7 +34,7 @@ public class CreateOrder extends HttpServlet {
                 OrderFacade.updateStatus(order, connectionPool);
             }
             session.setAttribute("order",order);
-            request.getRequestDispatcher("WEB-INF/admin/navToCustomerOrders").forward(request, response);
+            request.getRequestDispatcher("/navToCustomerOrders").forward(request, response);
 
         } catch (DatabaseException | SQLException e) {
             request.setAttribute("errormessage", e.getMessage());
