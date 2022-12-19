@@ -7,50 +7,70 @@
 
     <jsp:body>
 
-        <h1>Detaljeret beskrivelse over dine ordrer</h1>
-        <h2>SVG</h2>
+        <h1>Ordre Detaljer - #${sessionScope.order.orderID}</h1>
 
-        ${sessionScope.carportDraw}
+        <div class="row">
+            <div class="col-mb-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Dine oplysninger</h5>
+                        <p class="card-text">
+                        <p>${sessionScope.order.user.firstname} ${sessionScope.order.user.lastname}</p>
+                        <p>${sessionScope.order.user.address}
+                            <br> ${sessionScope.order.user.postalcode}, ${sessionScope.order.user.city}</p>
+                    </div>
+                </div>
+            </div>
 
+            <div class="col-mb-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Carport oplysninger</h5>
+                        <p class="card-text">
+                        <p>Størrelse: ${sessionScope.order.carport.carportSquareMeter} kvadratmeter</p>
+                        <p>Længde: ${sessionScope.order.carport.length} cm</p>
+                        <p>Bredde: ${sessionScope.order.carport.width} cm</p>
+                        <p>Tagtype: ${sessionScope.order.carport.rooftype}</p>
+                        <p>Skur: Med skur</p>
+                    </div>
+                </div>
+            </div>
 
+            <div class="col-mb-7">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Plantegning</h5>
+                        <p>Her ses en tegning af carporten fra oven</p>
+                            ${sessionScope.carportDraw}
+                    </div>
+                </div>
+            </div>
 
-<%--        <div class="table-responsive">--%>
+            <div class="col-mb-7">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Snittegning</h5>
+                        <p>Her ses en tegning af carporten fra siden</p>
+                        ${sessionScope.carportDraw}<!-- byt ud med tegning fra siden -->
+                    </div>
+                </div>
+            </div>
 
-<%--            <table class="table table-hover">--%>
-<%--                <thead>--%>
-<%--                <tr>--%>
-<%--                    <th scope="col">#</th>--%>
-<%--                    <th scope="col">Ordrer ID</th>--%>
-<%--                    <th scope="col">BOM DEScrIPon</th>--%>
-<%--                    <th scope="col">Status navn</th>--%>
-<%--                    <th scope="col">DIT NAVN</th>--%>
-<%--                    <th scope="col">Pris ( money money money )</th>--%>
+            <div class="col-mb-7">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Stykliste</h5>
+                        <p class="card-text">indsæt info om stykliste her</p>
+                        <a href="#" class="btn btn-primary">Print stykliste</a>
+                    </div>
+                </div>
+            </div>
 
-<%--                </tr>--%>
-<%--                </thead>--%>
-<%--                <tbody>--%>
-<%--                <c:set var="count" value="1" scope="page" />--%>
-<%--                    <tr>--%>
-<%--                        <th scope="row">${count}</th>--%>
-<%--                        <td>${sessionScope.order.orderID}</td>--%>
-<%--                        <td>${sessionScope.order.billOfMaterialsList.get(0).description}</td>--%>
-<%--                        <td>${sessionScope.order.statusname}</td>--%>
-<%--                        <td>${sessionScope.order.user.firstname}</td>--%>
-<%--                        <td>${sessionScope.order.price}</td>--%>
-<%--                    </tr>--%>
-<%--                    <c:set var="count" value="${count + 1}" scope="page" />--%>
-<%--                </tbody>--%>
-<%--            </table>--%>
-<%--            <br>--%>
-<%--            <br>--%>
-<%--            <br>--%>
-<%--            <br>--%>
-<%--            <br>--%>
-<%--        </div>--%>
-<%--            <div class="col">--%>
-<%--                <img src="" alt="SVGdrawing/file"/>--%>
-<%--            </div>--%>
-<%--        </div>--%>
+        </div>
+
+        <br>
+        <br>
+        <br>
 
     </jsp:body>
 

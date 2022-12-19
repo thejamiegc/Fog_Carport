@@ -6,12 +6,17 @@
 <t:pagetemplate_admin>
 
     <jsp:body>
-        <h1>Ordre Detaljer</h1>
-        <h4>Kunde oplysninger</h4>
-        <h4>Carport oplysninger</h4>
 
-        <h4>Plantegning</h4>
-        <h4>Snittegning</h4>
+
+        <%--            <h4>Kunde oplysninger</h4>--%>
+        <%--            <p>${sessionScope.order.user.firstname} ${sessionScope.order.user.lastname}</p>--%>
+        <%--            <p>${sessionScope.order.user.address}--%>
+        <%--                <br> ${sessionScope.order.user.postalcode}, ${sessionScope.order.user.city}</p>--%>
+
+        <%--            <h4>Kontakt kunden via</h4>--%>
+        <%--            <p>${sessionScope.order.user.email}</p>--%>
+        <%--            <p>${sessionScope.order.user.phonenumber}</p>--%>
+
 
     </jsp:body>
 
