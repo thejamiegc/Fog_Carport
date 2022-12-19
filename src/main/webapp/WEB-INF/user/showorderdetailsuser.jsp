@@ -10,7 +10,7 @@
         <h1>Ordre Detaljer - #${sessionScope.order.orderID}</h1>
 
         <div class="row">
-            <div class="col-mb-5">
+            <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Dine oplysninger</h5>
@@ -19,24 +19,21 @@
                         <p>${sessionScope.order.user.address}
                             <br> ${sessionScope.order.user.postalcode}, ${sessionScope.order.user.city}</p>
                     </div>
-                </div>
-            </div>
-
-            <div class="col-mb-5">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Carport oplysninger</h5>
-                        <p class="card-text">
-                        <p>Størrelse: ${sessionScope.order.carport.carportSquareMeter} kvadratmeter</p>
-                        <p>Længde: ${sessionScope.order.carport.length} cm</p>
-                        <p>Bredde: ${sessionScope.order.carport.width} cm</p>
-                        <p>Tagtype: ${sessionScope.order.carport.rooftype}</p>
-                        <p>Skur: Med skur</p>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Carport oplysninger</h5>
+                            <p class="card-text">
+                            <p>Størrelse: ${sessionScope.order.carport.carportSquareMeter} kvadratmeter</p>
+                            <p>Længde: ${sessionScope.order.carport.length} cm</p>
+                            <p>Bredde: ${sessionScope.order.carport.width} cm</p>
+                            <p>Tagtype: ${sessionScope.order.carport.rooftype}</p>
+                            <p>Skur: Med skur</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-mb-7">
+            <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Plantegning</h5>
@@ -44,9 +41,6 @@
                             ${sessionScope.carportDraw}
                     </div>
                 </div>
-            </div>
-
-            <div class="col-mb-7">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Snittegning</h5>
@@ -55,6 +49,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         </div>
 
         <br>
