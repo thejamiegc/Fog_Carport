@@ -25,27 +25,31 @@
                 <input class="form-control" id="roof" name="roof" type="text" value="Fladt tag"
                        aria-label="readonly input example" readonly>
             </div>
-            <div class="mb-3">
-                <label for="shed" class="form-label">Skur:</label>
-                <input type="number" id="shed" name="shed" class="form-control" placeholder="1 for ja, 2 for nej">
-<%--                <input class="form-control" id="shed" name="shed" list="datalistOptions" id="exampleDataList"--%>
-<%--                       placeholder="Vælg her">--%>
-<%--                <datalist id="datalistOptions">--%>
-<%--                    <option value="1">--%>
-<%--                    <option value="2">--%>
-<%--                </datalist>--%>
+
+            <div data-bs-toggle="collapse" data-bs-target="#demo">
+                <div class="form-check">
+                    <p>Tilføj skur<input class="form-check-input" type="checkbox" id="shed" name="shed" value="1"></p>
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="shedwidth" class="form-label">Skur bredde:</label>
-                <input type="number" id="shedwidth" name="shedwidth" class="form-control" placeholder="bredde i cm">
-            </div>
-            <div class="mb-3">
-                <label for="shedlength" class="form-label">Skur længde:</label>
-                <input type="number" id="shedlength" name="shedlength" class="form-control" placeholder="længde i cm">
+
+            <div id="demo" class="collapse">
+                <div class="mb-3">
+                    <label for="shedwidth" class="form-label">Skur bredde:</label>
+                    <input type="number" id="shedwidth" name="shedwidth" class="form-control"
+                           placeholder="bredde i cm">
+                </div>
+                <div class="mb-3">
+                    <label for="shedlength" class="form-label">Skur længde:</label>
+                    <input type="number" id="shedlength" name="shedlength" class="form-control"
+                           placeholder="længde i cm">
+                </div>
             </div>
             <div class="mb-3">
                 <input type="submit" value="Bestil tilbud"/>
             </div>
+            </div>
+
+
         </form>
         <br>
         <br>

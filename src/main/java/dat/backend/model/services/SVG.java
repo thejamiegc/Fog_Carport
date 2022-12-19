@@ -11,8 +11,16 @@ public class SVG {
 
     private final static String HEADERTEMPLATE =
             "<svg x=\"%d\" y=\"%d\" height=\"%d%%\" width=\"%d%%\" viewBox=\"%s\" preserveAspectRatio=\"xMinYMin\">";
+
     private final static String RECTTEMPLATE =
-            "<rect x=\"%d\" y=\"%d\" height=\"%f\" width=\"%f\" style=\"stroke:#000000; fill: #ffffff\" />";
+            "<rect x=\"%d\" y=\"%d\" height=\"%f\" width=\"%f\" style=\"stroke:#000000; fill-opacity: 0\" />";
+
+    private final static String LINETEMPLATE =
+            "<line x1=\"%d\" y1=\"%d\" x2=\"%d\" y2=\"%d\" style=\"stroke:#000000; stroke-width:2\" />";
+
+    private final static String DASHEDLINETEMPLATE =
+            "<line x1=\"%d\" y1=\"%d\" x2=\"%d\" y2=\"%d\" style=\"stroke:#000000; stroke-width:2\" stroke-dasharray=\"4\"/>";
+
     private final static String ARROWHEADSTEMPLATE = "<defs>\n" +
             "        <marker id=\"beginArrow\" markerWidth=\"12\" markerHeight=\"12\" refX=\"0\" refY=\"6\" orient=\"auto\">\n" +
             "            <path d=\"M0,6 L12,0 L12,12 L0,6\" style=\"fill: #000000;\" />\n" +
@@ -22,8 +30,7 @@ public class SVG {
             "        </marker>\n" +
             "    </defs>";
 
-    public SVG(int x, int y, int height, int width, String viewbox)
-    {
+    public SVG(int x, int y, int height, int width, String viewbox) {
         svgString.append(String.format(HEADERTEMPLATE, x, y, height, width, viewbox));
         svgString.append(ARROWHEADSTEMPLATE);
         this.x = x;
@@ -33,24 +40,25 @@ public class SVG {
         this.viewbox = viewbox;
     }
 
-    public void addRect(int x, int y, double height, double width)
-    {
+    public void addRect(int x, int y, double height, double width) {
         svgString.append(String.format(RECTTEMPLATE, x, y, height, width));
     }
 
-    public void addLine(int x1, int y1, int x2, int y2)
-    {
-
+    public void addLine(int x1, int y1, int x2, int y2) {
+        svgString.append(String.format(LINETEMPLATE, x1, y1, x2, y2));
+        svgString.append(String.format(ARROWHEADSTEMPLATE));
     }
 
-    public void addInnerSvg(SVG innerSVGDrawing)
-    {
+    public void addDashedLine(int x1, int y1, int x2, int y2) {
+        svgString.append(String.format(DASHEDLINETEMPLATE, x1, y2, x2, y2));
+    }
+
+    public void addInnerSvg(SVG innerSVGDrawing) {
         svgString.append(innerSVGDrawing);
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return svgString + "</svg>";
     }
 

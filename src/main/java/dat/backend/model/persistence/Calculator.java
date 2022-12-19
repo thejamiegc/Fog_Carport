@@ -54,7 +54,16 @@ public class Calculator {
     }
 
     //DETTE ER REMME
-    public static double calculateBeams(Order order, Map<Integer,Material> materialList, ConnectionPool connectionPool) throws DatabaseException {
+    public static double calculateOuterBeams(Order order, Map<Integer,Material> materialList, ConnectionPool connectionPool) throws DatabaseException {
+        Material tmpmaterial = materialList.get(8);
+        int quantity = 2;
+        double price = quantity * tmpmaterial.getPricePerUnit();
+        BillOfMaterials billOfMaterials = new BillOfMaterials(order.getOrderID(), tmpmaterial.getMaterialID(), "Remme i siderne, sadles ned i stolper",quantity,price,tmpmaterial);
+        OrderFacade.createBom(billOfMaterials,connectionPool);
+        return price;
+    }
+
+    public static double calculateInnerBeams(Order order, Map<Integer,Material> materialList, ConnectionPool connectionPool) throws DatabaseException {
         Material tmpmaterial = materialList.get(8);
         int quantity = 2;
         double price = quantity * tmpmaterial.getPricePerUnit();
@@ -69,7 +78,8 @@ public class Calculator {
         Map<Integer,Material> materialList = OrderFacade.readMaterials(connectionPool);
         totalprice += calculatePoles(order, materialList, connectionPool);
         totalprice += calculateRafters(order, materialList, connectionPool);
-        totalprice += calculateBeams(order, materialList, connectionPool);
+        totalprice += calculateOuterBeams(order, materialList, connectionPool);
+        totalprice += calculateInnerBeams(order, materialList, connectionPool);
 
         order.setPrice(totalprice);
         OrderFacade.updateOrderPrice(order, connectionPool);
