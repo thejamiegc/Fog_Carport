@@ -55,17 +55,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-mb-7">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Stykliste</h5>
-                        <p class="card-text">indsæt info om stykliste her</p>
-                        <a href="#" class="btn btn-primary">Print stykliste</a>
-                    </div>
-                </div>
-            </div>
-
         </div>
 
         <br>
