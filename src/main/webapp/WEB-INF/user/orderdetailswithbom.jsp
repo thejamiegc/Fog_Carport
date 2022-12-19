@@ -60,7 +60,13 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Stykliste</h5>
-                        <p class="card-text">indsæt info om stykliste her</p>
+                        <ul class="list-group">
+                            <li class="list-group-item">Liste 1</li>
+                            <li class="list-group-item">Liste 2</li>
+                            <li class="list-group-item">Liste 3</li>
+                            <li class="list-group-item">Liste 4</li>
+                            <li class="list-group-item">Liste 5</li>
+                        </ul>
                         <a href="#" class="btn btn-primary">Print stykliste</a>
                     </div>
                 </div>
