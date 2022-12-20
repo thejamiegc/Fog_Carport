@@ -2,6 +2,7 @@ package dat.backend.model.persistence;
 
 import dat.backend.model.entities.Carport;
 import dat.backend.model.entities.Order;
+import dat.backend.model.entities.Shed;
 import dat.backend.model.exceptions.DatabaseException;
 
 import java.sql.*;
@@ -84,6 +85,38 @@ public class CarportMapper {
             }
         } catch (SQLException ex) {
             throw new DatabaseException(ex, "Could not update order from database");
+        }
+    }
+
+    public static int createShed(Shed shed, ConnectionPool connectionPool) throws DatabaseException {
+        Logger.getLogger("web").log(Level.INFO, "");
+        String sql = "INSERT INTO Shed (length, width) VALUES (?,?)";
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+                ps.setInt(1, shed.getShedLength());
+                ps.setInt(2, shed.getShedWidth());
+                ps.executeUpdate();
+                ResultSet rs = ps.getGeneratedKeys();
+                rs.next();
+                return rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            throw new DatabaseException(ex, "Could not insert shed into database");
+        }
+
+    }
+
+    public static void updateShedID(int orderID, Shed shed, ConnectionPool connectionPool) throws DatabaseException {
+        Logger.getLogger("web").log(Level.INFO, "");
+        String sql = "UPDATE carport.Shed SET orderID = ? WHERE shed = ?";
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, orderID);
+                ps.setInt(2, shed.getShedID());
+                ps.executeUpdate();
+            }
+        } catch (SQLException ex) {
+            throw new DatabaseException(ex, "Could not update orderID in shed from database");
         }
     }
 }

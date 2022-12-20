@@ -32,8 +32,17 @@ public class BuildCarport extends HttpServlet {
                 request.getParameter("length")),
                 Integer.parseInt(request.getParameter("width")),
                 request.getParameter("roof"));
+        Shed shed = null;
+
+        if (request.getParameter("shedlength") != ""){
+            shed = new Shed(Integer.parseInt(request.getParameter("shedlength")),Integer.parseInt(request.getParameter("shedwidth")));
+        }
 
         try {
+            if (shed != null){
+                int shedID = CarportFacade.createShed(shed, connectionPool);
+                shed.setShedID(shedID);
+            }
             int carportID = CarportFacade.createCarport(carport, connectionPool);
             carport.setCarportID(carportID);
             User user = (User)session.getAttribute("user");
@@ -41,6 +50,9 @@ public class BuildCarport extends HttpServlet {
             int orderID = OrderFacade.createOrder(order, connectionPool);
             order.setOrderID(orderID);
             CarportFacade.updateOrderID(orderID, carportID, connectionPool);
+            if (shed != null){
+                CarportFacade.updateShedID(orderID,shed,connectionPool);
+            }
             Calculator.calculateAll(order, connectionPool);
             request.getRequestDispatcher("/myorders").forward(request, response);
 

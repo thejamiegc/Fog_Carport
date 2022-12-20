@@ -16,9 +16,10 @@ public class Order {
     private String statusname;
     private Map<Integer,BillOfMaterials> billOfMaterialsList;
     private User user;
+    private Shed shed;
 
     // Used in OrderMapper to show orders (myorders and allrequestsfromcustomers jsp )
-    public Order(int orderID, int customerID, Timestamp created, int carportID, double price, int statusID, Carport carport, String statusname) {
+    public Order(int orderID, int customerID, Timestamp created, int carportID, double price, int statusID, Carport carport, String statusname, Shed shed) {
         this.orderID = orderID;
         this.customerID = customerID;
         this.created = created;
@@ -27,6 +28,7 @@ public class Order {
         this.statusID = statusID;
         this.carport = carport;
         this.statusname = statusname;
+        this.shed = shed;
     }
 
 
@@ -38,7 +40,7 @@ public class Order {
     }
 
 
-    public Order(int orderID, int customerID, Timestamp created, int carportID, double price, int statusID, Carport carport, String statusname, Map<Integer,BillOfMaterials> billOfMaterialsList, User user) {
+    public Order(int orderID, int customerID, Timestamp created, int carportID, double price, int statusID, Carport carport, String statusname, Map<Integer,BillOfMaterials> billOfMaterialsList, User user,Shed shed) {
         this.orderID = orderID;
         this.customerID = customerID;
         this.created = created;
@@ -49,6 +51,7 @@ public class Order {
         this.statusname = statusname;
         this.billOfMaterialsList = billOfMaterialsList;
         this.user = user;
+        this.shed = shed;
     }
 
     public void setStatusID(int statusID) {
@@ -73,6 +76,10 @@ public class Order {
 
     public int getCarportID() {
         return carportID;
+    }
+
+    public Shed getShed() {
+        return shed;
     }
 
     public double getPrice() {

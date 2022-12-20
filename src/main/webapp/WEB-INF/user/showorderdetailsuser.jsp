@@ -26,7 +26,10 @@
                         <p>Længde: ${sessionScope.order.carport.length} cm</p>
                         <p>Bredde: ${sessionScope.order.carport.width} cm</p>
                         <p>Tagtype: ${sessionScope.order.carport.rooftype}</p>
-                        <p>Skur: Med skur</p>
+                        <c:if test="${sessionScope.order.shed.shedID != 0}">
+                            <p>Skur længde: ${sessionScope.order.shed.shedLength} </p>
+                            <p>Skur bredde: ${sessionScope.order.shed.shedWidth} </p>
+                        </c:if>
                     </div>
                 </div>
         </div>

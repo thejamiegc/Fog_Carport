@@ -2,6 +2,7 @@ package dat.backend.model.persistence;
 
 import dat.backend.model.entities.Carport;
 import dat.backend.model.entities.Order;
+import dat.backend.model.entities.Shed;
 import dat.backend.model.exceptions.DatabaseException;
 
 import java.util.List;
@@ -22,5 +23,13 @@ public class CarportFacade {
 
     public static void updateOrderID(int orderID, int carportID, ConnectionPool connectionPool) throws DatabaseException {
         CarportMapper.updateOrderID(orderID, carportID, connectionPool);
+    }
+
+    public static int createShed(Shed shed, ConnectionPool connectionPool) throws DatabaseException {
+        return CarportMapper.createShed(shed,connectionPool);
+    }
+
+    public static void updateShedID(int orderID, Shed shed, ConnectionPool connectionPool) throws DatabaseException {
+        CarportMapper.updateShedID(orderID,shed,connectionPool);
     }
 }
