@@ -37,8 +37,6 @@ public class ShowOrderDetailsUser extends HttpServlet {
             carportDrawSide = CarportSVG.makeSVGSide(order, carportDrawSide);
             session.setAttribute("carportDrawSide", carportDrawSide);
 
-
-            request.getRequestDispatcher("WEB-INF/user/showorderdetailsuser.jsp").forward(request, response);
         } catch (DatabaseException e) {
             request.setAttribute("errormessage", e.getMessage());
             request.getRequestDispatcher("error.jsp").forward(request, response);

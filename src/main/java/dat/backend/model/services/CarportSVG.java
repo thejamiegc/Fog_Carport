@@ -28,12 +28,13 @@ public class CarportSVG {
     }
 
     public static SVG makeSVGTextSide(Order order, SVG svg){
-        svg.addTextSide(0,60,"Hej");
+        svg.addTextSide(10,endCarportY/2,order.getCarport().getWidth()+"");
+        svg.addTextSide(65,endCarportY/2,order.getCarport().getWidth()-70+"");
         return svg;
     }
 
     public static SVG makeSVGTextBottom(Order order, SVG svg){
-        svg.addTextBottom(660,60,"Hej");
+        svg.addTextBottom(order.getCarport().getLength()/2+startCarportX-10,670,order.getCarport().getLength()+"");
         return svg;
     }
 
@@ -145,16 +146,16 @@ public class CarportSVG {
     }
 
     private static SVG addBeamsSide(Order order, SVG svg) {
-        svg.addRect(0, 0, 9.5, order.getCarport().getLength());
+        svg.addRect(startCarportX, startCarportY+40, 9.5, order.getCarport().getLength());
         return svg;
     }
 
     private static SVG addPolesSide(Order order, SVG svg) {
         for (int i = 0; i < order.getBillOfMaterialsList().get(11).getQuantity() / 2; i++) {
             if (100 + i * 250 < order.getCarport().getLength()) {
-                svg.addRect(100 + i * 250, 0, 300, 9.7);
+                svg.addRect((100 + i * 250) + startCarportX, startCarportY + 40, 300, 9.7);
             } else {
-                svg.addRect(order.getCarport().getLength(), 0, 300, 9.7);
+                svg.addRect(order.getCarport().getLength() - 10, startCarportY + 40, 300, 9.7);
             }
         }
         return svg;

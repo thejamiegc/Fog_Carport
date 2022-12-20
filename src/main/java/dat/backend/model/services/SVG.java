@@ -28,10 +28,12 @@ public class SVG {
             "<line x1=\"%d\" y1=\"%d\" x2=\"%d\" y2=\"%d\" style=\"stroke:#000000; stroke-width:2\" stroke-dasharray=\"4\"/>";
 
     private final static String TEXTTEMPLATESIDE =
-            "<text x=\"%d\" y=\"%d\" fill=\"black\" transform=\"translate(30,100) rotate(-90)\">PLACEHOLDER</text>";
+            "<text x=\"%d\" y=\"%d\" fill=\"black\" transform=\"translate() rotate(-90)\">";
 
     private final static String TEXTTEMPLATEBOTTOM =
-            "<text x=\"%d\" y=\"%d\" fill=\"black\" transform=\"translate(30,100) rotate(0)\">PLACEHOLDER</text>";
+            "<text x=\"%d\" y=\"%d\" fill=\"black\">";
+
+    private final static String TEXTTEMPLATEEND = "</text>";
 
 
     private final static String ARROWHEADSTEMPLATE = "<defs>\n" +
@@ -75,10 +77,14 @@ public class SVG {
 
     public void addTextSide(int x, int y, String text){
         svgString.append(String.format(TEXTTEMPLATESIDE,x,y,text));
+        svgString.append(String.format(text));
+        svgString.append(String.format(TEXTTEMPLATEEND));
     }
 
     public void addTextBottom(int x, int y, String text){
         svgString.append(String.format(TEXTTEMPLATEBOTTOM,x,y,text));
+        svgString.append(String.format(text));
+        svgString.append(String.format(TEXTTEMPLATEEND));
     }
 
     public void addInnerSvg(SVG innerSVGDrawing) {
