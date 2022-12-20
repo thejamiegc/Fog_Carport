@@ -15,6 +15,9 @@ public class SVG {
     private final static String RECTTEMPLATE =
             "<rect x=\"%d\" y=\"%d\" height=\"%f\" width=\"%f\" style=\"stroke:#000000; fill-opacity: 0\" />";
 
+    private final static String RECTSHEDTEMPLATE =
+            "<rect x=\"%d\" y=\"%d\" height=\"%f\" width=\"%f\" style=\"stroke-width:4; stroke:#000000; fill-opacity: 0\" />";
+
     private final static String LINETEMPLATE =
             "<line x1=\"%d\" y1=\"%d\" x2=\"%d\" y2=\"%d\" style=\"stroke:#000000; stroke-width:2;\" />";
 
@@ -52,6 +55,10 @@ public class SVG {
 
     public void addRect(int x, int y, double height, double width) {
         svgString.append(String.format(RECTTEMPLATE, x, y, height, width));
+    }
+
+    public void addRectShed(int x, int y, double height, double width) {
+        svgString.append(String.format(RECTSHEDTEMPLATE, x, y, height, width));
     }
 
     public void addLine(int x1, int y1, int x2, int y2) {

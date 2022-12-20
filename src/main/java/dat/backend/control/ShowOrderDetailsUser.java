@@ -29,11 +29,11 @@ public class ShowOrderDetailsUser extends HttpServlet {
         try {
             order = OrderFacade.readDataFromAnOrder(orderID,connectionPool);
             session.setAttribute("order",order);
-            SVG carportDrawTop = CarportSVG.createNewSVG(0, 0, 100, 60, "0 0 855 690");
+            SVG carportDrawTop = CarportSVG.createNewSVG(0, 0, 100, 100, "0 0 1280 720");
             carportDrawTop = CarportSVG.makeSVGTop(order, carportDrawTop);
             session.setAttribute("carportDrawTop",carportDrawTop);
 
-            SVG carportDrawSide = CarportSVG.createNewSVG(0, 0, 100, 60, "0 0 855 690");
+            SVG carportDrawSide = CarportSVG.createNewSVG(0, 0, 100, 100, "0 0 1280 720");
             carportDrawSide = CarportSVG.makeSVGSide(order, carportDrawSide);
             session.setAttribute("carportDrawSide", carportDrawSide);
 

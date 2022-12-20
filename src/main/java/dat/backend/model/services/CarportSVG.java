@@ -15,11 +15,15 @@ public class CarportSVG {
         carportDrawTop = CarportSVG.addRaftersTop(order, carportDrawTop);
         carportDrawTop = CarportSVG.addBeamsOuterTop(order,carportDrawTop);
         carportDrawTop = CarportSVG.addBeamsInnerTop(order, carportDrawTop);
-        carportDrawTop = CarportSVG.addPolesTop(order,carportDrawTop);
         carportDrawTop = CarportSVG.makeSVGLines(order, carportDrawTop);
         carportDrawTop = CarportSVG.makeSVGTextSide(order,carportDrawTop);
         carportDrawTop = CarportSVG.makeSVGTextBottom(order,carportDrawTop);
-        carportDrawTop = CarportSVG.addShed(order, carportDrawTop);
+        if(order.getShed().getShedLength()!=0) {
+            carportDrawTop = CarportSVG.addShedTop(order, carportDrawTop);
+            carportDrawTop = CarportSVG.addPolesTopShed(order,carportDrawTop);
+        }else{
+            carportDrawTop = CarportSVG.addPolesTop(order,carportDrawTop);
+        }
         return carportDrawTop;
     }
 
@@ -45,17 +49,18 @@ public class CarportSVG {
         svg.addArrowLine(startCarportX, 640, order.getCarport().getLength() + startCarportX, 640);
 
         //dashed lines /cross
-        svg.addDashedLine(startCarportX+55, startCarportY+40, order.getCarport().getLength()+startCarportX-55, endCarportY-40);
-        svg.addDashedLine(startCarportX+55, endCarportY-40, order.getCarport().getLength()+startCarportX-55, startCarportY+40);
+        svg.addDashedLine(startCarportX+55, startCarportY+40, order.getCarport().getLength()+startCarportX-55-order.getShed().getShedLength(), endCarportY-40);
+        svg.addDashedLine(startCarportX+55, endCarportY-40, order.getCarport().getLength()+startCarportX-55-order.getShed().getShedLength(), startCarportY+40);
 
 
         return svg;
     }
 
 
-    public static SVG addShed(Order order, SVG svg) {
-        svg.addRect(400, 400, 100, 100);
+    public static SVG addShedTop(Order order, SVG svg) {
+        svg.addRectShed(order.getCarport().getLength()+startCarportX-55-order.getShed().getShedLength(), startCarportY+40, endCarportY-80+5, order.getShed().getShedLength());
         return svg;
+
     }
 
 
@@ -65,7 +70,7 @@ public class CarportSVG {
             if (i * 55 < order.getCarport().getLength()) {
                 svg.addRect((i * 55) + startCarportX, startCarportY, 600.0, 4.5);
             } else {
-                svg.addRect(order.getCarport().getLength() - 4, startCarportY, 600.0, 4.5);
+                svg.addRect(order.getCarport().getLength() - 4+startCarportX, startCarportY, 600.0, 4.5);
             }
         }
         return svg;
@@ -103,6 +108,32 @@ public class CarportSVG {
                 svg.addRect(order.getCarport().getLength() - 10, endCarportY - 45, height, height);
             }
         }
+        return svg;
+    }
+    // DETTE ER STOLPER MED SKUR
+    public static SVG addPolesTopShed(Order order, SVG svg) {
+        double height = 9.7;
+        double width = 9.7;
+
+        for (int i = 0; i < order.getBillOfMaterialsList().get(11).getQuantity() / 2; i++) {
+            if (100 + i * 250 < order.getCarport().getLength()-order.getShed().getShedLength()) {
+                svg.addRect((100 + i * 250) + startCarportX, startCarportY + 40, height, width);
+            }
+        }
+        for (int i = 0; i < order.getBillOfMaterialsList().get(11).getQuantity() / 2; i++) {
+            if (100 + i * 250 < order.getCarport().getLength()-order.getShed().getShedLength()) {
+                svg.addRect((100 + i * 250) + startCarportX, endCarportY - 45, height, width);
+            }
+        }
+        //venstre skur stolper
+        svg.addRect(order.getCarport().getLength()+startCarportX-55-order.getShed().getShedLength(),startCarportY+40,height,width);
+        svg.addRect(order.getCarport().getLength()+startCarportX-55-order.getShed().getShedLength(),endCarportY/2,height,width);
+        svg.addRect(order.getCarport().getLength()+startCarportX-55-order.getShed().getShedLength(),endCarportY-45,height,width);
+        //højre skur stolper
+        svg.addRect(order.getCarport().getLength()+startCarportX-65,startCarportY+40,height,width);
+        svg.addRect(order.getCarport().getLength()+startCarportX-65,endCarportY/2,height,width);
+        svg.addRect(order.getCarport().getLength()+startCarportX-65,endCarportY-45,height,width);
+
         return svg;
     }
 
