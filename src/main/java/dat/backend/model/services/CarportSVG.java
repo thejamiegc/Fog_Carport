@@ -3,7 +3,7 @@ package dat.backend.model.services;
 import dat.backend.model.entities.Order;
 
 public class CarportSVG {
-    private static int startCarportX = 60;
+    private static int startCarportX = 100;
     private static int startCarportY = 0;
     private static int endCarportY = 600;
 
@@ -17,25 +17,41 @@ public class CarportSVG {
         carportDrawTop = CarportSVG.addBeamsInnerTop(order, carportDrawTop);
         carportDrawTop = CarportSVG.addPolesTop(order,carportDrawTop);
         carportDrawTop = CarportSVG.makeSVGLines(order, carportDrawTop);
+        carportDrawTop = CarportSVG.makeSVGTextSide(order,carportDrawTop);
+        carportDrawTop = CarportSVG.makeSVGTextBottom(order,carportDrawTop);
         carportDrawTop = CarportSVG.addShed(order, carportDrawTop);
         return carportDrawTop;
     }
 
-    public static SVG makeSVGLines(Order order, SVG svg) {
-        //left outer (length of rafter)
-        svg.addLine(1, 0, 1, endCarportY,1,endCarportY/2,order.getCarport().getWidth());
-
-        //left inner (length between poles)
-        svg.addLine(30, 0 + 40, 30, endCarportY - 40,30,endCarportY/2,order.getCarport().getWidth()-75);
-
-        //bottom
-        svg.addLine(startCarportX, 650, order.getCarport().getLength() + startCarportX, 650,(order.getCarport().getLength()+startCarportX)/2,650,order.getCarport().getLength());
-
-        //dashed lines /cross
-        svg.addDashedLine(80, 50, 520,  565);
-        svg.addDashedLine(80, 565, 520, 50);
+    public static SVG makeSVGTextSide(Order order, SVG svg){
+        svg.addTextSide(0,60,"Hej");
         return svg;
     }
+
+    public static SVG makeSVGTextBottom(Order order, SVG svg){
+        svg.addTextBottom(660,60,"Hej");
+        return svg;
+    }
+
+
+    public static SVG makeSVGLines(Order order, SVG svg) {
+        //Arrow line left outer
+        svg.addArrowLine(40,startCarportY,40,endCarportY);
+
+        //Arrow line left inner (length between poles)
+        svg.addArrowLine(60, 0 + 40, 60, endCarportY - 40);
+
+        //bottom
+        svg.addArrowLine(startCarportX, 640, order.getCarport().getLength() + startCarportX, 640);
+
+        //dashed lines /cross
+        svg.addDashedLine(startCarportX+55, startCarportY+40, order.getCarport().getLength()+startCarportX-55, endCarportY-40);
+        svg.addDashedLine(startCarportX+55, endCarportY-40, order.getCarport().getLength()+startCarportX-55, startCarportY+40);
+
+
+        return svg;
+    }
+
 
     public static SVG addShed(Order order, SVG svg) {
         svg.addRect(400, 400, 100, 100);

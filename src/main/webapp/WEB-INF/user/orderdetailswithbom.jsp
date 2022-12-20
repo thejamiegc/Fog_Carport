@@ -32,13 +32,13 @@
                     <div class="card-body">
                         <h5 class="card-title">Plantegning</h5>
                         <p>Her ses en tegning af carporten fra oven</p>
-                            ${sessionScope.carportDraw}
+                            ${sessionScope.carportDrawTop}
                     </div>
 
                     <div class="card-body">
                         <h5 class="card-title">Snittegning</h5>
                         <p>Her ses en tegning af carporten fra siden</p>
-                        ${sessionScope.carportDraw}<!-- byt ud med tegning fra siden -->
+                        ${sessionScope.carportDrawSide}<!-- byt ud med tegning fra siden -->
                     </div>
                 </div>
             </div>
