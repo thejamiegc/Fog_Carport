@@ -35,7 +35,8 @@ public class NavToCustomerOrders extends HttpServlet {
             request.getRequestDispatcher("WEB-INF/admin/allordersfromcustomers.jsp").forward(request, response);
 
         } catch (DatabaseException e) {
-            e.printStackTrace();
+            request.setAttribute("errormessage", e.getMessage());
+            request.getRequestDispatcher("error.jsp").forward(request, response);
         }
     }
 }

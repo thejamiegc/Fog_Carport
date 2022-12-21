@@ -56,4 +56,11 @@ public class OrderFacade
         OrderMapper.updateOrderPrice(order, connectionPool);
     }
 
+    public static Material readMaterial(int materialID, ConnectionPool connectionPool) throws DatabaseException {
+        return OrderMapper.readMaterial(materialID,connectionPool);
+    }
+
+    public static void updateMaterial(Material material, ConnectionPool connectionPool)throws SQLException {
+        OrderMapper.updateMaterial(material,connectionPool);
+    }
 }

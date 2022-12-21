@@ -61,4 +61,8 @@ public class Material {
     public int getType() {
         return type;
     }
+
+    public String getTypename() {
+        return typename;
+    }
 }

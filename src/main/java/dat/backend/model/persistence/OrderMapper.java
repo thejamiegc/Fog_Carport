@@ -113,9 +113,9 @@ public class OrderMapper {
                     int shedWidth = rs.getInt("Shed.width");
                     int shedOrderID = rs.getInt("Shed.orderID");
 
-                    Carport carport = new Carport(carportID, length, width, rooftype,orderID);
+                    Carport carport = new Carport(carportID, length, width, rooftype, orderID);
                     Shed shed = new Shed(shedID, shedLength, shedWidth, shedOrderID);
-                    Order order = new Order(orderID, customerID, created, carportID, price,statusID, carport, statusname, shed);
+                    Order order = new Order(orderID, customerID, created, carportID, price, statusID, carport, statusname, shed);
                     orderList.add(order);
                 }
             }
@@ -152,9 +152,9 @@ public class OrderMapper {
                     int shedWidth = rs.getInt("Shed.width");
                     int shedOrderID = rs.getInt("Shed.orderID");
 
-                    Carport carport = new Carport(carportID, length, width, rooftype,orderID);
+                    Carport carport = new Carport(carportID, length, width, rooftype, orderID);
                     Shed shed = new Shed(shedID, shedLength, shedWidth, shedOrderID);
-                    Order order = new Order(orderID, customerID, created, carportID, price,statusID, carport, statusname, shed);
+                    Order order = new Order(orderID, customerID, created, carportID, price, statusID, carport, statusname, shed);
                     orderList.add(order);
                 }
             }
@@ -166,7 +166,7 @@ public class OrderMapper {
 
     public static Order readDataFromAnOrder(int orderID, ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
-        Map<Integer,BillOfMaterials> billOfMaterialsList = new HashMap<>();
+        Map<Integer, BillOfMaterials> billOfMaterialsList = new HashMap<>();
         Order order = null;
 
         String sql = "SELECT * FROM `Order`" +
@@ -233,7 +233,7 @@ public class OrderMapper {
                     Shed shed = new Shed(shedID, shedLength, shedWidth, shedOrderID);
                     Carport carport = new Carport(carportID, carportLength, carportWidth, rooftype, orderID);
                     Material material = new Material(materialID, matdescription, matLength, unit, priceperunit, type, typename);
-                    billOfMaterialsList.put(materialID,new BillOfMaterials(bomID, orderID, materialID, bomDescription, quantity, price, material));
+                    billOfMaterialsList.put(materialID, new BillOfMaterials(bomID, orderID, materialID, bomDescription, quantity, price, material));
                     order = new Order(orderID, userID, created, carportID, orderPrice, statusID, carport, statusname, billOfMaterialsList, user, shed);
                 }
             }
@@ -285,7 +285,7 @@ public class OrderMapper {
         Logger.getLogger("web").log(Level.INFO, "");
         Map<Integer, Material> materialList = new HashMap<>();
 
-        String sql = "SELECT * FROM Material";
+        String sql = "SELECT * FROM Material inner join MaterialType on Material.type = MaterialType.typeID";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -297,8 +297,9 @@ public class OrderMapper {
                     String unit = rs.getString("unit");
                     double priceperunit = rs.getDouble("priceperunit");
                     int type = rs.getInt("type");
+                    String typename = rs.getString("name");
 
-                    materialList.put(materialID, new Material(materialID, description, length, unit, priceperunit, type));
+                    materialList.put(materialID, new Material(materialID, description, length, unit, priceperunit, type, typename));
                 }
             }
         } catch (SQLException ex) {
@@ -342,5 +343,78 @@ public class OrderMapper {
     }
 
 
+    public static Material readMaterial(int materialID, ConnectionPool connectionPool) throws DatabaseException {
+        Logger.getLogger("web").log(Level.INFO, "");
+        Material material = null;
+        String sql = "SELECT * FROM Material inner join MaterialType on Material.type = MaterialType.typeID WHERE materialID = ?";
+
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, materialID);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    String description = rs.getString("description");
+                    int length = rs.getInt("length");
+                    String unit = rs.getString("unit");
+                    double priceperunit = rs.getDouble("priceperunit");
+                    int type = rs.getInt("type");
+                    String typename = rs.getString("name");
+
+                    material = new Material(materialID, description, length, unit, priceperunit, type, typename);
+                }
+            }
+        } catch (SQLException ex) {
+            throw new DatabaseException(ex, "Could not read data from database");
+        }
+        return material;
+    }
+
+    public static void updateMaterial(Material material, ConnectionPool connectionPool) throws SQLException {
+        Logger.getLogger("web").log(Level.INFO, "");
+        String sql = "UPDATE carport.Material SET description = ? WHERE materialID = ?";
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+                ps.setString(1, material.getDescription());
+                ps.setInt(2, material.getMaterialID());
+
+                ps.executeUpdate();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+        sql = "UPDATE carport.Material SET length = ? WHERE materialID = ?";
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+                ps.setInt(1, material.getLength());
+                ps.setInt(2, material.getMaterialID());
+
+                ps.executeUpdate();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+        sql = "UPDATE carport.Material SET unit = ? WHERE materialID = ?";
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+                ps.setString(1, material.getUnit());
+                ps.setInt(2, material.getMaterialID());
+
+                ps.executeUpdate();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+        sql = "UPDATE carport.Material SET priceperunit = ? WHERE materialID = ?";
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+                ps.setDouble(1, material.getPricePerUnit());
+                ps.setInt(2, material.getMaterialID());
+
+                ps.executeUpdate();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+    }
 }
 
