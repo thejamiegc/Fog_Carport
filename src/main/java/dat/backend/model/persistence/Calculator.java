@@ -71,6 +71,74 @@ public class Calculator {
         return price;
     }
 
+    //ende stern under
+    public static double calculateEndSternUnder(Order order, Map<Integer,Material> materialList, ConnectionPool connectionPool) throws DatabaseException {
+        Material tmpmaterial = materialList.get(1);
+        int quantity = 4;
+        double price = quantity * tmpmaterial.getPricePerUnit();
+        BillOfMaterials billOfMaterials = new BillOfMaterials(order.getOrderID(), tmpmaterial.getMaterialID(), "Understernbrædder til for og bag ende",quantity,price,tmpmaterial);
+        OrderFacade.createBom(billOfMaterials,connectionPool);
+        return price;
+    }
+    //side stern under
+    public static double calculateSideSternUnder(Order order, Map<Integer,Material> materialList, ConnectionPool connectionPool) throws DatabaseException {
+        Material tmpmaterial = materialList.get(2);
+        int quantity = 4;
+        double price = quantity * tmpmaterial.getPricePerUnit();
+        BillOfMaterials billOfMaterials = new BillOfMaterials(order.getOrderID(), tmpmaterial.getMaterialID(), "Understernbrædder til side",quantity,price,tmpmaterial);
+        OrderFacade.createBom(billOfMaterials,connectionPool);
+        return price;
+    }
+
+    //ende stern over
+    public static double calculateEndSternOver(Order order, Map<Integer,Material> materialList, ConnectionPool connectionPool) throws DatabaseException {
+        Material tmpmaterial = materialList.get(3);
+        int quantity = 2;
+        double price = quantity * tmpmaterial.getPricePerUnit();
+        BillOfMaterials billOfMaterials = new BillOfMaterials(order.getOrderID(), tmpmaterial.getMaterialID(), "Oversternbrædder til forenden",quantity,price,tmpmaterial);
+        OrderFacade.createBom(billOfMaterials,connectionPool);
+        return price;
+    }
+    //side stern over
+    public static double calculateSideSternOver(Order order, Map<Integer,Material> materialList, ConnectionPool connectionPool) throws DatabaseException {
+        Material tmpmaterial = materialList.get(4);
+        int quantity = 4;
+        double price = quantity * tmpmaterial.getPricePerUnit();
+        BillOfMaterials billOfMaterials = new BillOfMaterials(order.getOrderID(), tmpmaterial.getMaterialID(), "Oversternbrædder til side",quantity,price,tmpmaterial);
+        OrderFacade.createBom(billOfMaterials,connectionPool);
+        return price;
+    }
+
+    public static double calculateSideWaterStern(Order order, Map<Integer,Material> materialList, ConnectionPool connectionPool) throws DatabaseException {
+        Material tmpmaterial = materialList.get(13);
+        int quantity = 4;
+        double price = quantity * tmpmaterial.getPricePerUnit();
+        BillOfMaterials billOfMaterials = new BillOfMaterials(order.getOrderID(), tmpmaterial.getMaterialID(), "vandbrædt på stern i sider",quantity,price,tmpmaterial);
+        OrderFacade.createBom(billOfMaterials,connectionPool);
+        return price;
+    }
+
+    public static double calculateEndWaterStern(Order order, Map<Integer,Material> materialList, ConnectionPool connectionPool) throws DatabaseException {
+        Material tmpmaterial = materialList.get(14);
+        int quantity = 2;
+        double price = quantity * tmpmaterial.getPricePerUnit();
+        BillOfMaterials billOfMaterials = new BillOfMaterials(order.getOrderID(), tmpmaterial.getMaterialID(), "vandbrædt på stern i forenden",quantity,price,tmpmaterial);
+        OrderFacade.createBom(billOfMaterials,connectionPool);
+        return price;
+    }
+
+    public static double calulateAllStern(Order order, Map<Integer,Material> materialList,ConnectionPool connectionPool) throws DatabaseException {
+        double price=0;
+        price += calculateEndSternUnder(order,materialList,connectionPool);
+        price += calculateEndSternOver(order,materialList,connectionPool);
+        price += calculateEndWaterStern(order,materialList,connectionPool);
+        price += calculateSideSternUnder(order,materialList,connectionPool);
+        price += calculateSideSternOver(order,materialList,connectionPool);
+        price += calculateSideWaterStern(order,materialList,connectionPool);
+        return price;
+    }
+
+
     // SKRUER OG BESLAG
 
     //SKRUER
@@ -213,6 +281,7 @@ public class Calculator {
         totalprice += calculateFittings(order,materialList,connectionPool);
         totalprice += calculateOtherMaterials(order,materialList,connectionPool);
         totalprice += calculateRoof(order,materialList,connectionPool);
+        totalprice += calulateAllStern(order,materialList,connectionPool);
 
         if(shed != null){
             totalprice += calculateShed(order,materialList,connectionPool);
@@ -228,6 +297,10 @@ public class Calculator {
         price += calculateAngleFitting(order,materialList,connectionPool);
         price += calculateHandle(order,materialList,connectionPool);
         price += calculateHinge(order,materialList,connectionPool);
+        price += calculateZ(order,materialList,connectionPool);
+        price += calculateGable(order,materialList,connectionPool);
+        price += calculateSideRaftering(order,materialList,connectionPool);
+        price += calculateSidePlating(order,materialList,connectionPool);
         return price;
     }
     // Vinkelbeslag
@@ -259,4 +332,43 @@ public class Calculator {
         OrderFacade.createBom(billOfMaterials,connectionPool);
         return price;
     }
+   //lægte til dør
+    public static double calculateZ(Order order, Map<Integer,Material> materialList, ConnectionPool connectionPool) throws DatabaseException {
+        Material tmpmaterial = materialList.get(5);
+        int quantity = 1;
+        double price = quantity * tmpmaterial.getPricePerUnit();
+        BillOfMaterials billOfMaterials = new BillOfMaterials(order.getOrderID(), tmpmaterial.getMaterialID(), "Til z på bagside af dør",quantity,price,tmpmaterial);
+        OrderFacade.createBom(billOfMaterials,connectionPool);
+        return price;
+    }
+    //reglarer
+    public static double calculateSideRaftering(Order order, Map<Integer,Material> materialList, ConnectionPool connectionPool) throws DatabaseException {
+        Material tmpmaterial = materialList.get(7);
+        int quantity = 4;
+        double price = quantity * tmpmaterial.getPricePerUnit();
+        BillOfMaterials billOfMaterials = new BillOfMaterials(order.getOrderID(), tmpmaterial.getMaterialID(), "løsholter til skur side",quantity,price,tmpmaterial);
+        OrderFacade.createBom(billOfMaterials,connectionPool);
+        return price;
+    }
+    // gavle
+    public static double calculateGable(Order order, Map<Integer,Material> materialList, ConnectionPool connectionPool) throws DatabaseException {
+        Material tmpmaterial = materialList.get(6);
+        int quantity = 12;
+        double price = quantity * tmpmaterial.getPricePerUnit();
+        BillOfMaterials billOfMaterials = new BillOfMaterials(order.getOrderID(), tmpmaterial.getMaterialID(), "løsholter til skur gavle",quantity,price,tmpmaterial);
+        OrderFacade.createBom(billOfMaterials,connectionPool);
+        return price;
+    }
+
+    // beklædning
+    public static double calculateSidePlating(Order order, Map<Integer,Material> materialList, ConnectionPool connectionPool) throws DatabaseException {
+        Material tmpmaterial = materialList.get(12);
+        int quantity = 200;
+        double price = quantity * tmpmaterial.getPricePerUnit();
+        BillOfMaterials billOfMaterials = new BillOfMaterials(order.getOrderID(), tmpmaterial.getMaterialID(), "løsholter til skur gavle",quantity,price,tmpmaterial);
+        OrderFacade.createBom(billOfMaterials,connectionPool);
+        return price;
+    }
+
+
 }
