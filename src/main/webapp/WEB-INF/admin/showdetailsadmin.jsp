@@ -36,32 +36,34 @@
                         <p>Skur: Med skur</p>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Plantegning</h5>
-                        <p>Her ses en tegning af carporten fra oven</p>
-                            ${sessionScope.carportDraw}
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Snittegning</h5>
-                        <p>Her ses en tegning af carporten fra siden</p>
-                        ${sessionScope.carportDraw}<!-- byt ud med tegning fra siden -->
-                    </div>
-                </div>
             </div>
 
             <div class="col-md-8">
                 <div class="col-mb-7">
                     <div class="card">
                         <div class="card-body">
+                            <h5 class="card-title">Plantegning</h5>
+                            <p>Her ses en tegning af carporten fra oven</p>
+                                ${sessionScope.carportDrawTop}
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Snittegning</h5>
+                            <p>Her ses en tegning af carporten fra siden</p>
+                                ${sessionScope.carportDrawSide}
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
                             <h5 class="card-title">Stykliste</h5>
 
                             <c:forEach var="bom" items="${sessionScope.order.billOfMaterialsList}">
                                 <tr>
-<%--                                    <td><c:out value="${bom.key}"/></td>--%>
-                                    <td><c:out value="${bom.value}"/></td>
+                                    <td>Materialenavn: <c:out value="${bom.value.material.description}"/></td>
+                                    <td>Materialebeskrivelse: <c:out value="${bom.value.description}"/></td>
+                                    <td>Antal: <c:out value="${bom.value.quantity}"/></td>
+                                    <td>Pris: <c:out value="${bom.value.price}"/></td>
                                     <br>
                                 </tr>
                             </c:forEach>

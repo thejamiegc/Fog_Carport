@@ -53,7 +53,7 @@ public class BuildCarport extends HttpServlet {
             if (shed != null){
                 CarportFacade.updateShedID(orderID,shed,connectionPool);
             }
-            Calculator.calculateAll(order, connectionPool);
+            Calculator.calculateAllBom(order, shed, connectionPool);
             request.getRequestDispatcher("/myorders").forward(request, response);
 
         } catch (DatabaseException | SQLException e) {

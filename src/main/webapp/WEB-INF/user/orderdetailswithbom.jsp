@@ -48,13 +48,18 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Stykliste</h5>
-                            <ul class="list-group">
-                                <li class="list-group-item">Liste 1</li>
-                                <li class="list-group-item">Liste 2</li>
-                                <li class="list-group-item">Liste 3</li>
-                                <li class="list-group-item">Liste 4</li>
-                                <li class="list-group-item">Liste 5</li>
-                            </ul>
+                            <c:forEach var="bom" items="${sessionScope.order.billOfMaterialsList}">
+                                <tr>
+                                    <td>Materialenavn: <c:out value="${bom.value.material.description}"/></td>
+                                    <td>Materialebeskrivelse: <c:out value="${bom.value.description}"/></td>
+                                    <td>Antal: <c:out value="${bom.value.quantity}"/></td>
+                                    <td>Pris: <c:out value="${bom.value.price}"/></td>
+                                    <br>
+                                </tr>
+                            </c:forEach>
+
+                            <p>Ordre pris: ${sessionScope.order.price}</p>
+
                             <a href="#" class="btn btn-primary">Print stykliste</a>
                         </div>
                     </div>
