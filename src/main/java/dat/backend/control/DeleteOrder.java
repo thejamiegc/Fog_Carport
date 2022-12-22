@@ -18,7 +18,7 @@ public class DeleteOrder extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      this.doPost(request,response);
+        this.doPost(request, response);
     }
 
     @Override
@@ -28,13 +28,22 @@ public class DeleteOrder extends HttpServlet {
 
         HttpSession session = request.getSession();
 
+        Order order = null;
+
         int orderID = Integer.parseInt(request.getParameter("orderID"));
+
         try {
-            OrderFacade.deleteOrder(orderID,connectionPool);
-            request.getRequestDispatcher("/navToCustomerOrders").forward(request,response);
+            order = OrderFacade.readDataFromAnOrder(orderID, connectionPool);
+            if (order.getShed().getShedLength() != 0) {
+                OrderFacade.deleteShed(orderID, connectionPool);
+            }
+            OrderFacade.deleteOrder(orderID, connectionPool);
+
         } catch (DatabaseException e) {
             request.setAttribute("errormessage", e.getMessage());
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
+        session.setAttribute("order",order);
+        request.getRequestDispatcher("WEB-INF/admin/deleteconfirmation.jsp").forward(request, response);
     }
 }

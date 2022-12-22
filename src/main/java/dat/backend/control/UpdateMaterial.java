@@ -23,7 +23,7 @@ public class UpdateMaterial extends HttpServlet {
                 request.getParameter("description"),
                 Integer.parseInt(request.getParameter("length")),
                 request.getParameter("unit"),
-                Double.parseDouble(request.getParameter("pricePerUnit")),
+                Double.parseDouble(request.getParameter("priceperunit")),
                 0,
                 request.getParameter("typename"));
 

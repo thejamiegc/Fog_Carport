@@ -246,17 +246,54 @@ public class OrderMapper {
 
     public static void deleteOrder(int orderID, ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
-        String sql = "DELETE from Bom WHERE orderID = ?; DELETE from Shed WHERE orderID = ?; DELETE from Carport WHERE orderID = ?; DELETE from `Order` WHERE orderID = ?";
+        String sql = "DELETE from `Order` WHERE `Order`.orderID = ?";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, orderID);
-                ps.setInt(2, orderID);
-                ps.setInt(3, orderID);
-                ps.setInt(4, orderID);
                 ps.executeUpdate();
             }
         } catch (SQLException ex) {
             throw new DatabaseException(ex, "Could not delete order from database");
+        }
+    }
+
+    public static void deleteBom(int orderID, ConnectionPool connectionPool) throws DatabaseException {
+        Logger.getLogger("web").log(Level.INFO, "");
+        String sql = "DELETE from Bom WHERE Bom.orderID = ?";
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, orderID);
+                ps.executeUpdate();
+            }
+        } catch (SQLException ex) {
+            throw new DatabaseException(ex, "Could not delete order from database");
+        }
+    }
+
+    public static void deleteCarport(int orderID, ConnectionPool connectionPool) throws DatabaseException {
+        Logger.getLogger("web").log(Level.INFO, "");
+        String sql = "DELETE from Carport WHERE Carport.orderID = ?";
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, orderID);
+                ps.executeUpdate();
+            }
+        } catch (SQLException ex) {
+            throw new DatabaseException(ex, "Could not delete order from database");
+        }
+    }
+
+
+    public static void deleteShed(int orderID, ConnectionPool connectionPool) throws DatabaseException {
+        Logger.getLogger("web").log(Level.INFO, "");
+        String sql = "DELETE from Shed WHERE Shed.orderID = ?";
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, orderID);
+                ps.executeUpdate();
+            }
+        } catch (SQLException ex) {
+            throw new DatabaseException(ex, "Could not delete shed from database");
         }
     }
 
@@ -369,7 +406,7 @@ public class OrderMapper {
         return material;
     }
 
-    public static void updateMaterial(Material material, ConnectionPool connectionPool) throws SQLException {
+    public static void updateMatDescription(Material material, ConnectionPool connectionPool) throws SQLException {
         Logger.getLogger("web").log(Level.INFO, "");
         String sql = "UPDATE carport.Material SET description = ? WHERE materialID = ?";
         try (Connection connection = connectionPool.getConnection()) {
@@ -382,7 +419,11 @@ public class OrderMapper {
                 throwables.printStackTrace();
             }
         }
-        sql = "UPDATE carport.Material SET length = ? WHERE materialID = ?";
+    }
+
+    public static void updateMatLength (Material material, ConnectionPool connectionPool) throws SQLException {
+        Logger.getLogger("web").log(Level.INFO, "");
+        String sql = "UPDATE carport.Material SET length = ? WHERE materialID = ?";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 ps.setInt(1, material.getLength());
@@ -393,7 +434,11 @@ public class OrderMapper {
                 throwables.printStackTrace();
             }
         }
-        sql = "UPDATE carport.Material SET unit = ? WHERE materialID = ?";
+    }
+
+    public static void updateMatUnit(Material material, ConnectionPool connectionPool) throws SQLException {
+        Logger.getLogger("web").log(Level.INFO, "");
+        String sql = "UPDATE carport.Material SET unit = ? WHERE materialID = ?";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 ps.setString(1, material.getUnit());
@@ -404,7 +449,10 @@ public class OrderMapper {
                 throwables.printStackTrace();
             }
         }
-        sql = "UPDATE carport.Material SET priceperunit = ? WHERE materialID = ?";
+    }
+    public static void updateMatPriceperunit(Material material, ConnectionPool connectionPool) throws SQLException {
+        Logger.getLogger("web").log(Level.INFO, "");
+        String sql = "UPDATE carport.Material SET priceperunit = ? WHERE materialID = ?";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 ps.setDouble(1, material.getPricePerUnit());

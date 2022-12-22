@@ -29,7 +29,13 @@ public class OrderFacade
     }
 
     public static void deleteOrder(int orderID,ConnectionPool connectionPool)throws DatabaseException{
+        OrderMapper.deleteBom(orderID,connectionPool);
+        OrderMapper.deleteCarport(orderID,connectionPool);
         OrderMapper.deleteOrder(orderID,connectionPool);
+    }
+
+    public static void deleteShed(int orderID, ConnectionPool connectionPool) throws DatabaseException {
+        OrderMapper.deleteShed(orderID, connectionPool);
     }
 
     public static int createBom(BillOfMaterials billOfMaterials, ConnectionPool connectionPool) throws DatabaseException{
@@ -61,6 +67,9 @@ public class OrderFacade
     }
 
     public static void updateMaterial(Material material, ConnectionPool connectionPool)throws SQLException {
-        OrderMapper.updateMaterial(material,connectionPool);
+        OrderMapper.updateMatDescription(material,connectionPool);
+        OrderMapper.updateMatLength(material,connectionPool);
+        OrderMapper.updateMatUnit(material,connectionPool);
+        OrderMapper.updateMatPriceperunit(material,connectionPool);
     }
 }

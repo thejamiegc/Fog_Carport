@@ -24,6 +24,7 @@
                     <th scope="col">Størrelse</th>
                     <th scope="col">Status</th>
                     <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -39,6 +40,11 @@
                         <form action="post">
                             <td style="font-weight: bold"><button class="btn btn-primary"   type ="submit" formaction="showdetailsadmin" name="orderID" value="${orderItem.orderID}">
                                 Vis detaljer
+                            </button></td>
+                        </form>
+                        <form action="post">
+                            <td style="font-weight: bold"><button class="btn btn-primary"   type ="submit" formaction="deleteorder" name="orderID" value="${orderItem.orderID}">
+                                Slet bestilling
                             </button></td>
                         </form>
                     </tr>
