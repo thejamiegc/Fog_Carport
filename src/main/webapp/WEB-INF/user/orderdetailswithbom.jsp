@@ -48,17 +48,28 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Stykliste</h5>
-                        <c:forEach var="bom" items="${sessionScope.order.billOfMaterialsList}">
+                        <table class="table table-striped">
+                            <thead>
                             <tr>
-                                <td>Materialenavn: <c:out value="${bom.value.material.description}"/></td>
-                                <td>Materialebeskrivelse: <c:out value="${bom.value.description}"/></td>
-                                <td>Antal: <c:out value="${bom.value.quantity}"/></td>
-                                <td>Pris: <c:out value="${bom.value.price}"/></td>
-                                <br>
+                                <th scope="col">Materialenavn:</th>
+                                <th scope="col">Materialebeskrivelse:</th>
+                                <th scope="col">Antal:</th>
+                                <th scope="col">Pris (DKK):</th>
                             </tr>
-                        </c:forEach>
+                            </thead>
+                            <c:forEach var="bom" items="${sessionScope.order.billOfMaterialsList}">
+                                <tbody>
+                                <tr>
+                                    <td><c:out value="${bom.value.material.description}"/></td>
+                                    <td><c:out value="${bom.value.description}"/></td>
+                                    <td><c:out value="${bom.value.quantity}"/></td>
+                                    <td><c:out value="${bom.value.price}"/></td>
+                                </tr>
+                                </tbody>
+                            </c:forEach>
+                        </table>
 
-                        <p>Ordre pris: ${sessionScope.order.price}</p>
+                        <p>Total pris for denne ordre (DKK): ${sessionScope.order.price}</p>
 
                         <a href="#" class="btn btn-primary">Print stykliste</a>
                     </div>
