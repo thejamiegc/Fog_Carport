@@ -5,7 +5,6 @@ import dat.backend.model.entities.User;
 import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.UserFacade;
 import dat.backend.model.persistence.ConnectionPool;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,37 +13,30 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(name = "login", urlPatterns = {"/login"} )
-public class Login extends HttpServlet
-{
+@WebServlet(name = "login", urlPatterns = {"/login"})
+public class Login extends HttpServlet {
     private ConnectionPool connectionPool;
 
     @Override
-    public void init() throws ServletException
-    {
+    public void init() throws ServletException {
         this.connectionPool = ApplicationStart.getConnectionPool();
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
-    {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         // You shouldn't end up here with a GET-request, thus you get sent back to frontpage
         response.sendRedirect("index.jsp");
     }
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
-    {
-        //danish characters allowed :D
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.setCharacterEncoding("UTF-8");
         request.setCharacterEncoding("UTF-8");
-
         response.setContentType("text/html");
         HttpSession session = request.getSession();
         session.setAttribute("user", null); // invalidating user object in session scope
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        try
-        {
+        try {
             User user = UserFacade.login(email, password, connectionPool);
             session = request.getSession();
             session.setAttribute("user", user); // adding user object to session scope
@@ -56,9 +48,7 @@ public class Login extends HttpServlet
                 request.getRequestDispatcher("/WEB-INF/user/welcomeuser.jsp").forward(request, response);
             }
             request.getRequestDispatcher("index.jsp").forward(request, response);
-        }
-        catch (DatabaseException e)
-        {
+        } catch (DatabaseException e) {
             request.setAttribute("errormessage", e.getMessage());
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }

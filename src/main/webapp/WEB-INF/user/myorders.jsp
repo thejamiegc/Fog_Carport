@@ -3,16 +3,12 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <t:pagetemplate_user>
-
     <jsp:body>
-
         <h1>Mine ordrer</h1>
         <p>Her kan du se alle dine ordrer. Du kan se status på dine ordrer eller klikke på
             'se detaljer' for at få vist flere detaljer..</p>
 
-
         <div class="table-responsive">
-
             <table class="table table-hover">
                 <thead>
                 <tr>
@@ -27,27 +23,33 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:set var="count" value="1" scope="page" />
+                <c:set var="count" value="1" scope="page"/>
                 <c:forEach var="orderItem" items="${sessionScope.orderList}">
-                <tr>
-                    <th scope="row">${count}</th>
-                    <td>${orderItem.orderID}</td>
-                    <td>Enkelt</td>
-                    <td>${orderItem.carport.rooftype}</td>
-                    <td>${orderItem.carport.length} x ${orderItem.carport.width}</td>
-                    <td>${orderItem.statusname}</td>
-                    <form action="get">
-                        <td style="font-weight: bold"><button class="btn btn-primary"   type ="submit" formaction="showorderdetailsuser" name="orderID" value="${orderItem.orderID}">
-                            Vis detaljer
-                        </button></td>
-                    </form>
-                    <form action="post">
-                        <td style="font-weight: bold"><button class="btn btn-primary"   type ="submit" formaction="acceptoffer" name="orderID" value="${orderItem.orderID}">
-                            Accepter tilbud
-                        </button></td>
-                    </form>
-                </tr>
-                    <c:set var="count" value="${count + 1}" scope="page" />
+                    <tr>
+                        <th scope="row">${count}</th>
+                        <td>${orderItem.orderID}</td>
+                        <td>Enkelt</td>
+                        <td>${orderItem.carport.rooftype}</td>
+                        <td>${orderItem.carport.length} x ${orderItem.carport.width}</td>
+                        <td>${orderItem.statusname}</td>
+                        <form action="get">
+                            <td style="font-weight: bold">
+                                <button class="btn btn-primary" type="submit" formaction="showorderdetailsuser"
+                                        name="orderID" value="${orderItem.orderID}">
+                                    Vis detaljer
+                                </button>
+                            </td>
+                        </form>
+                        <form action="post">
+                            <td style="font-weight: bold">
+                                <button class="btn btn-primary" type="submit" formaction="acceptoffer" name="orderID"
+                                        value="${orderItem.orderID}">
+                                    Accepter tilbud
+                                </button>
+                            </td>
+                        </form>
+                    </tr>
+                    <c:set var="count" value="${count + 1}" scope="page"/>
                 </c:forEach>
                 </tbody>
             </table>
@@ -59,5 +61,4 @@
         </div>
 
     </jsp:body>
-
 </t:pagetemplate_user>

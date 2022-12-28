@@ -6,10 +6,8 @@
 <t:pagetemplate_admin>
 
     <jsp:body>
-
         <h1>Kunde bestillinger</h1>
         <p>Her kan du se alle kunders bestillinger. Du kan se status på ordrene eller XXXX </p>
-
 
         <div class="table-responsive">
             <table class="table table-hover">
@@ -38,21 +36,30 @@
                         <td>${orderItem.carport.length} x ${orderItem.carport.width}</td>
                         <td>${orderItem.statusname}</td>
                         <form action="post">
-                            <td style="font-weight: bold"><button class="btn btn-primary"   type ="submit" formaction="createorder" name="orderID" value="${orderItem.orderID}">
-                                Lav ordre
-                            </button></td>
+                            <td style="font-weight: bold">
+                                <button class="btn btn-primary" type="submit" formaction="createorder" name="orderID"
+                                        value="${orderItem.orderID}">
+                                    Lav ordre
+                                </button>
+                            </td>
                         </form>
                         <form action="post">
-                            <td style="font-weight: bold"><button class="btn btn-primary"   type ="submit" formaction="showdetailsadmin" name="orderID" value="${orderItem.orderID}">
-                            Vis detaljer
-                            </button></td>
+                            <td style="font-weight: bold">
+                                <button class="btn btn-primary" type="submit" formaction="showdetailsadmin"
+                                        name="orderID" value="${orderItem.orderID}">
+                                    Vis detaljer
+                                </button>
+                            </td>
                         </form>
                         <form action="post">
-                            <td style="font-weight: bold"><button class="btn btn-primary"   type ="submit" formaction="deleteorder" name="orderID" value="${orderItem.orderID}">
-                                Slet bestilling
-                            </button></td>
+                            <td style="font-weight: bold">
+                                <button class="btn btn-primary" type="submit" formaction="deleteorder" name="orderID"
+                                        value="${orderItem.orderID}">
+                                    Slet bestilling
+                                </button>
+                            </td>
                         </form>
-                     </tr>
+                    </tr>
                 </c:forEach>
                 </tbody>
             </table>
@@ -62,7 +69,5 @@
             <br>
             <br>
         </div>
-
     </jsp:body>
-
 </t:pagetemplate_admin>

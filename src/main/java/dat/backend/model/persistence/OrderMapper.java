@@ -421,7 +421,7 @@ public class OrderMapper {
         }
     }
 
-    public static void updateMatLength (Material material, ConnectionPool connectionPool) throws SQLException {
+    public static void updateMatLength(Material material, ConnectionPool connectionPool) throws SQLException {
         Logger.getLogger("web").log(Level.INFO, "");
         String sql = "UPDATE carport.Material SET length = ? WHERE materialID = ?";
         try (Connection connection = connectionPool.getConnection()) {
@@ -450,6 +450,7 @@ public class OrderMapper {
             }
         }
     }
+
     public static void updateMatPriceperunit(Material material, ConnectionPool connectionPool) throws SQLException {
         Logger.getLogger("web").log(Level.INFO, "");
         String sql = "UPDATE carport.Material SET priceperunit = ? WHERE materialID = ?";

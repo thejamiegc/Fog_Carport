@@ -26,8 +26,8 @@ public class Carport {
         return orderID;
     }
 
-    public int getCarportSquareMeter(){
-        return (length/100) * (width/100);
+    public int getCarportSquareMeter() {
+        return (length / 100) * (width / 100);
     }
 
     public int getCarportID() {
@@ -61,8 +61,4 @@ public class Carport {
     public void setRooftype(String rooftype) {
         this.rooftype = rooftype;
     }
-
 }
-
-
-

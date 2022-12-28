@@ -5,12 +5,10 @@ import dat.backend.model.entities.Order;
 import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.persistence.OrderFacade;
-
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.util.List;
 
 @WebServlet(name = "DeleteOrder", value = "/deleteorder")
 public class DeleteOrder extends HttpServlet {
@@ -27,9 +25,7 @@ public class DeleteOrder extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
 
         HttpSession session = request.getSession();
-
         Order order = null;
-
         int orderID = Integer.parseInt(request.getParameter("orderID"));
 
         try {
@@ -38,12 +34,11 @@ public class DeleteOrder extends HttpServlet {
                 OrderFacade.deleteShed(orderID, connectionPool);
             }
             OrderFacade.deleteOrder(orderID, connectionPool);
-
         } catch (DatabaseException e) {
             request.setAttribute("errormessage", e.getMessage());
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
-        session.setAttribute("order",order);
+        session.setAttribute("order", order);
         request.getRequestDispatcher("WEB-INF/admin/deleteconfirmation.jsp").forward(request, response);
     }
 }

@@ -32,24 +32,24 @@
                         </c:if>
                     </div>
                 </div>
-        </div>
+            </div>
 
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Plantegning</h5>
-                    <p>Her ses en tegning af carporten fra oven</p>
-                        ${sessionScope.carportDrawTop}
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Plantegning</h5>
+                        <p>Her ses en tegning af carporten fra oven</p>
+                            ${sessionScope.carportDrawTop}
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Snittegning</h5>
+                        <p>Her ses en tegning af carporten fra siden</p>
+                            ${sessionScope.carportDrawSide}
+                    </div>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Snittegning</h5>
-                    <p>Her ses en tegning af carporten fra siden</p>
-                    ${sessionScope.carportDrawSide}
-                </div>
-            </div>
-        </div>
         </div>
         </div>
 

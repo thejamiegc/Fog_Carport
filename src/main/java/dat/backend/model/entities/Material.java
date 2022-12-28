@@ -9,7 +9,6 @@ public class Material {
     private int type;
     private String typename;
 
-
     public Material(int materialID, String description, int length, String unit, double pricePerUnit, int type) {
         this.materialID = materialID;
         this.description = description;
@@ -18,7 +17,6 @@ public class Material {
         this.pricePerUnit = pricePerUnit;
         this.type = type;
     }
-
 
     public Material(String description, int length, String unit, double pricePerUnit, int type) {
         this.description = description;

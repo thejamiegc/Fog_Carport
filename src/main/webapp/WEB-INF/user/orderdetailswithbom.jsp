@@ -4,9 +4,7 @@
 <%@page errorPage="../../error.jsp" isErrorPage="false" %>
 
 <t:pagetemplate_user>
-
     <jsp:body>
-
         <h1>Ordre Detaljer - #${sessionScope.order.orderID}</h1>
 
         <div class="row">
@@ -28,40 +26,41 @@
                         <p>Tagtype: ${sessionScope.order.carport.rooftype}</p>
                         <p>Skur: Med skur</p>
                     </div>
+                </div>
+            </div>
 
+            <div class="col-md-8">
+                <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Plantegning</h5>
                         <p>Her ses en tegning af carporten fra oven</p>
                             ${sessionScope.carportDrawTop}
                     </div>
-
+                </div>
+                <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Snittegning</h5>
                         <p>Her ses en tegning af carporten fra siden</p>
-                        ${sessionScope.carportDrawSide}<!-- byt ud med tegning fra siden -->
+                            ${sessionScope.carportDrawSide}
                     </div>
                 </div>
-            </div>
 
-            <div class="col-md-8">
-                <div class="col-mb-7">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Stykliste</h5>
-                            <c:forEach var="bom" items="${sessionScope.order.billOfMaterialsList}">
-                                <tr>
-                                    <td>Materialenavn: <c:out value="${bom.value.material.description}"/></td>
-                                    <td>Materialebeskrivelse: <c:out value="${bom.value.description}"/></td>
-                                    <td>Antal: <c:out value="${bom.value.quantity}"/></td>
-                                    <td>Pris: <c:out value="${bom.value.price}"/></td>
-                                    <br>
-                                </tr>
-                            </c:forEach>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Stykliste</h5>
+                        <c:forEach var="bom" items="${sessionScope.order.billOfMaterialsList}">
+                            <tr>
+                                <td>Materialenavn: <c:out value="${bom.value.material.description}"/></td>
+                                <td>Materialebeskrivelse: <c:out value="${bom.value.description}"/></td>
+                                <td>Antal: <c:out value="${bom.value.quantity}"/></td>
+                                <td>Pris: <c:out value="${bom.value.price}"/></td>
+                                <br>
+                            </tr>
+                        </c:forEach>
 
-                            <p>Ordre pris: ${sessionScope.order.price}</p>
+                        <p>Ordre pris: ${sessionScope.order.price}</p>
 
-                            <a href="#" class="btn btn-primary">Print stykliste</a>
-                        </div>
+                        <a href="#" class="btn btn-primary">Print stykliste</a>
                     </div>
                 </div>
             </div>
@@ -72,5 +71,4 @@
         <br>
 
     </jsp:body>
-
 </t:pagetemplate_user>

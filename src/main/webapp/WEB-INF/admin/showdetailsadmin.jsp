@@ -4,10 +4,7 @@
 <%@page errorPage="../../error.jsp" isErrorPage="false" %>
 
 <t:pagetemplate_admin>
-
     <jsp:body>
-
-
         <h1>Ordre Detaljer - #${sessionScope.order.orderID}</h1>
 
         <div class="row">
@@ -80,7 +77,5 @@
         <br>
         <br>
         <br>
-
     </jsp:body>
-
 </t:pagetemplate_admin>

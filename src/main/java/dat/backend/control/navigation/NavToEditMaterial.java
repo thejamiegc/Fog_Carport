@@ -24,13 +24,13 @@ public class NavToEditMaterial extends HttpServlet {
         int materialID = Integer.parseInt(request.getParameter("materialID"));
 
         try {
-            Material material = OrderFacade.readMaterial(materialID,connectionPool);
-            session.setAttribute("material",material);
+            Material material = OrderFacade.readMaterial(materialID, connectionPool);
+            session.setAttribute("material", material);
         } catch (DatabaseException e) {
             request.setAttribute("errormessage", e.getMessage());
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
-        request.getRequestDispatcher("WEB-INF/admin/editmaterial.jsp").forward(request,response);
+        request.getRequestDispatcher("WEB-INF/admin/editmaterial.jsp").forward(request, response);
     }
 
     @Override

@@ -25,27 +25,26 @@
                 <img src="${pageContext.request.contextPath}/images/FOGLogo.jpg"/>
             </a>
             <a class="navbar-brand" href="#"></a>
-            <button class="navbar-toggler toggler-example darken-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03"
+            <button class="navbar-toggler toggler-example darken-3" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarsExample03"
                     aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarsExample03">
-                    <ul class="navbar-nav me-auto mb-2 mb-sm-0">
-                        <a class="nav-material nav-link" href="${pageContext.request.contextPath}/navToBuildCarport">Byg en carport</a>
-                        <a class="nav-material nav-link" href="myorders">Se mine ordrer</a>
-                        <c:if test="${sessionScope.user == null }">
-                            <a class="nav-material nav-link" href="${pageContext.request.contextPath}/login.jsp">Log ind</a>
-                        </c:if>
-                        <c:if test="${sessionScope.user != null }">
-                            <p>Bruger: ${sessionScope.user.firstname}</p>
-                            <a class="nav-material nav-link" href="${pageContext.request.contextPath}/logout">Log out</a>
-                        </c:if>
-                    </ul>
+                <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+                    <a class="nav-material nav-link" href="${pageContext.request.contextPath}/navToBuildCarport">Byg en
+                        carport</a>
+                    <a class="nav-material nav-link" href="myorders">Se mine ordrer</a>
+                    <c:if test="${sessionScope.user == null }">
+                        <a class="nav-material nav-link" href="${pageContext.request.contextPath}/login.jsp">Log ind</a>
+                    </c:if>
+                    <c:if test="${sessionScope.user != null }">
+                        <p>Bruger: ${sessionScope.user.firstname}</p>
+                        <a class="nav-material nav-link" href="${pageContext.request.contextPath}/logout">Log out</a>
+                    </c:if>
+                </ul>
             </div>
-            <%--          <a class="navbar-brand" href="../../index.jsp">
-                          <img src="${pageContext.request.contextPath}/images/icon.png"/>
-                      </a>--%>
         </div>
     </nav>
     <!-- search bar -->

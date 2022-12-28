@@ -4,9 +4,7 @@
 <%@page errorPage="../../error.jsp" isErrorPage="false" %>
 
 <t:pagetemplate_admin>
-
     <jsp:body>
-
         <h1>Materialeliste</h1>
         <p>Her kan du se alle materialer. Du kan slette eller ændre i materialer.</p>
 
@@ -33,9 +31,12 @@
                     <td>${materiallist.value.pricePerUnit}</td>
                     <td>${materiallist.value.typename}</td>
                     <form action="post">
-                        <td style="font-weight: bold"><button class="btn btn-primary"   type ="submit" formaction="editmateriallist" name="materialID" value="${materiallist.value.materialID}">
-                            Rediger
-                        </button></td>
+                        <td style="font-weight: bold">
+                            <button class="btn btn-primary" type="submit" formaction="editmateriallist"
+                                    name="materialID" value="${materiallist.value.materialID}">
+                                Rediger
+                            </button>
+                        </td>
                     </form>
 
                 </tr>
@@ -44,5 +45,4 @@
         </table>
 
     </jsp:body>
-
 </t:pagetemplate_admin>

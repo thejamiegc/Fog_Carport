@@ -5,7 +5,6 @@ import dat.backend.model.entities.Order;
 import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.persistence.OrderFacade;
-
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -19,7 +18,7 @@ public class CreateOrder extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.doPost(request,response);
+        this.doPost(request, response);
     }
 
     @Override
@@ -29,13 +28,12 @@ public class CreateOrder extends HttpServlet {
 
         try {
             Order order = OrderFacade.readDataFromAnOrder(orderID, connectionPool);
-            if (order.getStatusID() < 3){
+            if (order.getStatusID() < 3) {
                 order.setStatusID(3);
                 OrderFacade.updateStatus(order, connectionPool);
             }
-            session.setAttribute("order",order);
+            session.setAttribute("order", order);
             request.getRequestDispatcher("/navToCustomerOrders").forward(request, response);
-
         } catch (DatabaseException | SQLException e) {
             request.setAttribute("errormessage", e.getMessage());
             request.getRequestDispatcher("error.jsp").forward(request, response);

@@ -4,7 +4,6 @@
 <%@page errorPage="../../error.jsp" isErrorPage="false" %>
 
 <t:pagetemplate_user>
-
     <jsp:body>
         <h1>Byg en carport</h1>
         <p>Udfyld nedenstående omhyggeligt, og tryk "bestil tilbud". <br>
@@ -48,8 +47,6 @@
                 <input type="submit" value="Bestil tilbud"/>
             </div>
             </div>
-
-
         </form>
         <br>
         <br>

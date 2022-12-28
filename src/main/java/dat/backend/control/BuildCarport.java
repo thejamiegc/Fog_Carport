@@ -4,7 +4,6 @@ import dat.backend.model.config.ApplicationStart;
 import dat.backend.model.entities.*;
 import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.*;
-
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -15,7 +14,6 @@ import java.sql.SQLException;
 public class BuildCarport extends HttpServlet {
 
     private static ConnectionPool connectionPool = ApplicationStart.getConnectionPool();
-
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -34,24 +32,24 @@ public class BuildCarport extends HttpServlet {
                 request.getParameter("roof"));
         Shed shed = null;
 
-        if (request.getParameter("shedlength") != ""){
-            shed = new Shed(Integer.parseInt(request.getParameter("shedlength")),Integer.parseInt(request.getParameter("shedwidth")));
+        if (request.getParameter("shedlength") != "") {
+            shed = new Shed(Integer.parseInt(request.getParameter("shedlength")), Integer.parseInt(request.getParameter("shedwidth")));
         }
 
         try {
-            if (shed != null){
+            if (shed != null) {
                 int shedID = CarportFacade.createShed(shed, connectionPool);
                 shed.setShedID(shedID);
             }
             int carportID = CarportFacade.createCarport(carport, connectionPool);
             carport.setCarportID(carportID);
-            User user = (User)session.getAttribute("user");
-            order = new Order(user,carport,1);
+            User user = (User) session.getAttribute("user");
+            order = new Order(user, carport, 1);
             int orderID = OrderFacade.createOrder(order, connectionPool);
             order.setOrderID(orderID);
             CarportFacade.updateOrderID(orderID, carportID, connectionPool);
-            if (shed != null){
-                CarportFacade.updateShedID(orderID,shed,connectionPool);
+            if (shed != null) {
+                CarportFacade.updateShedID(orderID, shed, connectionPool);
             }
             Calculator.calculateAllBom(order, shed, connectionPool);
             request.getRequestDispatcher("/myorders").forward(request, response);

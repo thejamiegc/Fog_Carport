@@ -67,22 +67,22 @@ public class SVG {
         svgString.append(String.format(LINETEMPLATE, x1, y1, x2, y2));
     }
 
-    public void addArrowLine(int x1, int y1, int x2, int y2){
-        svgString.append(String.format(ARROWLINETEMPLATE, x1 ,y1 ,x2, y2));
+    public void addArrowLine(int x1, int y1, int x2, int y2) {
+        svgString.append(String.format(ARROWLINETEMPLATE, x1, y1, x2, y2));
     }
 
     public void addDashedLine(int x1, int y1, int x2, int y2) {
         svgString.append(String.format(DASHEDLINETEMPLATE, x1, y1, x2, y2));
     }
 
-    public void addTextSide(int x, int y, String text){
-        svgString.append(String.format(TEXTTEMPLATESIDE,x,y,text));
+    public void addTextSide(int x, int y, String text) {
+        svgString.append(String.format(TEXTTEMPLATESIDE, x, y, text));
         svgString.append(String.format(text));
         svgString.append(String.format(TEXTTEMPLATEEND));
     }
 
-    public void addTextBottom(int x, int y, String text){
-        svgString.append(String.format(TEXTTEMPLATEBOTTOM,x,y,text));
+    public void addTextBottom(int x, int y, String text) {
+        svgString.append(String.format(TEXTTEMPLATEBOTTOM, x, y, text));
         svgString.append(String.format(text));
         svgString.append(String.format(TEXTTEMPLATEEND));
     }
@@ -95,6 +95,4 @@ public class SVG {
     public String toString() {
         return svgString + "</svg>";
     }
-
-
 }

@@ -1,7 +1,6 @@
 package dat.backend.model.entities;
 
 import java.sql.Timestamp;
-import java.util.List;
 import java.util.Map;
 
 public class Order {
@@ -11,10 +10,9 @@ public class Order {
     private int carportID;
     private double price;
     private int statusID;
-
     private Carport carport;
     private String statusname;
-    private Map<Integer,BillOfMaterials> billOfMaterialsList;
+    private Map<Integer, BillOfMaterials> billOfMaterialsList;
     private User user;
     private Shed shed;
 
@@ -31,7 +29,6 @@ public class Order {
         this.shed = shed;
     }
 
-
     // Used in BuildCarport servlet
     public Order(User user, Carport carport, int statusID) {
         this.user = user;
@@ -39,8 +36,7 @@ public class Order {
         this.statusID = statusID;
     }
 
-
-    public Order(int orderID, int customerID, Timestamp created, int carportID, double price, int statusID, Carport carport, String statusname, Map<Integer,BillOfMaterials> billOfMaterialsList, User user,Shed shed) {
+    public Order(int orderID, int customerID, Timestamp created, int carportID, double price, int statusID, Carport carport, String statusname, Map<Integer, BillOfMaterials> billOfMaterialsList, User user, Shed shed) {
         this.orderID = orderID;
         this.customerID = customerID;
         this.created = created;
@@ -102,7 +98,7 @@ public class Order {
         return user;
     }
 
-    public Map<Integer,BillOfMaterials> getBillOfMaterialsList() {
+    public Map<Integer, BillOfMaterials> getBillOfMaterialsList() {
         return billOfMaterialsList;
     }
 
@@ -123,5 +119,4 @@ public class Order {
                 ", statusname='" + statusname + '\'' +
                 '}';
     }
-
 }

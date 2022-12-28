@@ -6,11 +6,10 @@
 <t:pagetemplate_admin>
 
     <jsp:body>
-
         <h1>Kunde ordrer</h1>
-        <p>Her kan du se alle ordrer fra kunder. Du kan klikke 'vis detaljer' for at se detaljeret beskrivelse over kundens ordrer. <br>
-        Du kan redigere eller slette en ordre samt sætte en status på ordren.</p>
-
+        <p>Her kan du se alle ordrer fra kunder. Du kan klikke 'vis detaljer' for at se detaljeret beskrivelse over
+            kundens ordrer. <br>
+            Du kan redigere eller slette en ordre samt sætte en status på ordren.</p>
 
         <div class="table-responsive">
             <table class="table table-hover">
@@ -38,14 +37,20 @@
                         <td>${orderItem.carport.length} x ${orderItem.carport.width}</td>
                         <td>${orderItem.statusname}</td>
                         <form action="post">
-                            <td style="font-weight: bold"><button class="btn btn-primary"   type ="submit" formaction="showdetailsadmin" name="orderID" value="${orderItem.orderID}">
-                                Vis detaljer
-                            </button></td>
+                            <td style="font-weight: bold">
+                                <button class="btn btn-primary" type="submit" formaction="showdetailsadmin"
+                                        name="orderID" value="${orderItem.orderID}">
+                                    Vis detaljer
+                                </button>
+                            </td>
                         </form>
                         <form action="post">
-                            <td style="font-weight: bold"><button class="btn btn-primary"   type ="submit" formaction="deleteorder" name="orderID" value="${orderItem.orderID}">
-                                Slet bestilling
-                            </button></td>
+                            <td style="font-weight: bold">
+                                <button class="btn btn-primary" type="submit" formaction="deleteorder" name="orderID"
+                                        value="${orderItem.orderID}">
+                                    Slet bestilling
+                                </button>
+                            </td>
                         </form>
                     </tr>
                 </c:forEach>
@@ -57,7 +62,5 @@
             <br>
             <br>
         </div>
-
     </jsp:body>
-
 </t:pagetemplate_admin>

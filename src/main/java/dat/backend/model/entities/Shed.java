@@ -1,7 +1,6 @@
 package dat.backend.model.entities;
 
 public class Shed {
-
     private int shedID;
     private int shedLength;
     private int shedWidth;
@@ -14,7 +13,7 @@ public class Shed {
         this.shedOrderID = shedOrderID;
     }
 
-    public Shed(int shedLength, int shedWidth){
+    public Shed(int shedLength, int shedWidth) {
         this.shedLength = shedLength;
         this.shedWidth = shedWidth;
     }

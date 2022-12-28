@@ -1,14 +1,10 @@
 package dat.backend.model.persistence;
 
 import dat.backend.model.entities.Carport;
-import dat.backend.model.entities.Order;
 import dat.backend.model.entities.Shed;
 import dat.backend.model.exceptions.DatabaseException;
-
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,13 +26,12 @@ public class CarportMapper {
             }
         } catch (SQLException ex) {
             throw new DatabaseException(ex, "Could not insert order into database");
-         }
         }
+    }
 
-    public static Map<Integer,Carport> getCarportMap(ConnectionPool connectionPool) throws DatabaseException {
+    public static Map<Integer, Carport> getCarportMap(ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
-        List<Carport> carportList = new ArrayList<>();
-        Map<Integer,Carport> carportMap = new HashMap<>();
+        Map<Integer, Carport> carportMap = new HashMap<>();
 
         String sql = "SELECT * FROM carport.`Carport`";
 
@@ -52,7 +47,7 @@ public class CarportMapper {
                     int shed = rs.getInt("shed");
 
                     Carport carport = new Carport(carportID, length, width, rooftype, shed);
-                    carportMap.put(carportID,carport);
+                    carportMap.put(carportID, carport);
                 }
             }
         } catch (SQLException ex) {

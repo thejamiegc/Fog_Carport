@@ -10,7 +10,6 @@
     </jsp:attribute>
 
     <jsp:body>
-
         <h1>Beklager, vi kan ikke finde siden du søger. </h1>
         <p>Siden du forsøger at tilgå kan desværre ikke findes. <br>
             Siden kan være slettet eller flyttet</p>
@@ -24,7 +23,6 @@
             <p><b>Error code:</b> ${pageContext.errorData.statusCode}</p>
             <p>A serious error happened at the server.</p>
         </c:if>
-
 
         <c:if test="${requestScope.errormessage != null}">
             <p>${requestScope.errormessage}</p>

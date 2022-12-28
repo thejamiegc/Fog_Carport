@@ -1,8 +1,5 @@
 package dat.backend.model.entities;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class BillOfMaterials {
 
     private int bomID;
@@ -74,7 +71,7 @@ public class BillOfMaterials {
 
     @Override
     public String toString() {
-        return  "Materiale: " + material.getDescription() + "\n" +
+        return "Materiale: " + material.getDescription() + "\n" +
                 "Længde: " + material.getLength() + "\n" +
                 "Antal: " + quantity + "\n" +
                 "Enhed: " + material.getUnit() + "\n" +

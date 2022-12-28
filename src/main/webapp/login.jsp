@@ -5,7 +5,6 @@
 <%@page errorPage="error.jsp" isErrorPage="false" %>
 
 <t:pagetemplate>
-
     <jsp:body>
         <div class="form-signin">
         <form action="login" method="post">

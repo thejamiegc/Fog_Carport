@@ -19,65 +19,50 @@ import java.util.logging.Logger;
  */
 
 @WebListener
-public class ApplicationStart implements ServletContextListener
-{
+public class ApplicationStart implements ServletContextListener {
     private static ConnectionPool connectionPool;
 
-    public ApplicationStart()
-    {
+    public ApplicationStart() {
 
     }
 
     @Override
-    public void contextInitialized(ServletContextEvent sce)
-    {
+    public void contextInitialized(ServletContextEvent sce) {
         Logger.getLogger("web").log(Level.INFO, "Starting up application and connection pool");
-        try
-        {
+        try {
             Class.forName("org.slf4j.impl.StaticLoggerBinder");
             connectionPool = new ConnectionPool();
-        }
-        catch (ClassNotFoundException e)
-        {
+        } catch (ClassNotFoundException e) {
             Logger.getLogger("web").log(Level.SEVERE, e.getMessage(), e);
         }
     }
 
-    public static ConnectionPool getConnectionPool()
-    {
-            return connectionPool;
+    public static ConnectionPool getConnectionPool() {
+        return connectionPool;
     }
 
     @Override
-    public void contextDestroyed(ServletContextEvent sce)
-    {
+    public void contextDestroyed(ServletContextEvent sce) {
         Logger.getLogger("web").log(Level.INFO, "Shutting down application and connection pool");
         unregisterJDBCdrivers();
         connectionPool.close();
     }
 
-    private void unregisterJDBCdrivers()
-    {
+    private void unregisterJDBCdrivers() {
         ClassLoader cl = Thread.currentThread().getContextClassLoader();
         // Loop through all drivers
         Enumeration<Driver> drivers = DriverManager.getDrivers();
-        while (drivers.hasMoreElements())
-        {
+        while (drivers.hasMoreElements()) {
             Driver driver = drivers.nextElement();
-            if (driver.getClass().getClassLoader() == cl)
-            {
+            if (driver.getClass().getClassLoader() == cl) {
                 // This driver was registered by the webapp's ClassLoader, so deregister it:
-                try
-                {
+                try {
                     Logger.getLogger("web").log(Level.INFO, "Deregistering JDBC driver");
                     DriverManager.deregisterDriver(driver);
-                }
-                catch (SQLException ex)
-                {
+                } catch (SQLException ex) {
                     Logger.getLogger("web").log(Level.SEVERE, "Error deregistering JDBC driver");
                 }
-            } else
-            {
+            } else {
                 // driver was not registered by the webapp's ClassLoader and may be in use elsewhere
                 Logger.getLogger("web").log(Level.WARNING, "Error deregistering JDBC driver");
             }

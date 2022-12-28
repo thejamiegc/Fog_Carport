@@ -5,7 +5,6 @@ import dat.backend.model.entities.User;
 import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.persistence.UserFacade;
-
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -17,8 +16,7 @@ public class CreateUser extends HttpServlet {
     private ConnectionPool connectionPool;
 
     @Override
-    public void init() throws ServletException
-    {
+    public void init() throws ServletException {
         this.connectionPool = ApplicationStart.getConnectionPool();
     }
 
@@ -41,13 +39,10 @@ public class CreateUser extends HttpServlet {
                 Integer.parseInt(request.getParameter("phonenumber")),
                 "user");
 
-        try
-        {
+        try {
             UserFacade.createUser(user, connectionPool);
             request.getRequestDispatcher("login.jsp").forward(request, response);
-        }
-        catch (DatabaseException e)
-        {
+        } catch (DatabaseException e) {
             request.setAttribute("errormessage", e.getMessage());
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }

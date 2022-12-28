@@ -18,13 +18,12 @@ import java.util.Map;
 
 @WebServlet(name = "navToMaterialList", value = "/navToMaterialList")
 public class NavToMaterialList extends HttpServlet {
+
     private static ConnectionPool connectionPool = ApplicationStart.getConnectionPool();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.doPost(request,response);
-
-
-
+        this.doPost(request, response);
     }
 
     @Override
@@ -32,12 +31,11 @@ public class NavToMaterialList extends HttpServlet {
         HttpSession session = request.getSession();
 
         try {
-            Map<Integer,Material> materialList = OrderFacade.readMaterials(connectionPool);
-            session.setAttribute("materiallist",materialList);
-
+            Map<Integer, Material> materialList = OrderFacade.readMaterials(connectionPool);
+            session.setAttribute("materiallist", materialList);
         } catch (DatabaseException e) {
             e.printStackTrace();
         }
-        request.getRequestDispatcher("WEB-INF/admin/materiallist.jsp").forward(request,response);
+        request.getRequestDispatcher("WEB-INF/admin/materiallist.jsp").forward(request, response);
     }
 }
