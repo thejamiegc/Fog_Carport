@@ -22,7 +22,7 @@
             </div>
             <div class="form-floating">
                 <input type="password" class="form-control" id="password" placeholder="Adgangskode" name="password">
-                <label for="password">Adgangskode</label>
+                <label for="password">Vælg Adgangskode</label>
             </div>
             <br>
 

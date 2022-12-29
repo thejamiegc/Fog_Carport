@@ -13,7 +13,7 @@
 
             <div class="form-floating">
                 <input type="email" class="form-control" id="email" placeholder="name@example.com" name="email">
-                <label for="email">Email addresse</label>
+                <label for="email">Email</label>
                 <div id="emailHelp" class="form-text">Vi deler ikke dine oplysninger.</div>
                 <br>
             </div>
