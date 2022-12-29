@@ -7,9 +7,10 @@
 
     <jsp:body>
         <h1>Kunde ordrer</h1>
-        <p>Her kan du se alle ordrer fra kunder. Du kan klikke 'vis detaljer' for at se detaljeret beskrivelse over
-            kundens ordrer. <br>
-            Du kan redigere eller slette en ordre samt sætte en status på ordren.</p>
+        <p>Her kan du se alle ordrer der er oprettet til kunder. <br>
+            Du kan klikke 'vis detaljer' for at se en detaljeret beskrivelse over den enkelte ordre. <br>
+            Under 'vis detaljer' kan du også tilgå styklisten og tegninger. <br>
+            Du har også mulighed for slette en ordre på knappen 'slet ordre'.</p>
 
         <div class="table-responsive">
             <table class="table table-hover">
@@ -48,7 +49,7 @@
                             <td style="font-weight: bold">
                                 <button class="btn btn-primary" type="submit" formaction="deleteorder" name="orderID"
                                         value="${orderItem.orderID}">
-                                    Slet bestilling
+                                    Slet ordre
                                 </button>
                             </td>
                         </form>
