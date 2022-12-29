@@ -21,12 +21,6 @@
                 <input type="password" class="form-control" id="password" placeholder="Password" name="password">
                 <label for="password">Adgangskode</label>
             </div>
-
-            <div class="checkbox mb-3">
-                <label>
-                    <input type="checkbox" value="remember-me"> Husk mig
-                </label>
-            </div>
             <input class="w-100 btn btn-lg btn-primary" type="submit" value="Log mig ind"/>
         </form>
 
