@@ -61,5 +61,24 @@ class CalculatorTest {
         }
         Assertions.assertEquals(9,quantity);
 
+    }@Test
+    void calculateRoof() {
+
+        int quantity = 6; // mængden skal være på 6 hvis 46.8 = kvadratmeter
+        int squareMeter = tmpcarport.getCarportSquareMeter();
+
+        if (squareMeter <= 25) {
+            quantity = 1; //1 tagplade har længde = 600
+        } else if (squareMeter >= 26 && squareMeter <= 35) {
+            quantity = 2;
+        } else if (squareMeter >= 36 && squareMeter <= 45) {
+            quantity = 4;
+        } else if (squareMeter >= 46 && squareMeter <= 55) {
+            quantity = 6;
+        } else {
+            quantity = 8;
+        }
+        Assertions.assertEquals(2,quantity);
+
     }
 }

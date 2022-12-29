@@ -260,10 +260,23 @@ public class Calculator {
         price += calculateSquareDisc(order, materialList, connectionPool);
         return price;
     }
-
+            // CARPORT TAG
     public static double calculateRoof(Order order, Map<Integer, Material> materialList, ConnectionPool connectionPool) throws DatabaseException {
         Material tmpmaterial = materialList.get(15);
-        int quantity = 6;
+        int quantity = 6; // mængden skal være på 6 hvis 46.8 = kvadratmeter
+        int squareMeter = order.getCarport().getCarportSquareMeter();
+
+        if (squareMeter <= 25) {
+            quantity = 1; //1 tagplade har længde = 600
+        } else if (squareMeter >= 26 && squareMeter <= 35) {
+            quantity = 2;
+        } else if (squareMeter >= 36 && squareMeter <= 45) {
+            quantity = 4;
+        } else if (squareMeter >= 46 && squareMeter <= 55) {
+            quantity = 6;
+        } else {
+            quantity = 8;
+        }
         double price = quantity * tmpmaterial.getPricePerUnit();
         BillOfMaterials billOfMaterials = new BillOfMaterials(order.getOrderID(), tmpmaterial.getMaterialID(), "Tagplader, monteres på spær", quantity, price, tmpmaterial);
         OrderFacade.createBom(billOfMaterials, connectionPool);
