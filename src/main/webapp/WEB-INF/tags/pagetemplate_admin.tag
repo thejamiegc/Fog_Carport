@@ -64,7 +64,7 @@
 <!-- Footer -->
 <footer class="footer mt-auto py-2 bg-light fixed-bottom">
     <div class="row">
-        <div class="col md-3 text-muted">DAT 2.Sem Gruppe C - Vinter 2022 Eksamen</div>
+        <div class="col md-3 text-muted">DAT 2.Sem Gruppe C - Eksamen</div>
         <div class="col md-9 text-muted">Jamie, Isak, Helena, Andreas og Felicia</div>
     </div>
 </footer>
