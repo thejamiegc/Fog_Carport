@@ -18,7 +18,7 @@
                 <input type="text" id="description" name="description" class="form-control"
                        value="${sessionScope.material.description}">
 
-                <label for="length" class="form-label">Længde:</label>
+                <label for="length" class="form-label">Længde i cm:</label>
                 <input type="number" id="length" name="length" class="form-control"
                        value="${sessionScope.material.length}">
 
