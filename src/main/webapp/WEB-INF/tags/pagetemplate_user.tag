@@ -41,7 +41,7 @@
                     </c:if>
                     <c:if test="${sessionScope.user != null }">
                         <div style="color: white"><p>Bruger: ${sessionScope.user.firstname}</p></div>
-                        <a class="nav-material nav-link" href="${pageContext.request.contextPath}/logout">Log out</a>
+                        <a class="nav-material nav-link" href="${pageContext.request.contextPath}/logout">Log ud</a>
                     </c:if>
                 </ul>
             </div>
