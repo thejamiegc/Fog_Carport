@@ -21,7 +21,7 @@
 <header>
     <nav class="navbar navbar-expand-sm navbar-blue" aria-label="Third navbar example">
         <div class="container-fluid">
-            <a class="navbar-brand" href="${pageContext.request.contextPath}../user/welcomeuser.jsp">
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/navtowelcomeuser">
                 <img src="${pageContext.request.contextPath}/images/FOGLogo.jpg"/>
             </a>
             <a class="navbar-brand" href="#"></a>
@@ -40,7 +40,7 @@
                         <a class="nav-material nav-link" href="${pageContext.request.contextPath}/login.jsp">Log ind</a>
                     </c:if>
                     <c:if test="${sessionScope.user != null }">
-                        <p>Bruger: ${sessionScope.user.firstname}</p>
+                        <div style="color: white"><p>Bruger: ${sessionScope.user.firstname}</p></div>
                         <a class="nav-material nav-link" href="${pageContext.request.contextPath}/logout">Log out</a>
                     </c:if>
                 </ul>

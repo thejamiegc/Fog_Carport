@@ -127,7 +127,7 @@ public class Calculator {
         return price;
     }
 
-    public static double calulateAllStern(Order order, Map<Integer, Material> materialList, ConnectionPool connectionPool) throws DatabaseException {
+    public static double calculateAllStern(Order order, Map<Integer, Material> materialList, ConnectionPool connectionPool) throws DatabaseException {
         double price = 0;
         price += calculateEndSternUnder(order, materialList, connectionPool);
         price += calculateEndSternOver(order, materialList, connectionPool);
@@ -283,7 +283,7 @@ public class Calculator {
         totalprice += calculateFittings(order, materialList, connectionPool);
         totalprice += calculateOtherMaterials(order, materialList, connectionPool);
         totalprice += calculateRoof(order, materialList, connectionPool);
-        totalprice += calulateAllStern(order, materialList, connectionPool);
+        totalprice += calculateAllStern(order, materialList, connectionPool);
 
         if (shed != null) {
             totalprice += calculateShed(order, materialList, connectionPool);

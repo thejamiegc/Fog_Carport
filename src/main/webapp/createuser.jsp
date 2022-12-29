@@ -17,50 +17,58 @@
             <div class="form-floating">
                 <input type="email" class="form-control" id="email" placeholder="name@example.com" name="email">
                 <label for="email">Indtast email</label>
-                <div id="email" class="form-text">Vi deler ikke dine oplysninger.</div>
+                <div class="form-text">Vi deler ikke dine oplysninger.</div>
                 <br>
             </div>
             <div class="form-floating">
                 <input type="password" class="form-control" id="password" placeholder="Adgangskode" name="password">
                 <label for="password">Adgangskode</label>
             </div>
+            <br>
 
             <div class="form-floating">
                 <input type="password" class="form-control" id="password1" placeholder="Gentag adgangskode"
                        name="password1">
                 <label for="password1">Gentag adgangskode</label>
             </div>
+            <br>
 
             <h2>Kontaktoplysninger</h2>
             <div class="form-floating">
                 <input type="text" class="form-control" id="firstname" placeholder="Fornavn" name="firstname">
                 <label for="firstname">Fornavn</label>
             </div>
+            <br>
 
             <div class="form-floating">
                 <input type="text" class="form-control" id="lastname" placeholder="Efternavn" name="lastname">
                 <label for="lastname">Efternavn</label>
             </div>
+            <br>
 
             <div class="form-floating">
                 <input type="text" class="form-control" id="address" placeholder="Adresse" name="address">
                 <label for="address">Adresse</label>
             </div>
+            <br>
 
             <div class="form-floating">
                 <input type="text" class="form-control" id="postalcode" placeholder="Postnummer" name="postalcode">
                 <label for="postalcode">Postnummer</label>
             </div>
+            <br>
 
             <div class="form-floating">
                 <input type="text" class="form-control" id="city" placeholder="By" name="city">
                 <label for="city">By</label>
             </div>
+            <br>
 
             <div class="form-floating">
                 <input type="tel" class="form-control" id="phonenumber" placeholder="+45" name="phonenumber">
                 <label for="phonenumber">Telefonnummer</label>
             </div>
+            <br>
 
             <input value="Opret bruger" class="w-100 btn btn-lg btn-primary" type="submit"/>
             <br>

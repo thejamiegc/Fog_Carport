@@ -28,6 +28,7 @@
             <div data-bs-toggle="collapse" data-bs-target="#demo">
                 <div class="form-check">
                     <p>Tilføj skur<input class="form-check-input" type="checkbox" id="shed" name="shed" value="1"></p>
+
                 </div>
             </div>
 

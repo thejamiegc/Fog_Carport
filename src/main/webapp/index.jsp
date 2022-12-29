@@ -12,11 +12,18 @@
         <div class="row">
         <div class="col md-3">
             <h1>Velkommen!</h1>
-            <p>Dette er Fog's custom Carport-hjemmeside. GLHF!</p>
+            <h3>Dette er Fog's custom Carport-hjemmeside</h3>
+            <p>Brugerdefineret Carporte til priser så lave vi ville ønske det var benzinpriserne! </p>
+
             <c:if test="${sessionScope.user == null}">
                 <p>Du er ikke logget ind endnu. Det kan du gøre ved at <a
                         href="login.jsp"><b>klikke her.</b></a></p>
             </c:if>
+
+            <br>
+            <p>Husk ! 14 dages returret <br><br>
+
+                Byt og returner i alle butikker.</p>
         </div>
         <div class="col md-9">
             <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
