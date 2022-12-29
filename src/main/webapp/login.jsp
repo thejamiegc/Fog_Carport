@@ -21,6 +21,7 @@
                 <input type="password" class="form-control" id="password" placeholder="Password" name="password">
                 <label for="password">Adgangskode</label>
             </div>
+            <br>
             <input class="w-100 btn btn-lg btn-primary" type="submit" value="Log mig ind"/>
         </form>
 
