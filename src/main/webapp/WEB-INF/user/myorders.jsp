@@ -13,7 +13,7 @@
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Ordrer nummer</th>
+                    <th scope="col">Ordrenummer</th>
                     <th scope="col">Carport type</th>
                     <th scope="col">Tagtype</th>
                     <th scope="col">Størrelse</th>

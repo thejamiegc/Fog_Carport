@@ -14,7 +14,7 @@
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Ordrer nummer</th>
+                    <th scope="col">Ordrenummer</th>
                     <th scope="col">Kunde ID</th>
                     <th scope="col">Dato</th>
                     <th scope="col">Tagtype</th>
