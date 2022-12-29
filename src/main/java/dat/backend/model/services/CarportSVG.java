@@ -139,7 +139,15 @@ public class CarportSVG {
     //side drawing
     public static SVG makeSVGSide(Order order, SVG carportDrawSide) {
         carportDrawSide = CarportSVG.addBeamsSide(order, carportDrawSide);
-        carportDrawSide = CarportSVG.addPolesSide(order, carportDrawSide);
+        if(order.getShed().getShedLength()!=0){
+            carportDrawSide = CarportSVG.addPolesSideShed(order, carportDrawSide);
+            carportDrawSide = addLinesSideAndTextShed(order,carportDrawSide);
+            carportDrawSide = CarportSVG.addShedSide(order,carportDrawSide);
+        }else {
+            carportDrawSide = CarportSVG.addPolesSide(order, carportDrawSide);
+            carportDrawSide = CarportSVG.addLinesSideAndText(order,carportDrawSide);
+
+        }
         return carportDrawSide;
     }
 
@@ -158,4 +166,69 @@ public class CarportSVG {
         }
         return svg;
     }
+
+    private static SVG addPolesSideShed(Order order,SVG svg){
+        for (int i = 0; i < order.getBillOfMaterialsList().get(11).getQuantity() / 2; i++) {
+            if (100 + i * 250 < order.getCarport().getLength() - order.getShed().getShedLength()) {
+                svg.addRect((100 + i * 250) + startCarportX, startCarportY + 40, 300, 9.7);
+            }
+        }
+
+        svg.addRect(order.getCarport().getLength() + startCarportX - 55 - order.getShed().getShedLength(), startCarportY + 40, 300, 9.7);
+        svg.addRect(order.getCarport().getLength() + startCarportX - 65, startCarportY + 40, 300, 9.7);
+        return svg;
+    }
+
+    private static SVG addLinesSideAndTextShed(Order order, SVG svg){
+        // line length of poles aka the line on the side
+        svg.addArrowLine(50, startCarportY+40, 50, 300+40);
+        svg.addTextSide(10, 300 / 2, "300");
+
+        int poleStartX = startCarportX;
+
+        for (int i = 0; i < order.getBillOfMaterialsList().get(11).getQuantity() / 2; i++) {
+            if (100 + i * 250 < order.getCarport().getLength() - order.getShed().getShedLength()) {
+                svg.addArrowLine(poleStartX, 360, (100 + i * 250) + startCarportX, 360);
+                svg.addTextSide((poleStartX+(100 + i * 250) + startCarportX)/2,390 , ((100 + i * 250) + startCarportX)-poleStartX+"");
+                poleStartX = (100 + i * 250) + startCarportX;
+            }
+        }
+        svg.addArrowLine(poleStartX, 360, order.getCarport().getLength() + startCarportX - 55 - order.getShed().getShedLength(), 360);
+        svg.addTextSide(((poleStartX)+(order.getCarport().getLength() + startCarportX - 55 - order.getShed().getShedLength()))/2,390 , (order.getCarport().getLength() + startCarportX - 55 - order.getShed().getShedLength())-(poleStartX)+"");
+
+
+        svg.addArrowLine(order.getCarport().getLength() + startCarportX - 55 - order.getShed().getShedLength(), 360, order.getCarport().getLength() + startCarportX - 65, 360);
+        svg.addTextSide(((order.getCarport().getLength() + startCarportX - 55 - order.getShed().getShedLength())+(order.getCarport().getLength() + startCarportX - 65))/2,390 , order.getShed().getShedLength()+"");
+
+        svg.addArrowLine(order.getCarport().getLength() + startCarportX - 65, 360, order.getCarport().getLength() + startCarportX, 360);
+        svg.addTextSide(((order.getCarport().getLength() + startCarportX - 65)+(order.getCarport().getLength() + startCarportX))/2,390 , (order.getCarport().getLength() + startCarportX)-(order.getCarport().getLength() + startCarportX - 65)+" needs fix");
+        return svg;
+    }
+
+    public static SVG addShedSide(Order order, SVG svg) {
+        svg.addRectShed(order.getCarport().getLength() + startCarportX - 55 - order.getShed().getShedLength(), startCarportY + 40, 300, order.getShed().getShedLength());
+        return svg;
+
+    }
+
+    private static SVG addLinesSideAndText(Order order, SVG svg){
+        // line length of poles aka the line on the side
+        svg.addArrowLine(50, startCarportY+40, 50, 300+40);
+        svg.addTextSide(10, 300 / 2, "300");
+
+        int poleStartX = startCarportX;
+        for (int i = 0; i < order.getBillOfMaterialsList().get(11).getQuantity() / 2; i++) {
+            if (100 + i * 250 < order.getCarport().getLength()) {
+                svg.addArrowLine(poleStartX, 360, (100 + i * 250) + startCarportX, 360);
+                svg.addTextSide((poleStartX+(100 + i * 250) + startCarportX)/2,390 , ((100 + i * 250) + startCarportX)-poleStartX+"");
+                poleStartX = (100 + i * 250) + startCarportX;
+            } else {
+                svg.addArrowLine(poleStartX, 360, order.getCarport().getLength() - 10, 360);
+                svg.addTextSide((poleStartX+(order.getCarport().getLength() - 10))/2,390 , ((order.getCarport().getLength() - 10))-poleStartX+"");
+            }
+        }
+
+        return svg;
+    }
+
 }
