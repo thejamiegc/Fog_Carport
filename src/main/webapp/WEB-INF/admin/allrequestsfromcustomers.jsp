@@ -7,7 +7,8 @@
 
     <jsp:body>
         <h1>Kunde bestillinger</h1>
-        <p>Her kan du se alle kunders bestillinger. Du kan se status på ordrene eller XXXX </p>
+        <p>Her kan du se alle kunders bestillinger. Du kan lave en bestilling til en ordre
+            <br>og derved ændre på statussen, vise detaljer eller slette bestillingen. </p>
 
         <div class="table-responsive">
             <table class="table table-hover">
