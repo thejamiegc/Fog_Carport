@@ -42,11 +42,11 @@ public class ShowDetailsAdmin extends HttpServlet {
             session.setAttribute("order", order);
             SVG carportDrawTop = CarportSVG.createNewSVG(0, 0, 100, 100, "0 0 1280 720");
             carportDrawTop = CarportSVG.makeSVGTop(order, carportDrawTop);
-            session.setAttribute("carportDrawTop", carportDrawTop);
+            request.setAttribute("carportDrawTop", carportDrawTop);
 
             SVG carportDrawSide = CarportSVG.createNewSVG(0, 0, 100, 100, "0 0 1280 720");
             carportDrawSide = CarportSVG.makeSVGSide(order, carportDrawSide);
-            session.setAttribute("carportDrawSide", carportDrawSide);
+            request.setAttribute("carportDrawSide", carportDrawSide);
 
             request.getRequestDispatcher("WEB-INF/admin/showdetailsadmin.jsp").forward(request, response);
         } catch (DatabaseException | SQLException e) {

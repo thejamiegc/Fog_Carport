@@ -34,14 +34,14 @@
                     <div class="card-body">
                         <h5 class="card-title">Plantegning</h5>
                         <p>Her ses en tegning af carporten fra oven</p>
-                            ${sessionScope.carportDrawTop}
+                            ${requestScope.carportDrawTop}
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Snittegning</h5>
                         <p>Her ses en tegning af carporten fra siden</p>
-                            ${sessionScope.carportDrawSide}
+                            ${requestScope.carportDrawSide}
                     </div>
                 </div>
 
