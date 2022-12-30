@@ -186,6 +186,7 @@ public class CarportSVG {
 
         int poleStartX = startCarportX;
 
+
         for (int i = 0; i < order.getBillOfMaterialsList().get(11).getQuantity() / 2; i++) {
             if (100 + i * 250 < order.getCarport().getLength() - order.getShed().getShedLength()) {
                 svg.addArrowLine(poleStartX, 360, (100 + i * 250) + startCarportX, 360);
@@ -193,15 +194,17 @@ public class CarportSVG {
                 poleStartX = (100 + i * 250) + startCarportX;
             }
         }
+
         svg.addArrowLine(poleStartX, 360, order.getCarport().getLength() + startCarportX - 55 - order.getShed().getShedLength(), 360);
         svg.addTextSide(((poleStartX)+(order.getCarport().getLength() + startCarportX - 55 - order.getShed().getShedLength()))/2,390 , (order.getCarport().getLength() + startCarportX - 55 - order.getShed().getShedLength())-(poleStartX)+"");
-
+        poleStartX += order.getCarport().getLength() + startCarportX - 55 - order.getShed().getShedLength() - poleStartX;
 
         svg.addArrowLine(order.getCarport().getLength() + startCarportX - 55 - order.getShed().getShedLength(), 360, order.getCarport().getLength() + startCarportX - 65, 360);
         svg.addTextSide(((order.getCarport().getLength() + startCarportX - 55 - order.getShed().getShedLength())+(order.getCarport().getLength() + startCarportX - 65))/2,390 , order.getShed().getShedLength()+"");
+        poleStartX += order.getShed().getShedLength();
 
         svg.addArrowLine(order.getCarport().getLength() + startCarportX - 65, 360, order.getCarport().getLength() + startCarportX, 360);
-        svg.addTextSide(((order.getCarport().getLength() + startCarportX - 65)+(order.getCarport().getLength() + startCarportX))/2,390 , (order.getCarport().getLength() + startCarportX)-(order.getCarport().getLength() + startCarportX - 65)+" needs fix");
+        svg.addTextSide(((order.getCarport().getLength() + startCarportX - 65)+(order.getCarport().getLength() + startCarportX))/2,390 , (order.getCarport().getLength())-(poleStartX-startCarportX) +"");
         return svg;
     }
 
