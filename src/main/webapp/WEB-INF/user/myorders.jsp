@@ -6,14 +6,14 @@
     <jsp:body>
         <h1>Mine ordrer</h1>
         <p>Her kan du se alle dine ordrer. Du kan se status på dine ordrer eller klikke på
-            'se detaljer' for at få vist flere detaljer..</p>
+            'se detaljer' for at få vist flere detaljer om din ordre. <br>Du acceptere ordren ved at klikke på ‘Accepter tilbud’. </p>
 
         <div class="table-responsive">
             <table class="table table-hover">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Ordrer nummer</th>
+                    <th scope="col">Ordrenummer</th>
                     <th scope="col">Carport type</th>
                     <th scope="col">Tagtype</th>
                     <th scope="col">Størrelse</th>

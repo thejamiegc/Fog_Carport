@@ -8,7 +8,7 @@ public class UserFacade {
         return UserMapper.login(email, password, connectionPool);
     }
 
-    public static void createUser(User user, ConnectionPool connectionPool) throws DatabaseException {
-        UserMapper.createUser(user, connectionPool);
+    public static User createUser(User user, ConnectionPool connectionPool) throws DatabaseException {
+       return UserMapper.createUser(user, connectionPool);
     }
 }

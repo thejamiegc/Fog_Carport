@@ -7,14 +7,15 @@
 
     <jsp:body>
         <h1>Kunde bestillinger</h1>
-        <p>Her kan du se alle kunders bestillinger. Du kan se status på ordrene eller XXXX </p>
+        <p>Her kan du se alle kunders bestillinger. Du kan lave en bestilling til en ordre
+            <br>og derved ændre på statussen, vise detaljer eller slette bestillingen. </p>
 
         <div class="table-responsive">
             <table class="table table-hover">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Ordrer nummer</th>
+                    <th scope="col">Ordrenummer</th>
                     <th scope="col">Kunde ID</th>
                     <th scope="col">Dato</th>
                     <th scope="col">Tagtype</th>

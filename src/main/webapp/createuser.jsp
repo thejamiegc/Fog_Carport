@@ -10,7 +10,7 @@
         <form action="createUser" method="post">
             <h1 class="h3 mb-3 fw-normal">Opret bruger</h1>
             <p>For at kunne bestille en carport på egne mål, skal du oprette en bruger. Dette kan du gøre her. <br>
-                Alle felter markeret med * skal udfyldes. <br> <br>
+                <br> <br>
                 Vi gemmer dine kontaktoplysninger, så vi kan kontakte dig med henblik på et udvidet kundemøde.</p>
             <h2>Opret log ind</h2>
 
@@ -22,7 +22,7 @@
             </div>
             <div class="form-floating">
                 <input type="password" class="form-control" id="password" placeholder="Adgangskode" name="password">
-                <label for="password">Adgangskode</label>
+                <label for="password">Vælg Adgangskode</label>
             </div>
             <br>
 

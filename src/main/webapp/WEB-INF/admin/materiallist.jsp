@@ -6,7 +6,7 @@
 <t:pagetemplate_admin>
     <jsp:body>
         <h1>Materialeliste</h1>
-        <p>Her kan du se alle materialer. Du kan slette eller ændre i materialer.</p>
+        <p>Her kan du se alle materialer. Du kan slette eller ændre i materialer ved at klikke på ‘Rediger’ knappen.</p>
 
         <div class="table-responsive">
         <table class="table table-hover">
