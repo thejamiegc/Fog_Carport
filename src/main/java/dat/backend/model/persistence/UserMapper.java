@@ -37,7 +37,7 @@ class UserMapper {
         return user;
     }
 
-    static void createUser(User user, ConnectionPool connectionPool) throws DatabaseException {
+    static User createUser(User user, ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
         String sql = "insert into User (firstname, lastname, email, password, address, postalcode, phonenumber, role) values (?,?,?,?,?,?,?,?)";
         try (Connection connection = connectionPool.getConnection()) {
@@ -53,6 +53,7 @@ class UserMapper {
 
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1) {
+                    user = new User(user.getFirstname(),user.getLastname(), user.getEmail(),user.getPassword(), user.getAddress(), user.getPostalcode(), user.getPhonenumber(), user.getRole());
 
                 } else {
                     throw new DatabaseException("The user with email = " + user.getEmail() + " could not be inserted into the database");
@@ -61,5 +62,6 @@ class UserMapper {
         } catch (SQLException ex) {
             throw new DatabaseException(ex, "Could not insert username into database");
         }
+        return user;
     }
 }
