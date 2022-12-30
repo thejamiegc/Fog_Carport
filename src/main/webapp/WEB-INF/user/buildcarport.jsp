@@ -44,8 +44,9 @@
                            placeholder="længde i cm">
                 </div>
             </div>
+
             <div class="mb-3">
-                <input type="submit" value="Bestil tilbud"/>
+                <input value="Bestil tilbud" class="w-100 btn btn-lg btn-primary" type="submit"/>
             </div>
             </div>
         </form>
