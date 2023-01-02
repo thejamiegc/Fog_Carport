@@ -19,10 +19,13 @@ public class MyOrders extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //redirects to doPost method.
         this.doPost(request, response);
     }
 
     @Override
+    /*METODE - henter session, og gemmer nuværende (sessionens user) user som object, og initialisere en liste af Ordre objekter
+    -> herefter henter og viser ordre data fra database */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");

@@ -1,12 +1,12 @@
 package dat.backend.model.entities;
-
 public class Carport {
+    // VARIABLES
     private int carportID;
     private int length;
     private int width;
     private String rooftype;
     private int orderID;
-
+        // CONSTRUCTOR
     //measurements are in cm and not meters
     public Carport(int carportID, int length, int width, String rooftype, int orderID) {
         this.carportID = carportID;
@@ -15,13 +15,14 @@ public class Carport {
         this.rooftype = rooftype;
         this.orderID = orderID;
     }
-
+        // CONSTRUCTOR
     public Carport(int length, int width, String rooftype) {
         this.length = length;
         this.width = width;
         this.rooftype = rooftype;
     }
 
+    //GETTERS
     public int getOrderID() {
         return orderID;
     }
@@ -46,6 +47,8 @@ public class Carport {
         return rooftype;
     }
 
+
+    //SETTERS
     public void setCarportID(int carportID) {
         this.carportID = carportID;
     }

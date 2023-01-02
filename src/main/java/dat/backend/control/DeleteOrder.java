@@ -15,11 +15,13 @@ public class DeleteOrder extends HttpServlet {
     private static ConnectionPool connectionPool = ApplicationStart.getConnectionPool();
 
     @Override
+    // You shouldn't end up here with a GET-request, thus you get sent to doPost m'lord
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         this.doPost(request, response);
     }
 
     @Override
+    // METODE - henter session, gemmer orderID som variabel, læser Ordre data fra database og henter skur længde, herefter slettes skur fra database.
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setCharacterEncoding("UTF-8");
         request.setCharacterEncoding("UTF-8");

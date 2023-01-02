@@ -27,6 +27,7 @@ public class Login extends HttpServlet {
         response.sendRedirect("index.jsp");
     }
 
+    //METODE - henter session, henter parametre fra jsp side ( email og password) henter user fra database og logger ind. - der udføres også et role check.
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.setCharacterEncoding("UTF-8");
         request.setCharacterEncoding("UTF-8");
@@ -41,6 +42,7 @@ public class Login extends HttpServlet {
             session = request.getSession();
             session.setAttribute("user", user); // adding user object to session scope
 
+            //if statement that checks what and IF a user has a role, does user not have a role they will be redirected to an error page.
             if (user.getRole().equalsIgnoreCase("admin")) {
                 request.getRequestDispatcher("/WEB-INF/admin/welcomeadmin.jsp").forward(request, response);
             }

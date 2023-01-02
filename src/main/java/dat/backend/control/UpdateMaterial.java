@@ -16,6 +16,7 @@ public class UpdateMaterial extends HttpServlet {
     private static ConnectionPool connectionPool = ApplicationStart.getConnectionPool();
 
     @Override
+    // METODE - parametres hentes fra JSP side og materialets data bliver opdateret i database ud fra materialets ID (materialID)
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Material material = new Material(Integer.parseInt(request.getParameter("materialID")),
                 request.getParameter("description"),

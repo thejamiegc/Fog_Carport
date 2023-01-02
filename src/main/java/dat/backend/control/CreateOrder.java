@@ -22,6 +22,7 @@ public class CreateOrder extends HttpServlet {
     }
 
     @Override
+    // METODE - henter session, gemmer orderID som variabel, og ændrer status fra alt under 3 til -> 3
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         int orderID = Integer.parseInt(request.getParameter("orderID"));

@@ -8,6 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 class UserMapper {
+    // METODE DER HENTER EN BRUGER BASERET PÅ EMAIL OG PASSWORD
     static User login(String email, String password, ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
         User user = null;
@@ -37,6 +38,7 @@ class UserMapper {
         return user;
     }
 
+    // METODER DER INDSÆTTER / OPRETTER BRUGER BASERET PÅ FIRSTNAME, LASTNAME EMAIL, PASSWORD, ADRESS, POSTALCODE, PHONENUMBER & ROLE.
     static User createUser(User user, ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
         String sql = "insert into User (firstname, lastname, email, password, address, postalcode, phonenumber, role) values (?,?,?,?,?,?,?,?)";

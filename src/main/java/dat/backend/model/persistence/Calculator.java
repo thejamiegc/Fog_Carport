@@ -8,8 +8,10 @@ import dat.backend.model.exceptions.DatabaseException;
 
 import java.sql.SQLException;
 import java.util.Map;
-
+// This class calculates the price by using the dimensions from the carport object on all our materials needed for the construction.
 public class Calculator {
+
+
 
     //DETTE ER STOLPER
     public static double calculatePoles(Order order, Map<Integer, Material> materialList, ConnectionPool connectionPool) throws DatabaseException {
@@ -50,7 +52,7 @@ public class Calculator {
         return price;
     }
 
-    //DETTE ER REMME
+    // DETTE ER YDRE REMME
     public static double calculateOuterBeams(Order order, Map<Integer, Material> materialList, ConnectionPool connectionPool) throws DatabaseException {
         Material tmpmaterial = materialList.get(8);
         int quantity = 2;
@@ -59,7 +61,7 @@ public class Calculator {
         OrderFacade.createBom(billOfMaterials, connectionPool);
         return price;
     }
-
+    // DETTE ER INDER REMME
     public static double calculateInnerBeams(Order order, Map<Integer, Material> materialList, ConnectionPool connectionPool) throws DatabaseException {
         Material tmpmaterial = materialList.get(8);
         int quantity = 2;
@@ -69,7 +71,7 @@ public class Calculator {
         return price;
     }
 
-    //ende stern under
+    // ENDE STERN UNDER
     public static double calculateEndSternUnder(Order order, Map<Integer, Material> materialList, ConnectionPool connectionPool) throws DatabaseException {
         Material tmpmaterial = materialList.get(1);
         int quantity = 4;
@@ -79,7 +81,7 @@ public class Calculator {
         return price;
     }
 
-    //side stern under
+    // SIDE STERN UNDER
     public static double calculateSideSternUnder(Order order, Map<Integer, Material> materialList, ConnectionPool connectionPool) throws DatabaseException {
         Material tmpmaterial = materialList.get(2);
         int quantity = 4;
@@ -89,7 +91,7 @@ public class Calculator {
         return price;
     }
 
-    //ende stern over
+    // SIDE STERN OVER
     public static double calculateEndSternOver(Order order, Map<Integer, Material> materialList, ConnectionPool connectionPool) throws DatabaseException {
         Material tmpmaterial = materialList.get(3);
         int quantity = 2;
@@ -99,7 +101,7 @@ public class Calculator {
         return price;
     }
 
-    //side stern over
+    // SIDE STERN OVER
     public static double calculateSideSternOver(Order order, Map<Integer, Material> materialList, ConnectionPool connectionPool) throws DatabaseException {
         Material tmpmaterial = materialList.get(4);
         int quantity = 4;
@@ -108,7 +110,7 @@ public class Calculator {
         OrderFacade.createBom(billOfMaterials, connectionPool);
         return price;
     }
-
+    // SIDE VAND STERN
     public static double calculateSideWaterStern(Order order, Map<Integer, Material> materialList, ConnectionPool connectionPool) throws DatabaseException {
         Material tmpmaterial = materialList.get(13);
         int quantity = 4;
@@ -117,7 +119,7 @@ public class Calculator {
         OrderFacade.createBom(billOfMaterials, connectionPool);
         return price;
     }
-
+    // ENDE VAND STERN
     public static double calculateEndWaterStern(Order order, Map<Integer, Material> materialList, ConnectionPool connectionPool) throws DatabaseException {
         Material tmpmaterial = materialList.get(14);
         int quantity = 2;
@@ -126,7 +128,7 @@ public class Calculator {
         OrderFacade.createBom(billOfMaterials, connectionPool);
         return price;
     }
-
+    // BEREGNER FOR ALLE STERN
     public static double calculateAllStern(Order order, Map<Integer, Material> materialList, ConnectionPool connectionPool) throws DatabaseException {
         double price = 0;
         price += calculateEndSternUnder(order, materialList, connectionPool);
@@ -141,7 +143,7 @@ public class Calculator {
 
     // SKRUER OG BESLAG
 
-    //SKRUER
+    // SKRUER
     public static double calculatePlastmoScrews(Order order, Map<Integer, Material> materialList, ConnectionPool connectionPool) throws DatabaseException {
         Material tmpmaterial = materialList.get(17);
         int quantity = 3;
@@ -186,7 +188,7 @@ public class Calculator {
         OrderFacade.createBom(billOfMaterials, connectionPool);
         return price;
     }
-
+    // BEREGNER FOR ALLE SKRUER
     public static double calculateAllScrews(Order order, Map<Integer, Material> materialList, ConnectionPool connectionPool) throws DatabaseException {
         double price = 0;
         price += calculatePlastmoScrews(order, materialList, connectionPool);
@@ -197,6 +199,8 @@ public class Calculator {
         return price;
     }
 
+
+    // SPÆR
     public static double calculateFittingRight(Order order, Map<Integer, Material> materialList, ConnectionPool connectionPool) throws DatabaseException {
         Material tmpmaterial = materialList.get(19);
         int quantity = 15;
@@ -214,7 +218,7 @@ public class Calculator {
         OrderFacade.createBom(billOfMaterials, connectionPool);
         return price;
     }
-
+    // BEREGNER FOR ALLE XXX
     public static double calculateFittings(Order order, Map<Integer, Material> materialList, ConnectionPool connectionPool) throws DatabaseException {
         double price = 0;
         price += calculateFittingRight(order, materialList, connectionPool);
@@ -252,7 +256,7 @@ public class Calculator {
         OrderFacade.createBom(billOfMaterials, connectionPool);
         return price;
     }
-
+    // BEREGNER FOR TAPE, BOLTE OG FIRKANTSSKIVER
     public static double calculateOtherMaterials(Order order, Map<Integer, Material> materialList, ConnectionPool connectionPool) throws DatabaseException {
         double price = 0;
         price += calculateTape(order, materialList, connectionPool);
@@ -283,7 +287,7 @@ public class Calculator {
         return price;
     }
 
-
+    // BEREGNER FOR ALLE BOM'ER
     public static void calculateAllBom(Order order, Shed shed, ConnectionPool connectionPool) throws SQLException, DatabaseException {
         double totalprice = 0;
 

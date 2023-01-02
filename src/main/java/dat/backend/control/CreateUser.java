@@ -22,11 +22,12 @@ public class CreateUser extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // You shouldn't end up here with a GET-request, thus you get sent back to frontpage
+        // You shouldn't end up here with a GET-request, thus you get sent back to frontpage m'lord
         response.sendRedirect("index.jsp");
     }
 
     @Override
+    // METODE - henter og gemmer parametre fra jsp siden som et user object og herefter opretter en bruger i database.
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setCharacterEncoding("UTF-8");
         request.setCharacterEncoding("UTF-8");

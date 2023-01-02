@@ -12,7 +12,7 @@ public class Logout extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
         HttpSession session = request.getSession();
-        session.invalidate();
+        session.invalidate(); //invalidates / terminates session
         response.sendRedirect("index.jsp");
     }
 }

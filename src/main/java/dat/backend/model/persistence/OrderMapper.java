@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class OrderMapper {
-
+    // METODE DER OPRETTER / INDSÆTTER CARPORT I DATABASE
     public static int createOrder(Order order, ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
         String sql = "INSERT INTO carport.Order (userID, carportID, price, statusID) VALUES (?,?,?,?)";
@@ -31,7 +31,7 @@ public class OrderMapper {
             throw new DatabaseException(ex, "Could not insert order into database");
         }
     }
-
+    // METODE OPDATERER PRIS PÅ CARPORT I DATABASE
     public static void updateOrderPrice(Order order, ConnectionPool connectionPool) throws SQLException {
         Logger.getLogger("web").log(Level.INFO, "");
         String sql = "UPDATE carport.Order SET price = ? WHERE orderID = ?";
@@ -46,7 +46,7 @@ public class OrderMapper {
         }
     }
 
-
+    // METODE DER VISER ALLE ORDRER I DATABASE UD FRA userID
     public static List<Order> readOrdersAsCustomer(int userID, ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
         List<Order> orderList = new ArrayList<>();
@@ -86,7 +86,7 @@ public class OrderMapper {
         }
         return orderList;
     }
-
+    // METODE DER VISER ALLE BESTILLINGER I DATABASE UD FRA statusID - SOM ER UNDER ELLER LIG MED 2 -  TIL ADMINISTRATORSIDE
     public static List<Order> readRequestAsAdmin(ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
         List<Order> orderList = new ArrayList<>();
@@ -124,6 +124,7 @@ public class OrderMapper {
         }
         return orderList;
     }
+    // METODE DER VISER ALLE ORDRER I DATABASE UD FRA statusID - SOM ER OVER ELLER LIG MED 3 -TIL ADMINISTRATORSIDE
 
     public static List<Order> readOrdersAsAdmin(ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
@@ -164,6 +165,7 @@ public class OrderMapper {
         return orderList;
     }
 
+    // METODE DER VISER DATA FRA EN SPECIFIK ORDER UD FRA orderID
     public static Order readDataFromAnOrder(int orderID, ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
         Map<Integer, BillOfMaterials> billOfMaterialsList = new HashMap<>();
@@ -243,7 +245,7 @@ public class OrderMapper {
         return order;
     }
 
-
+    // METODER SLETTER ORDRE FRA DATABASE UD FRA orderID
     public static void deleteOrder(int orderID, ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
         String sql = "DELETE from `Order` WHERE `Order`.orderID = ?";
@@ -256,7 +258,7 @@ public class OrderMapper {
             throw new DatabaseException(ex, "Could not delete order from database");
         }
     }
-
+    // METODE SLETTER BOM I DATABASE UD FRA orderID
     public static void deleteBom(int orderID, ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
         String sql = "DELETE from Bom WHERE Bom.orderID = ?";
@@ -269,7 +271,7 @@ public class OrderMapper {
             throw new DatabaseException(ex, "Could not delete order from database");
         }
     }
-
+    // METODE SLETTER CARPORT I DATABASE UD FRA orderID
     public static void deleteCarport(int orderID, ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
         String sql = "DELETE from Carport WHERE Carport.orderID = ?";
@@ -283,7 +285,7 @@ public class OrderMapper {
         }
     }
 
-
+    // METODE SLETTER SKUR FRA DATABASE UD FRA orderID
     public static void deleteShed(int orderID, ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
         String sql = "DELETE from Shed WHERE Shed.orderID = ?";
@@ -297,7 +299,7 @@ public class OrderMapper {
         }
     }
 
-
+    // METODE OPRETTER / INDSÆTTER BOM I DATABASE UD FRA orderID, materialID, description, quantity OG price.
     public static int createBom(BillOfMaterials billOfMaterials, ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
         String sql = "INSERT INTO carport.Bom (orderID, materialID, description, quantity, price) VALUES (?,?,?,?,?)";
@@ -317,7 +319,7 @@ public class OrderMapper {
             throw new DatabaseException(ex, "Could not insert bom into database");
         }
     }
-
+    // METODE VISER MATERIALER / DATA I DATABASE UD FRA typeID
     public static Map<Integer, Material> readMaterials(ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
         Map<Integer, Material> materialList = new HashMap<>();
@@ -344,7 +346,7 @@ public class OrderMapper {
         }
         return materialList;
     }
-
+    // METODE DER OPRETTER / INDSÆTTER MATERIALE UD FRA description, length, unit, priceperunit OG type
     public static int createMaterial(Material material, int bomID, ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
         String sql = "INSERT INTO carport.Material (description, length, unit, priceperunit, type) VALUES (?,?,?,?,?)";
@@ -365,6 +367,7 @@ public class OrderMapper {
         }
     }
 
+    // METODE DER OPDATERER STATUS UD FRA orderID
     public static void updateStatus(Order order, ConnectionPool connectionPool) throws SQLException {
         Logger.getLogger("web").log(Level.INFO, "");
         String sql = "UPDATE carport.Order SET `Order`.statusID = ? WHERE orderID = ?";
@@ -379,7 +382,7 @@ public class OrderMapper {
         }
     }
 
-
+    // METODE DER VISER DATA PÅ MATERIALE I DATABASE UD FRA materialID
     public static Material readMaterial(int materialID, ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
         Material material = null;
@@ -405,7 +408,7 @@ public class OrderMapper {
         }
         return material;
     }
-
+    // METODE DER OPDATERER MATERIALE BESKRIVELSE I DATABASE UD FRA materialID
     public static void updateMatDescription(Material material, ConnectionPool connectionPool) throws SQLException {
         Logger.getLogger("web").log(Level.INFO, "");
         String sql = "UPDATE carport.Material SET description = ? WHERE materialID = ?";
@@ -420,7 +423,7 @@ public class OrderMapper {
             }
         }
     }
-
+    // METODE DER OPDATERER MATERIALE LÆNGDE I DATABASE UD FRA materialID
     public static void updateMatLength(Material material, ConnectionPool connectionPool) throws SQLException {
         Logger.getLogger("web").log(Level.INFO, "");
         String sql = "UPDATE carport.Material SET length = ? WHERE materialID = ?";
@@ -435,7 +438,7 @@ public class OrderMapper {
             }
         }
     }
-
+    // METODE DER OPDATERER MATERIALE ENHED UD FRA materialID
     public static void updateMatUnit(Material material, ConnectionPool connectionPool) throws SQLException {
         Logger.getLogger("web").log(Level.INFO, "");
         String sql = "UPDATE carport.Material SET unit = ? WHERE materialID = ?";
@@ -450,7 +453,7 @@ public class OrderMapper {
             }
         }
     }
-
+    // METODE DER OPDATERER MATERIALE - PRIS PR ENHED - I DATABASE UD FRA materialID
     public static void updateMatPriceperunit(Material material, ConnectionPool connectionPool) throws SQLException {
         Logger.getLogger("web").log(Level.INFO, "");
         String sql = "UPDATE carport.Material SET priceperunit = ? WHERE materialID = ?";

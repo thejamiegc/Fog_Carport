@@ -1,6 +1,7 @@
 package dat.backend.model.entities;
 
 public class Material {
+    // VARIABLES
     private int materialID;
     private String description;
     private int length;
@@ -8,7 +9,7 @@ public class Material {
     private double pricePerUnit;
     private int type;
     private String typename;
-
+    // CONSTRUCTOR
     public Material(int materialID, String description, int length, String unit, double pricePerUnit, int type) {
         this.materialID = materialID;
         this.description = description;
@@ -17,7 +18,7 @@ public class Material {
         this.pricePerUnit = pricePerUnit;
         this.type = type;
     }
-
+    // CONSTRUCTOR
     public Material(String description, int length, String unit, double pricePerUnit, int type) {
         this.description = description;
         this.length = length;
@@ -25,7 +26,7 @@ public class Material {
         this.pricePerUnit = pricePerUnit;
         this.type = type;
     }
-
+    // CONSTRUCTOR
     public Material(int materialID, String description, int length, String unit, double pricePerUnit, int type, String typename) {
         this.materialID = materialID;
         this.description = description;
@@ -35,7 +36,7 @@ public class Material {
         this.type = type;
         this.typename = typename;
     }
-
+    // GETTERS
     public int getMaterialID() {
         return materialID;
     }

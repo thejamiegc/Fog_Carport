@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.util.Map;
 
 public class Order {
+    // VARIABLES
     private int orderID;
     private int customerID;
     private Timestamp created;
@@ -16,6 +17,7 @@ public class Order {
     private User user;
     private Shed shed;
 
+    // CONSTRUCTOR
     // Used in OrderMapper to show orders (myorders and allrequestsfromcustomers jsp )
     public Order(int orderID, int customerID, Timestamp created, int carportID, double price, int statusID, Carport carport, String statusname, Shed shed) {
         this.orderID = orderID;
@@ -29,13 +31,14 @@ public class Order {
         this.shed = shed;
     }
 
+    // CONSTRUCTOR
     // Used in BuildCarport servlet
     public Order(User user, Carport carport, int statusID) {
         this.user = user;
         this.carport = carport;
         this.statusID = statusID;
     }
-
+    // CONSTRUCTOR
     public Order(int orderID, int customerID, Timestamp created, int carportID, double price, int statusID, Carport carport, String statusname, Map<Integer, BillOfMaterials> billOfMaterialsList, User user, Shed shed) {
         this.orderID = orderID;
         this.customerID = customerID;
@@ -50,20 +53,17 @@ public class Order {
         this.shed = shed;
     }
 
-    public void setStatusID(int statusID) {
-        this.statusID = statusID;
-    }
-
+    // GETTERS
     public int getOrderID() {
         return orderID;
     }
 
-    public Carport getCarport() {
-        return carport;
-    }
-
     public int getCustomerID() {
         return customerID;
+    }
+
+    public Carport getCarport() {
+        return carport;
     }
 
     public Timestamp getCreated() {
@@ -82,10 +82,6 @@ public class Order {
         return price;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
     public int getStatusID() {
         return statusID;
     }
@@ -100,6 +96,16 @@ public class Order {
 
     public Map<Integer, BillOfMaterials> getBillOfMaterialsList() {
         return billOfMaterialsList;
+    }
+
+
+    // SETTERS
+    public void setStatusID(int statusID) {
+        this.statusID = statusID;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public void setOrderID(int orderID) {

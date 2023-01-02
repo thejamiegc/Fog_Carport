@@ -1,11 +1,13 @@
 package dat.backend.model.entities;
 
 public class Shed {
+    // VARIABLES
     private int shedID;
     private int shedLength;
     private int shedWidth;
     private int shedOrderID;
 
+    // CONSTRUCTOR
     public Shed(int shedID, int shedLength, int shedWidth, int shedOrderID) {
         this.shedID = shedID;
         this.shedLength = shedLength;
@@ -13,11 +15,13 @@ public class Shed {
         this.shedOrderID = shedOrderID;
     }
 
+    // CONSTRUCTOR
     public Shed(int shedLength, int shedWidth) {
         this.shedLength = shedLength;
         this.shedWidth = shedWidth;
     }
 
+    // GETTERS
     public int getShedLength() {
         return shedLength;
     }
@@ -34,6 +38,8 @@ public class Shed {
         return shedOrderID;
     }
 
+
+    // SETTERS
     public void setShedID(int shedID) {
         this.shedID = shedID;
     }

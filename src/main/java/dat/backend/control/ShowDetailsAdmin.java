@@ -28,6 +28,8 @@ public class ShowDetailsAdmin extends HttpServlet {
     }
 
     @Override
+    /* METODE - henter session, gemmer orderID som variabel. Herefter hentes og vises order data fra database
+    statusID tjekkes og bliver ændret fra 1 - 2 samt -> derefter dannes tegninger af carport. */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         Locale.setDefault(new Locale("US"));
@@ -36,7 +38,7 @@ public class ShowDetailsAdmin extends HttpServlet {
         try {
             Order order = OrderFacade.readDataFromAnOrder(orderID, connectionPool);
             if (order.getStatusID() == 1) {
-                order.setStatusID(2);
+                order.setStatusID(2); // if order has status higher than 1 - system redirects to error page.
                 OrderFacade.updateStatus(order, connectionPool);
             }
             session.setAttribute("order", order);

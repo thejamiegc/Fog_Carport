@@ -27,7 +27,7 @@ public class NavToCustomerOrders extends HttpServlet {
         List<Order> orderList;
 
         try {
-            // ONLY orders that are bigger or equal to 3
+            // ONLY orders with status that are bigger or equal to 3
             orderList = OrderFacade.readOrdersAsAdmin(connectionPool);
             session.setAttribute("orderList", orderList);
             request.getRequestDispatcher("WEB-INF/admin/allordersfromcustomers.jsp").forward(request, response);

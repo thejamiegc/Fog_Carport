@@ -10,7 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class CarportMapper {
-
+    // METODE FOR AT OPRETTE / INDSÆTTE CARPORT I DATABASE
     static int createCarport(Carport carport, ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
         String sql = "INSERT INTO Carport (length, width, rooftype) VALUES (?,?,?)";
@@ -28,7 +28,7 @@ public class CarportMapper {
             throw new DatabaseException(ex, "Could not insert order into database");
         }
     }
-
+    // METODE HENTER OG CARPORTE FRA DATABASE OG GEMMER CARPORTE I ET MAP
     public static Map<Integer, Carport> getCarportMap(ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
         Map<Integer, Carport> carportMap = new HashMap<>();
@@ -55,7 +55,7 @@ public class CarportMapper {
         }
         return carportMap;
     }
-
+    // METODE SLETTER CARPORT I DB
     public static void deleteCarport(int carportID, ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
         String sql = "delete from carport.Carport WHERE carportID = ?";
@@ -68,7 +68,7 @@ public class CarportMapper {
             throw new DatabaseException(ex, "Could not delete order from database");
         }
     }
-
+    // METODE OPDATERER orderID PÅ CARPORT I DATABASE
     public static void updateOrderID(int orderID, int carportID, ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
         String sql = "UPDATE carport.Carport SET orderID = ? WHERE carportID = ?";
@@ -82,7 +82,7 @@ public class CarportMapper {
             throw new DatabaseException(ex, "Could not update order from database");
         }
     }
-
+    // OPRETTER / INDSÆTTER CARPORT I DATABASE
     public static int createShed(Shed shed, ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
         String sql = "INSERT INTO Shed (length, width) VALUES (?,?)";
@@ -100,7 +100,7 @@ public class CarportMapper {
         }
 
     }
-
+    // OPDATERER orderID PÅ SHED I DATABASE
     public static void updateShedID(int orderID, Shed shed, ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
         String sql = "UPDATE carport.Shed SET orderID = ? WHERE shed = ?";

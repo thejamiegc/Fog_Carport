@@ -2,6 +2,7 @@ package dat.backend.model.services;
 
 public class SVG {
 
+    // VARIABLES
     private int x;
     private int y;
     private int height;
@@ -9,6 +10,7 @@ public class SVG {
     private String viewbox;
     private StringBuilder svgString = new StringBuilder();
 
+    // TEMPLATES
     private final static String HEADERTEMPLATE =
             "<svg x=\"%d\" y=\"%d\" height=\"%d%%\" width=\"%d%%\" viewBox=\"%s\" preserveAspectRatio=\"xMinYMin\">";
 
@@ -45,6 +47,7 @@ public class SVG {
             "        </marker>\n" +
             "    </defs>";
 
+    // CONSTRUCTOR
     public SVG(int x, int y, int height, int width, String viewbox) {
         svgString.append(String.format(HEADERTEMPLATE, x, y, height, width, viewbox));
         svgString.append(ARROWHEADSTEMPLATE);
@@ -54,7 +57,7 @@ public class SVG {
         this.width = width;
         this.viewbox = viewbox;
     }
-
+        //METHODS
     public void addRect(int x, int y, double height, double width) {
         svgString.append(String.format(RECTTEMPLATE, x, y, height, width));
     }
@@ -86,7 +89,7 @@ public class SVG {
         svgString.append(String.format(text));
         svgString.append(String.format(TEXTTEMPLATEEND));
     }
-
+    //UNUSED METHOD
     public void addInnerSvg(SVG innerSVGDrawing) {
         svgString.append(innerSVGDrawing);
     }

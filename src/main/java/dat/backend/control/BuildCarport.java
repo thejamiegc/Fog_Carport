@@ -22,6 +22,7 @@ public class BuildCarport extends HttpServlet {
     }
 
     @Override
+    // METODE - henter session, opretter et carport, shed og order object og henter bredde samt længde -> og herefter opretter en ordre.
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
 

@@ -27,9 +27,9 @@ public class NavToMaterialList extends HttpServlet {
     }
 
     @Override
+    //METODE GEMMER ET MAP AF MATERIALER PÅ SESSION SCOPET OG DIRIGERER BRUGER VIDERE TIL MATERIALLIST.JSP SIDEN
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-
         try {
             Map<Integer, Material> materialList = OrderFacade.readMaterials(connectionPool);
             session.setAttribute("materiallist", materialList);

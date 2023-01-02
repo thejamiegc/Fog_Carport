@@ -22,6 +22,7 @@ public class AcceptOffer extends HttpServlet {
     }
 
     @Override
+    // METODE HENTER SESSION, GEMMER ORDERID I EN VARIABLE OG OPDATERER STATUSID FRA 3 -> 4
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         int orderID = Integer.parseInt(request.getParameter("orderID"));

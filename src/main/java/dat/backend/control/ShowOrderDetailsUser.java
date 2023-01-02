@@ -19,6 +19,8 @@ public class ShowOrderDetailsUser extends HttpServlet {
     private static ConnectionPool connectionPool = ApplicationStart.getConnectionPool();
 
     @Override
+    /* METODE - sessionen hentes, orderID gemmes som variabel herefter hentes og vises data fra order i database
+   -> derefter bliver der opretter nye SVG overflader og tegninger til carport dannes. */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         Locale.setDefault(new Locale("US"));
