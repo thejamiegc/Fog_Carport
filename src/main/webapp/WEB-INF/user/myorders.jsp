@@ -6,7 +6,7 @@
     <jsp:body>
         <h1>Mine ordrer</h1>
         <p>Her kan du se alle dine ordrer. Du kan se status på dine ordrer eller klikke på
-            'se detaljer' for at få vist flere detaljer om din ordre. <br>Du acceptere ordren ved at klikke på ‘Accepter tilbud’. </p>
+            'vis detaljer' for at få vist flere detaljer om din ordre. <br>Du acceptere ordren ved at klikke på ‘Accepter tilbud’. </p>
 
         <div class="table-responsive">
             <table class="table table-hover">
