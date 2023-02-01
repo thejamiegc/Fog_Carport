@@ -5,7 +5,7 @@
 
 <t:pagetemplate_admin>
     <jsp:body>
-        <h1>Velkommen ${sessionScope.user.firstname}</h1>
+        <h1>Velkommen ${sessionScope.user.firstname}<img src="<c:url value="/images/adminIcon.png"/>" class="rounded float-start" alt="Admin Icon"></h1>
         <p>Her kan du tilgå kundebestillinger, kundeordrer og materialelisten.</p>
         <p>I kundebestillinger kan du se hvad kunderne har bestilt et tilbud på. <br>
             Du kan også lave en bestilling om til en ordre, så kunden modtager et pristilbud.</p>

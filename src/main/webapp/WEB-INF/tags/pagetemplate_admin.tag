@@ -22,7 +22,7 @@
     <nav class="navbar navbar-expand-sm navbar-blue" aria-label="Third navbar example">
         <div class="container-fluid">
             <a class="navbar-brand" href="${pageContext.request.contextPath}/navtowelcomeadmin">
-                <img src="${pageContext.request.contextPath}/images/FOGLogo.jpg"/>
+                <img src="${pageContext.request.contextPath}/images/FOGLogo.jpg" alt="Company Logo"/>
             </a>
             <a class="navbar-brand" href="#"></a>
             <button class="navbar-toggler toggler-example darken-3" type="button" data-bs-toggle="collapse"
@@ -41,13 +41,17 @@
                     <c:if test="${sessionScope.user == null }">
                         <a class="nav-material nav-link" href="${pageContext.request.contextPath}/login.jsp">Log ind</a>
                     </c:if>
-                    <c:if test="${sessionScope.user != null }">
-                        <div style="color: white"><p>Medarbejder: ${sessionScope.user.firstname}</p></div>
+                </ul>
+                <ul class="navbar-nav ml-auto">
 
-                        <a class="nav-material nav-link" href="${pageContext.request.contextPath}/logout">Log ud</a>
-                    </c:if>
+                    <c:if test="${sessionScope.user != null }">
+                    <div style="color: white"><p>Medarbejder: ${sessionScope.user.firstname}</p></div>
+
+                    <a class="nav-material nav-link" href="${pageContext.request.contextPath}/logout">Log ud</a>
                 </ul>
             </div>
+        </c:if>
+
         </div>
     </nav>
     <!-- search bar -->
